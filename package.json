@@ -22,7 +22,8 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.9.16",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "concurrently": "^4.1.0",
