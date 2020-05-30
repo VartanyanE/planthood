@@ -66,9 +66,30 @@ const plantSeed = [
     }
 ];
 
+const accessSeed = [
+    {
+        owner_user_id: "1",
+        sitter_user_id: "2",
+        date: new Date(Date.now())
+    }
+];
+
 db.Plant
     .remove({})
     .then(() => db.Plant.collection.insertMany(plantSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+
+db.Access
+    .remove({})
+    .then(() => db.Access.collection.insertMany(accessSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);

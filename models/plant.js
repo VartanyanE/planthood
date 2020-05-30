@@ -11,7 +11,7 @@ const plantSchema = new Schema({
     plant_care: { type: String, required: true },
     reminders: String,
     date: { type: Date, default: Date.now }
-});
+}, { collection: 'plants' });
 
 const Plant = mongoose.model("Plant", plantSchema);
 
