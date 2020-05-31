@@ -68,11 +68,53 @@ const plantSeed = [
 
 const accessSeed = [
     {
-        owner_user_id: "1",
-        sitter_user_id: "2",
+        owner_user_id: "gin@luthercorp.com",
+        sitter_user_id: "vartanyan.emanuil@gmail.com",
         date: new Date(Date.now())
     }
 ];
+
+
+const userSeed = [
+    {
+        user_id: "gin@luthercorp.com",
+        user_name: "Martin",
+        zone: "1",
+        password: "abc",
+        date: new Date(Date.now())
+    },
+    {
+        user_id: "vartanyan.emanuil@gmail.com",
+        user_name: "Emanuil",
+        zone: "1",
+        password: "abc",
+        date: new Date(Date.now())
+    },
+
+    {
+        user_id: "anna.olt16@gmail.com",
+        user_name: "Anna",
+        zone: "1",
+        password: "abc",
+        date: new Date(Date.now())
+    },
+    {
+        user_id: "stephtdedios@gmail.com",
+        user_name: "Stephanie",
+        zone: "1",
+        password: "abc",
+        date: new Date(Date.now())
+    },
+    {
+        user_id: "syd107@gmail.com",
+        user_name: "Sydney",
+        zone: "1",
+        password: "abc",
+        date: new Date(Date.now())
+    }
+];
+
+
 
 db.Plant
     .remove({})
@@ -90,6 +132,18 @@ db.Plant
 db.Access
     .remove({})
     .then(() => db.Access.collection.insertMany(accessSeed))
+    .then(data => {
+        console.log(data.result.n + " records inserted!");
+        process.exit(0);
+    })
+    .catch(err => {
+        console.error(err);
+        process.exit(1);
+    });
+
+db.User
+    .remove({})
+    .then(() => db.User.collection.insertMany(userSeed))
     .then(data => {
         console.log(data.result.n + " records inserted!");
         process.exit(0);
