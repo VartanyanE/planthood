@@ -7,7 +7,8 @@ function Navbar() {
   return (  
   <nav>
     <div className="nav-wrapper">
-      <a href="#" className="brand-logo left">PLANTHOOD</a>
+      <a href="#" className="brand-logo">PLANTHOOD</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" className="right hide-on-med-and-down">
         <li>
             <a href="#">My Plantkins</a></li>
