@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "./style.css";
 
 function Navbar() {
+
     const [active, setActive] = useState(1);
   return (  
   <nav>
@@ -18,6 +19,7 @@ function Navbar() {
     </div>
   </nav>
         
+
   );
 }
 
