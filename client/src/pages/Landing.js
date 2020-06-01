@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Account() {
+function Landing() {
     return (
         <div>
-            <h1>ACCOUNT</h1>
+            <h1>Landing</h1>
         </div>
     )
 }
 
-export default Account;
+export default Landing;

@@ -1,26 +1,30 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Navbar from "./components/Navbar"
-import Home from "./pages/Home.js"
-import Account from "./pages/Account.js"
-import Browse from "./pages/Browse.js"
-import Community from "./pages/Community.js"
-import Plantkins from "./pages/Plantkins.js"
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Landing from './pages/Landing';
+import About from './pages/About';
+import Community from './pages/Community';
+import Account from './pages/Account';
+import Browse from './pages/Browse';
+import Plantkins from './pages/Plantkins';
+
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Navbar />
-        <Route exact path='/' component={Home} />
-        <Route path='/home' component={Home} />
-        <Route path='/account' component={Account} />
-        <Route path='/browse' component={Browse} />
-        <Route path='/community' component={Community} />
-        <Route path='/plantkins' component={Plantkins} />
-      </Router>
-    </div>
+    <Router>
+    <div>
+      <Navbar />
+        <Route exact path="/" component={"/"}/>
+        <Route exact path="/landing" component={Landing}/>
+        <Route exact path="/about" component={About}/>
+        <Route exact path="/community" component={Community}/>
+        <Route exact path="/account" component={Account}/>
+        <Route exact path="/browse" component={Browse}/>
+        <Route exact path="/plantkins" component={Plantkins}/>
+        </div>
+    
+    </Router> 
   );
 }
 

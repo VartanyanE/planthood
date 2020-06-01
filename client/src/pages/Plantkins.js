@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 
 function Plantkins() {
     return (
         <div>
-            <h1>Plantkins Page</h1>
-
+            <h1>Plantkins</h1>
         </div>
-    );
+    )
 }
 
 export default Plantkins;
