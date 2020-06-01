@@ -13,18 +13,18 @@ import Plantkins from './pages/Plantkins';
 function App() {
   return (
     <Router>
-    <div>
-      <Navbar />
-        <Route exact path="/" component={"/"}/>
-        <Route exact path="/landing" component={Landing}/>
-        <Route exact path="/about" component={About}/>
-        <Route exact path="/community" component={Community}/>
-        <Route exact path="/account" component={Account}/>
-        <Route exact path="/browse" component={Browse}/>
-        <Route exact path="/plantkins" component={Plantkins}/>
-        </div>
-    
-    </Router> 
+      <div>
+        <Navbar />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/landing" component={Landing} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/community" component={Community} />
+        <Route exact path="/account" component={Account} />
+        <Route exact path="/browse" component={Browse} />
+        <Route exact path="/plantkins" component={Plantkins} />
+      </div>
+
+    </Router>
   );
 }
 
