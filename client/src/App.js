@@ -8,6 +8,8 @@ import Community from './pages/Community';
 import Account from './pages/Account';
 import Browse from './pages/Browse';
 import Plantkins from './pages/Plantkins';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route exact path="/account" component={Account} />
         <Route exact path="/browse" component={Browse} />
         <Route exact path="/plantkins" component={Plantkins} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
       </div>
 
     </Router>
