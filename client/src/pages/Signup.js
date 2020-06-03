@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import API from "../utils/API";
 
 const Signup = () => {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [user, setUser] = useState([]);
+  const [formObject, setFormObject] = useState({});
 
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
+  }
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  function loadUsers() {
+    API.getUsers()
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("username is " + username);
-    console.log("password is " + password);
-    console.log("email is " + email);
+
+    API.saveUser({
+      user_name: formObject.username,
+      email: formObject.email,
+      password: formObject.password,
+    })
+      .then((res) => setUser())
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -17,25 +36,25 @@ const Signup = () => {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label form="exampleInputName">Name</label>
+          <label for="user_name">Name</label>
           <input
             type="text"
             className="form-control"
             id="name-input"
             placeholder="Name"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={handleInputChange}
           />
-          <label for="exampleInputEmail1">Email address</label>
+          <label for="email">Email address</label>
           <input
             type="email"
             className="form-control"
             id="email-input"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleInputChange}
           />
         </div>
         <div className="form-group">
-          <label for="exampleInputPassword1" className="text-light">
+          <label for="password" className="text-light">
             Password
           </label>
           <input
@@ -43,7 +62,7 @@ const Signup = () => {
             className="form-control"
             id="password-input"
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handleInputChange}
           />
         </div>
         <div
