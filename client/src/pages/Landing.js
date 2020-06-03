@@ -7,10 +7,12 @@ function Landing() {
       <Container>
         <img src={"logo.png"} />
         <h1>Landing</h1>
-        <Button color="primary" variant="outlined">
+
+        <Button color="primary" variant="outlined" href="/signup">
           Sign Up
         </Button>
-        <Button color="primary" variant="outlined">
+        <Button color="primary" variant="outlined" href="./login">
+
           Log In
         </Button>
       </Container>
