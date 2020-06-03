@@ -7,8 +7,12 @@ function Landing() {
       <Container>
         <img src={"logo.png"} />
         <h1>Landing</h1>
-        <Button variant="outlined">Sign Up</Button>
-        <Button variant="outlined">Log In</Button>
+        <Button variant="outlined" href="/signup">
+          Sign Up
+        </Button>
+        <Button variant="outlined" href="./login">
+          Log In
+        </Button>
       </Container>
     </div>
   );

@@ -10,15 +10,15 @@ const Signup = () => {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  useEffect(() => {
-    loadUsers();
-  }, []);
+  // useEffect(() => {
+  //   loadUsers();
+  // }, []);
 
-  function loadUsers() {
-    API.getUsers()
-      .then((res) => setUser(res.data))
-      .catch((err) => console.log(err));
-  }
+  // function loadUsers() {
+  //   API.getUsers()
+  //     .then((res) => setUser(res.data))
+  //     .catch((err) => console.log(err));
+  // }
   const handleSubmit = (e) => {
     e.preventDefault();
 
