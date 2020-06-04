@@ -11,7 +11,8 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "stop": "taskkill -F -IM node.exe"
   },
   "author": "Emanuil Vartanyan",
   "license": "ISC",
