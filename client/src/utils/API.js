@@ -24,4 +24,15 @@ export default {
   saveUser: function (userData) {
     return axios.post("/api/user", userData);
   },
+  getAccess: function (user_id) {
+    return axios.get("/api/access/" + user_id);
+  },
+  // Saves access to the database
+  saveAccess: function (userData) {
+    return axios.post("/api/access", userData);
+  },
+  // Deletes access given id
+  deleteAccess: function (id) {
+    return axios.delete("/api/access/" + id);
+  }
 };

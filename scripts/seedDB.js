@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/planthood");
 
 const plantSeed = [
   {
-    user_id: "1",
+    user_id: "gin@luthercorp.com",
     plant_id: "2",
     is_owned: 1,
     is_favorited: 0,
@@ -19,7 +19,7 @@ const plantSeed = [
     date: new Date(Date.now()),
   },
   {
-    user_id: "1",
+    user_id: "vartanyan.emanuil@gmail.com",
     plant_id: "3",
     is_owned: 1,
     is_favorited: 1,
@@ -31,7 +31,7 @@ const plantSeed = [
     date: new Date(Date.now()),
   },
   {
-    user_id: "1",
+    user_id: "vartanyan.emanuil@gmail.com",
     plant_id: "4",
     is_owned: 1,
     is_favorited: 0,
@@ -43,7 +43,7 @@ const plantSeed = [
     date: new Date(Date.now()),
   },
   {
-    user_id: "1",
+    user_id: "gin@luthercorp.com",
     plant_id: "5",
     is_owned: 1,
     is_favorited: 0,
@@ -55,7 +55,7 @@ const plantSeed = [
     date: new Date(Date.now()),
   },
   {
-    user_id: "1",
+    user_id: "gin@luthercorp.com",
     plant_id: "6",
     is_owned: 1,
     is_favorited: 0,
