@@ -5,6 +5,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core";
+import Typography from '@material-ui/core/Typography';
 
 const theme = createMuiTheme({
   palette: {
@@ -12,6 +13,9 @@ const theme = createMuiTheme({
       main: "#228B22",
     },
   },
+  typography: {
+    "fontFamily":  'Bentham'
+  }
 });
 
 ReactDOM.render(

@@ -74,7 +74,8 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <MenuListComposition />
+        <Link to="/"><img href="/" src="logo.png" alt="logo" className="logo"/>
+        </Link>
           <Typography className={classes.title} variant="h6" noWrap>
             PLANTHOOD
           </Typography>
@@ -102,6 +103,7 @@ export default function Navbar() {
               <AccountCircle />
             </IconButton>
           </Link>
+            <MenuListComposition />
         </Toolbar>
       </AppBar>
     </div>
