@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container } from "@material-ui/core";
+import { Button, Container, ThemeProvider } from "@material-ui/core";
 
 function Landing() {
   return (
@@ -7,10 +7,12 @@ function Landing() {
       <Container>
         <img src={"logo.png"} />
         <h1>Landing</h1>
-        <Button variant="outlined" href="/signup">
+
+        <Button color="primary" variant="outlined" href="/signup">
           Sign Up
         </Button>
-        <Button variant="outlined" href="./login">
+        <Button color="primary" variant="outlined" href="./login">
+
           Log In
         </Button>
       </Container>
