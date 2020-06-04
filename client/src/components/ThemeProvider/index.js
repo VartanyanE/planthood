@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import App from "./App";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -7,7 +7,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       // light: will be calculated from palette.primary.main,
-      main: "#009688",
+      main: "#4b8c5f",
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
     },
@@ -24,5 +24,5 @@ const theme = createMuiTheme({
     // two indexes within its tonal palette.
     // E.g., shift from Red 500 to Red 300 or Red 700.
     tonalOffset: 0.2,
-  },
+  }
 });

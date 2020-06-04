@@ -5,13 +5,17 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "@material-ui/core";
 import { createMuiTheme } from "@material-ui/core";
+import Typography from '@material-ui/core/Typography';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#228B22",
+      main: "#4b8c5f",
     },
   },
+  typography: {
+    "fontFamily":  'Bentham'
+  }
 });
 
 ReactDOM.render(
