@@ -116,6 +116,41 @@ const userSeed = [
   },
 ];
 
+const plantsearchSeed = [
+  {
+    plant_id: 1,
+    common_name: "Tulip",
+    category_type: "Tulipa",
+    image_url: "https://images.unsplash.com/photo-1554220311-e6c46d92a1ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+    family_name: "Liliaceae",
+    scientific_name: "Tulipa",
+    foliage_color: "Blue/Green",
+    plant_care: "Requires once or twice weekly watering, while outdoor pots may need watering as often as once daily.",
+    lighting_needs: "Full sun",
+    watering_needs: "1-2 x per week",
+    soil_needs: "Preferably sandy soil full of organic materials.",
+    human_edible: true,
+    pet_edible: false,
+    USDA_zone: "4-6"
+  },
+  {
+    plant_id: "2",
+    common_name: "Tulip",
+    category_type: "Tulipa",
+    image_url: "https://images.unsplash.com/photo-1554220311-e6c46d92a1ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60",
+    family_name: "Liliaceae",
+    scientific_name: "Tulipa",
+    foliage_color: "Blue/Green",
+    plant_care: "Requires once or twice weekly watering, while outdoor pots may need watering as often as once daily.",
+    lighting_needs: "Full sun",
+    watering_needs: "1-2 x per week",
+    soil_needs: "Preferably sandy soil full of organic materials.",
+    human_edible: true,
+    pet_edible: false,
+    USDA_zone: "4-6"
+  }
+];
+
 db.Plant.remove({})
   .then(() => db.Plant.collection.insertMany(plantSeed))
   .then((data) => {
@@ -140,6 +175,17 @@ db.Access.remove({})
 
 db.User.remove({})
   .then(() => db.User.collection.insertMany(userSeed))
+  .then((data) => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+
+db.Plantsearch.remove({})
+  .then(() => db.Plantsearch.collection.insertMany(plantsearchSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
