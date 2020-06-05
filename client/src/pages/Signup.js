@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import API from "../utils/API";
+import {saveUser} from "../utils/API"
 
 const Signup = () => {
   const [user, setUser] = useState([]);
@@ -22,7 +22,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    API.saveUser({
+    saveUser({
       user_name: formObject.username,
       email: formObject.email,
       password: formObject.password,
