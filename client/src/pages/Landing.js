@@ -1,21 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Container, ThemeProvider } from "@material-ui/core";
+import Login from './Login';
+import SignUp from './Signup';
 
 function Landing() {
-  return (
-    <div>
-      <Container>
-        <img src={"logo.png"} />
-        <h1>Landing</h1>
+  const [login,setLogin] = useState(0);
 
-        <Button color="primary" variant="outlined" href="/signup">
+  return (
+    <div style={{textAlign:"center"}}>
+      <img src={"logo.png"} style={{marginTop:"5%"}}/>
+        {login ? <Login/> : <SignUp/> }
+        <h1>Landing</h1>
+        <Button color="primary" variant="outlined" onClick={()=>setLogin(0)}>
           Sign Up
         </Button>
-        <Button color="primary" variant="outlined" href="./login">
-
+        <Button color="primary" variant="outlined" onClick={()=>setLogin(1)}>
           Log In
         </Button>
-      </Container>
     </div>
   );
 }

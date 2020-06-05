@@ -10,14 +10,16 @@ import Browse from './pages/Browse';
 import Plantkins from './pages/Plantkins';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Container from '@material-ui/core/Container'
 
 
 
 function App() {
   return (
     <Router>
-      <div>
-        <Navbar />
+      <Navbar />
+      <Container maxWidth="md">
+        
         <Route exact path="/" component={Landing} />
         <Route exact path="/landing" component={Landing} />
         <Route exact path="/about" component={About} />
@@ -27,7 +29,7 @@ function App() {
         <Route exact path="/plantkins" component={Plantkins} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-      </div>
+      </Container>
 
     </Router>
   );

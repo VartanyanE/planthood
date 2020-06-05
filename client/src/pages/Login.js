@@ -1,5 +1,5 @@
 import React from "react";
-
+import {loginUser} from '../utils/API'
 
 function Login() {
   return (
@@ -28,12 +28,6 @@ function Login() {
           Login
         </button>
       </form>
-      <p>
-        Or sign up{" "}
-        <a class="text-danger font-weight-bolder" href="/signup">
-          <strong>here</strong>
-        </a>
-      </p>
     </div>
   );
 }
