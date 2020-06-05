@@ -1,3 +1,8 @@
+const router = require("express").Router();
+const plantRoutes = require("./plants");
+const userRoutes = require("./users");
+const accessRoutes = require("./access");
+
 var db = require("../../models");
 var passportService = require("../../config/passport");
 const passport = require("passport");
@@ -15,3 +20,12 @@ module.exports = function (app) {
     })
   );
 };
+
+
+
+
+// Plant routes
+router.use("/plants", plantRoutes);
+router.use("/users", userRoutes);
+router.use("/access", accessRoutes);
+module.exports = router;

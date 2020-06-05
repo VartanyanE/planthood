@@ -22,7 +22,18 @@ export const getPlants = function (user_id) {
   export const saveUser = function (data) {
     return axios.post("/api/user", data);
   }
-
   export const loginUser = function(data){
     return axios.post("/api/login", data)
   }
+  export const getAccess = function (user_id) {
+    return axios.get("/api/access/" + user_id);
+  }
+  // Saves access to the database
+  export const saveAccess = function (userData) {
+    return axios.post("/api/access", userData);
+  }
+  // Deletes access given id
+  export const deleteAccess = function (id) {
+    return axios.delete("/api/access/" + id);
+  }
+};

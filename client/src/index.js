@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#228B22",
+      main: "#4b8c5f",
     },
   },
   typography: {

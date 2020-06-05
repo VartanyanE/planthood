@@ -5,7 +5,14 @@ module.exports = {
     //Used to find all access that has been granted.
     findAllByOwnerUserId: function (req, res) {
         db.Access
-            .findById(req.params.owner_user_id)
+            .find({ owner_user_id: req.params.owner_user_id })
+            .sort({ date: -1 })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    findAllBySitterId: function (req, res) {
+        db.Access
+            .find({ sitter_user_id: req.params.sitter_user_id })
             .sort({ date: -1 })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
