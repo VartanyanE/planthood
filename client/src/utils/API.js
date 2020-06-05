@@ -36,4 +36,3 @@ export const getPlants = function (user_id) {
   export const deleteAccess = function (id) {
     return axios.delete("/api/access/" + id);
   }
-};
