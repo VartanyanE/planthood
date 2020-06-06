@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {saveUser} from "../utils/API"
+import { saveUser, getUsers } from "../utils/API";
 
 const Signup = () => {
   const [user, setUser] = useState([]);
@@ -10,15 +10,15 @@ const Signup = () => {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  // useEffect(() => {
-  //   loadUsers();
-  // }, []);
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
-  // function loadUsers() {
-  //   API.getUsers()
-  //     .then((res) => setUser(res.data))
-  //     .catch((err) => console.log(err));
-  // }
+  function loadUsers() {
+    getUsers()
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
 
