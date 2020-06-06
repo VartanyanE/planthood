@@ -20,7 +20,7 @@ export const getUser = function (user_id) {
 };
 // Saves a plant to the database
 export const saveUser = function (data) {
-  return axios.post("/api/user", data);
+  return axios.post("/api/users", data);
 };
 export const getUsers = function () {
   return axios.get("/api/users");
