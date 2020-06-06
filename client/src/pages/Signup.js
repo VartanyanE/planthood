@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {saveUser} from "../utils/API"
+import { saveUser, getUsers } from "../utils/API";
 
 const Signup = () => {
   const [user, setUser] = useState([]);
@@ -10,27 +10,34 @@ const Signup = () => {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  // useEffect(() => {
-  //   loadUsers();
-  // }, []);
+  useEffect(() => {
+    clearForm();
+  }, []);
 
-  // function loadUsers() {
-  //   API.getUsers()
-  //     .then((res) => setUser(res.data))
-  //     .catch((err) => console.log(err));
-  // }
+  function loadUsers() {
+    getUsers()
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     saveUser({
-      user_name: formObject.username,
-      email: formObject.email,
+      user_id: formObject.email,
+      user_name: formObject.user_name,
       password: formObject.password,
     })
-      .then((res) => setUser())
+      .then((res) => clearForm())
       .catch((err) => console.log(err));
   };
-
+  const clearForm = () => {
+    setFormObject({
+      user_id: "",
+      user_name: "",
+      password: "",
+    });
+  };
   return (
     <>
       <h1>Sign Up</h1>
@@ -43,6 +50,7 @@ const Signup = () => {
             id="name-input"
             placeholder="Name"
             onChange={handleInputChange}
+            name="user_name"
           />
           <label for="email">Email address</label>
           <input
@@ -51,6 +59,7 @@ const Signup = () => {
             id="email-input"
             placeholder="Email"
             onChange={handleInputChange}
+            name="email"
           />
         </div>
         <div className="form-group">
@@ -63,6 +72,7 @@ const Signup = () => {
             id="password-input"
             placeholder="Password"
             onChange={handleInputChange}
+            name="password"
           />
         </div>
         <div
