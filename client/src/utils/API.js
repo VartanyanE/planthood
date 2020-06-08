@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const getPlants = function (user_id) {
-  return axios.get("/api/plants/" + user_id);
+  return axios.get("/api/plants/user/" + user_id);
 };
 // Gets a specific plant with the given id
 export const getPlant = function (id) {
