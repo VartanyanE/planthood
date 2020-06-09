@@ -13,7 +13,7 @@ router
 
 
 router
-    .route("/:id")
+    .route("/sitter/:sitter_user_id")
     .get(accessController.findAllBySitterId)
     .delete(accessController.remove);
 
