@@ -1,19 +1,30 @@
-import React, {useState} from "react";
-import {loginUser} from '../utils/API'
+import React, { useState } from "react";
+import { loginUser } from "../utils/API";
+import { withRouter } from "react-router-dom";
 
-function Login() {
+function Login(props) {
   const [formObject, setFormObject] = useState({});
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
-  }
+  };
 
   const handleLogin = (e) => {
-    e.preventDefault()
-    console.log(formObject)
-    loginUser(formObject).then(data=>console.log(data))
-  }
+    e.preventDefault();
+    loginUser({
+      user_id: formObject.email,
+      password: formObject.password,
+    }).then((res) => {
+      const success = res.data.success;
+      console.log(props);
+      if (success) {
+        props.history.push({
+          pathname: "/plantkins",
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -25,7 +36,7 @@ function Login() {
             onChange={handleChange}
             type="email"
             class="form-control"
-            name="user_id"
+            name="email"
             placeholder="Email"
           />
         </div>
@@ -47,4 +58,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default withRouter(Login);

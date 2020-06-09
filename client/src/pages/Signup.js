@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { saveUser, getUsers } from "../utils/API";
+import { saveUser, loginUser } from "../utils/API";
+import { withRouter } from "react-router-dom";
 
-const Signup = () => {
-  const [user, setUser] = useState([]);
+const Signup = (props) => {
+  // const [user, setUser] = useState([]);
   const [formObject, setFormObject] = useState({});
 
   function handleInputChange(event) {
@@ -10,37 +11,43 @@ const Signup = () => {
     setFormObject({ ...formObject, [name]: value });
   }
 
-  useEffect(() => {
-    clearForm();
-  }, []);
+  // useEffect(() => {
+  //   clearForm();
+  // }, []);
 
-  function loadUsers() {
-    getUsers()
-      .then((res) => setUser(res.data))
-      .catch((err) => console.log(err));
-  }
+  // function loadUsers() {
+  //   getUsers()
+  //     .then((res) => setUser(res.data))
+  //     .catch((err) => console.log(err));
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formObject)
+    console.log(formObject);
     saveUser({
       user_id: formObject.email,
       user_name: formObject.user_name,
       password: formObject.password,
     })
       .then((res) => {
-        console.log(res.data)
-        clearForm()
-      } )
+        console.log(res);
+
+        loginUser({
+          user_id: formObject.email,
+          password: formObject.password,
+        }).then((res) => {
+          const success = res.data.success;
+          console.log(props);
+          if (success) {
+            props.history.push({
+              pathname: "/plantkins",
+            });
+          }
+        });
+      })
       .catch((err) => console.log(err));
   };
-  const clearForm = () => {
-    setFormObject({
-      user_id: "",
-      user_name: "",
-      password: "",
-    });
-  };
+
   return (
     <>
       <h1>Sign Up</h1>
@@ -98,4 +105,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default withRouter(Signup);
