@@ -22,13 +22,16 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log(formObject)
     saveUser({
       user_id: formObject.email,
       user_name: formObject.user_name,
       password: formObject.password,
     })
-      .then((res) => clearForm())
+      .then((res) => {
+        console.log(res.data)
+        clearForm()
+      } )
       .catch((err) => console.log(err));
   };
   const clearForm = () => {
@@ -43,7 +46,7 @@ const Signup = () => {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="user_name">Name</label>
+          <label htmlFor="user_name">Name</label>
           <input
             type="text"
             className="form-control"
@@ -52,7 +55,7 @@ const Signup = () => {
             onChange={handleInputChange}
             name="user_name"
           />
-          <label for="email">Email address</label>
+          <label htmlFor="email">Email address</label>
           <input
             type="email"
             className="form-control"
@@ -63,7 +66,7 @@ const Signup = () => {
           />
         </div>
         <div className="form-group">
-          <label for="password" className="text-light">
+          <label htmlFor="password" className="text-light">
             Password
           </label>
           <input
