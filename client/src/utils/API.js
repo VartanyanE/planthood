@@ -26,7 +26,7 @@ export const getUsers = function () {
   return axios.get("/api/users");
 };
 export const loginUser = function (data) {
-  return axios.post("/api/login", data);
+  return axios.post("/api/users/login", data);
 };
 export const getAccess = function (user_id) {
   return axios.get("/api/access/" + user_id);
