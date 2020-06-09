@@ -5,18 +5,18 @@ export const getPlants = function (user_id) {
 };
 // Gets a specific plant with the given id
 export const getPlant = function (id) {
-  return axios.get("/api/plant/" + id);
+  return axios.get("/api/plants/" + id);
 };
 // Deletes the plant with the given id
 export const deletePlant = function (id) {
-  return axios.delete("/api/plant/" + id);
+  return axios.delete("/api/plants/" + id);
 };
 // Saves a plant to the database
 export const savePlant = function (plantData) {
-  return axios.post("/api/plant", plantData);
+  return axios.post("/api/plants", plantData);
 };
 export const getUser = function (user_id) {
-  return axios.get("/api/user/" + user_id);
+  return axios.get("/api/users/user/" + user_id);
 };
 // Saves a plant to the database
 export const saveUser = function (data) {
@@ -30,6 +30,11 @@ export const loginUser = function (data) {
 };
 export const getAccess = function (user_id) {
   return axios.get("/api/access/" + user_id);
+};
+
+
+export const getSitterAccess = function (user_id) {
+  return axios.get("/api/access/sitter/" + user_id);
 };
 // Saves access to the database
 export const saveAccess = function (userData) {
