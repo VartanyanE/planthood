@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  appBar: {
+    zIndex: 1100,
+  },
   title: {
     flexGrow: 1,
     display: "none",
@@ -72,7 +75,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="absolute" className = {classes.appBar}>
         <Toolbar>
         <Link to="/"><img src="logo.png" alt="logo" className="logo"/>
         </Link>
