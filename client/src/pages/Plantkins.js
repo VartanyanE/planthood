@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
+import Sidebar from "../components/Sidebar"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,7 @@ function Plantkins() {
   const classes = useStyles();
   return (
     <div>
+      <Sidebar />
       <h1>Plantkins</h1>
 
       <div className={classes.root}>
