@@ -26,7 +26,6 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(compression());
-
 // Add routes, both API and view
 app.use(routes);
 // require("./routes/api/index.js")(app);

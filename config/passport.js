@@ -41,3 +41,44 @@ passport.use(
     }
   )
 );
+
+
+passport.use(
+  "local.login",
+  new LocalStrategy(
+    // Our user will sign in using an email, rather than a "username"
+    {
+      usernameField: "user_id",
+      passwordField: "password"
+    },
+    (email, password, done) => {
+      // When a user tries to sign in this code runs
+      console.log("logging in...")
+      console.log(email,password)
+     User.findOne({user_id: email}).then(dbUser => {
+        // If there's no user with the given email
+        console.log(dbUser)
+        if (!dbUser) {
+          console.log('incorrect email')
+          return done(null, false, {
+            message: "Incorrect email."
+          });
+        }
+        // If there is a user with the given email, but the password the user gives us is incorrect
+        else if (!dbUser.validPassword(password)) {
+          console.log('invalid pw')
+          return done(null, false, {
+            message: "Incorrect password."
+          });
+        }
+        // If none of the above, return the user
+        return done(null, dbUser);
+      }).catch(err=>console.log(err))
+    }
+  )
+);
+
+
+// Exporting our configured passport
+module.exports = passport;
+

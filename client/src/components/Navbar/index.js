@@ -74,7 +74,7 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <Link to="/"><img href="/" src="logo.png" alt="logo" className="logo"/>
+        <Link to="/"><img src="logo.png" alt="logo" className="logo"/>
         </Link>
           <Typography className={classes.title} variant="h6" noWrap>
             PLANTHOOD
@@ -94,7 +94,6 @@ export default function Navbar() {
           </div>
           <Link to="/account">
             <IconButton
-              href="/account"
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
