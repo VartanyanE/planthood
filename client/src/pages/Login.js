@@ -16,6 +16,7 @@ function Login(props) {
       user_id: formObject.email,
       password: formObject.password,
     }).then((res) => {
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       const success = res.data.success;
       console.log(props);
       if (success) {

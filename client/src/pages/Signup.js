@@ -31,13 +31,14 @@ const Signup = (props) => {
     })
       .then((res) => {
         console.log(res);
+        localStorage.setItem("user", JSON.stringify(res.data));
 
         loginUser({
           user_id: formObject.email,
           password: formObject.password,
         }).then((res) => {
           const success = res.data.success;
-          console.log(props);
+
           if (success) {
             props.history.push({
               pathname: "/plantkins",
