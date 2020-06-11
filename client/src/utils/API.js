@@ -32,7 +32,6 @@ export const getAccess = function (user_id) {
   return axios.get("/api/access/" + user_id);
 };
 
-
 export const getSitterAccess = function (user_id) {
   return axios.get("/api/access/sitter/" + user_id);
 };
@@ -44,3 +43,7 @@ export const saveAccess = function (userData) {
 export const deleteAccess = function (id) {
   return axios.delete("/api/access/" + id);
 };
+
+export const browsePlants = function (){
+  return axios.get('/api/search')
+}
