@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
-import Sidebar from "../components/Sidebar";
+import { getPlants } from '../utils/API'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,25 +20,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Plantkins() {
-  const classes = useStyles();
 
-  return (
-    <div>
-      <Sidebar />
-      <h1>Plantkins</h1>
 
-      <div className={classes.root}>
-        <GridList cellHeight={160} className={classes.gridList} cols={4}>
-          {tileData.map((tile) => (
-            <GridListTile key={tile.img} cols={tile.cols || 1}>
-              <img src={tile.img} alt={tile.title} />
-            </GridListTile>
-          ))}
-        </GridList>
+// if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
+
+function Plants() {
+  // Setting our component's initial state
+  const [plants, setPlants] = useState([])
+
+  // Load all books and store them with setBooks
+  useEffect(() => {
+    loadPlants('gin@luthercorp.com')
+  }, [])
+
+  function loadPlants(user_id) {
+    getPlants(user_id)
+      .then(res => 
+        setPlants(res.data)
+      )
+      .catch(err => console.log(err));
+  };
+
+
+
+
+
+  
+    const classes = useStyles();
+    return (
+      <div>
+        <h1>Plantkins</h1>
+
+        <div className={classes.root}>
+          <GridList cellHeight={200} className={classes.gridList} cols={4}>
+            {plants.map((plant) => (
+              <GridListTile key={plant._id} cols={1}>
+                <p>{plant.common_name}</p>
+                <img src={plant.image_url} alt={plant.common_name} />
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
       </div>
-    </div>
-  );
-}
-
-export default Plantkins;
+    );
+  }
+export default Plants;
