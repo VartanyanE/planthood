@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   main: {
+    marginTop: "6rem",
     marginLeft: "2px"
   },
   gridList: {
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     height:"300px"
   },
   card: {
-    
+    maxWidth: 200
   }
 }));
 // if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
@@ -59,44 +60,48 @@ function Plants() {
   };
     const classes = useStyles();
     return (
-      <div>
-        <h1>Plantkins</h1>
+      <>
+      <Sidebar />
+
+      <Container className={classes.main}>
 
         <div className={classes.root}>
-          {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
-            {plants.map((plant) => (
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Contemplative Reptile"
-                    height="140"
-                    image={plant.image_url}
-                    title="Contemplative Reptile"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                  </Button>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </CardActions>
-              </Card>
-              // <GridListTile key={plant._id} cols={1}>
-              //   <p>{plant.common_name}</p>
-              //   <img src={plant.image_url} alt={plant.common_name} />
-              // </GridListTile>
-            ))}
-          {/* </GridList> */}
+          <h1>Plantkins</h1>
+            {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
+              {plants.map((plant) => (
+                <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Contemplative Reptile"
+                      height="200"
+                      image={plant.image_url}
+                      title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {plant.common_name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      Share
+                    </Button>
+                    <Button size="small" color="primary">
+                      Learn More
+                    </Button>
+                  </CardActions>
+                </Card>
+                // <GridListTile key={plant._id} cols={1}>
+                //   <p>{plant.common_name}</p>
+                //   <img src={plant.image_url} alt={plant.common_name} />
+                // </GridListTile>
+              ))}
+            {/* </GridList> */}
         </div>
-      </div>
+      </Container>
+      </>
     );
   }
 export default Plants;
