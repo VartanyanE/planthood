@@ -325,38 +325,38 @@ const plantsearchSeed = [
   },
 ];
 
-db.Plant.remove({})
-  .then(() => db.Plant.collection.insertMany(plantSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Plant.remove({})
+//   .then(() => db.Plant.collection.insertMany(plantSeed))
+//   .then((data) => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     process.exit(1);
+//   });
 
-db.Access.remove({})
-  .then(() => db.Access.collection.insertMany(accessSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.Access.remove({})
+//   .then(() => db.Access.collection.insertMany(accessSeed))
+//   .then((data) => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     process.exit(1);
+//   });
 
-db.User.remove({})
-  .then(() => db.User.collection.insertMany(userSeed))
-  .then((data) => {
-    console.log(data.result.n + " records inserted!");
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+// db.User.remove({})
+//   .then(() => db.User.collection.insertMany(userSeed))
+//   .then((data) => {
+//     console.log(data.result.n + " records inserted!");
+//     process.exit(0);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     process.exit(1);
+//   });
 
 db.Plantsearch.remove({})
   .then(() => db.Plantsearch.collection.insertMany(plantsearchSeed))
