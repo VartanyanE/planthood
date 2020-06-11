@@ -1,3 +1,7 @@
 .logo {
     max-width: 100px;
 }
+
+.test {
+    display: inline;
+}
