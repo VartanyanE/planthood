@@ -4,7 +4,8 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
 import { getPlants } from '../utils/API'
-
+import Sidebar from "../components/Sidebar";
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,14 +15,18 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
   },
+  main: {
+    marginLeft: "2px"
+  },
   gridList: {
     width: 500,
     height: 450,
   },
+  image: {
+    width:"250px",
+    height:"300px"
+  }
 }));
-
-
-
 // if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
 
 function Plants() {
@@ -40,12 +45,6 @@ function Plants() {
       )
       .catch(err => console.log(err));
   };
-
-
-
-
-
-  
     const classes = useStyles();
     return (
       <div>
