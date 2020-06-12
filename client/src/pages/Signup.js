@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { saveUser, loginUser } from "../utils/API";
 import { withRouter } from "react-router-dom";
+import userContext from "../utils/userContext";
 
 const Signup = (props) => {
   // const [user, setUser] = useState([]);
   const [formObject, setFormObject] = useState({});
+  const { user, setUser } = useContext(userContext);
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -31,7 +33,7 @@ const Signup = (props) => {
     })
       .then((res) => {
         console.log(res);
-        localStorage.setItem("user", JSON.stringify(res.data));
+        localStorage.setItem("user", JSON.stringify(res.data.user_id));
 
         loginUser({
           user_id: formObject.email,
@@ -40,6 +42,7 @@ const Signup = (props) => {
           const success = res.data.success;
 
           if (success) {
+            setUser(res.data.user);
             props.history.push({
               pathname: "/plantkins",
             });
