@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { browsePlant } from "../../utils/API"
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -14,11 +15,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import EcoIcon from "@material-ui/icons/Eco";
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-const flexContainer = {
-  display: "flex",
-  flexDirection: "row",
-  padding: 0,
-};
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,8 +84,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() {
+
+function Navbar() {
   const classes = useStyles();
+
+  const [formObject, setFormObject] = useState({});
+  const [plants, setPlants] = useState([]);
+  useEffect(()=>{
+    browsePlant().then(({data})=>setPlants(data))
+ })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
+
+    const browsed = browsePlant(value);
+    console.log('browsed', browsed)
+    setPlants(browsed)
+  };
+
+  
 
   return (
     <div className={classes.root}>
@@ -154,6 +169,7 @@ export default function Navbar() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
+              onChange={handleChange}
             />
           </div>
           <MenuListComposition />
@@ -162,3 +178,5 @@ export default function Navbar() {
     </div>
   );
 }
+
+export default Navbar;
