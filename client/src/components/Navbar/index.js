@@ -10,11 +10,23 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import MenuListComposition from "../Menu";
-import "./style.css";
+import ForumIcon from "@material-ui/icons/Forum";
+import EcoIcon from "@material-ui/icons/Eco";
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+
+const flexContainer = {
+  display: "flex",
+  flexDirection: "row",
+  padding: 0,
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  logo: {
+    paddingTop: "6px",
+    height: "69px",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -24,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    marginLeft: "1rem",
+    fontSize: "2.25em",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
@@ -37,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
     marginLeft: 0,
-    width: "100%",
+    height: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
       width: "auto",
@@ -68,6 +82,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  test: {
+    display: "inline",
+  },
 }));
 
 export default function Navbar() {
@@ -75,13 +92,57 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="absolute" className = {classes.appBar}>
+      <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
-        <Link to="/"><img src="logo.png" alt="logo" className="logo"/>
-        </Link>
+          <Link to="/">
+            {" "}
+            <img src="nav-logo.png" alt="logo" className={classes.logo} />
+          </Link>
           <Typography className={classes.title} variant="h6" noWrap>
             PLANTHOOD
           </Typography>
+          <Link to="/plantkins">
+          <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <EcoIcon />
+            </IconButton>
+            </Link>
+            <Link to="/community">
+          <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <ForumIcon />
+            </IconButton>
+            </Link>
+            <Link to="/about">
+          <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <InfoOutlinedIcon />
+            </IconButton>
+          </Link>
+              <Link to="/account">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </Link>
+          
+          
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -95,17 +156,7 @@ export default function Navbar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
-          <Link to="/account">
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Link>
-            <MenuListComposition />
+          <MenuListComposition />
         </Toolbar>
       </AppBar>
     </div>

@@ -8,7 +8,7 @@ function Landing() {
 
   return (
     <div style={{textAlign:"center"}}>
-      <img src={"logo.png"} style={{marginTop:"5%"}}/>
+      <img src={"logo.png"} style={{marginTop:"10%"}}/>
         {login ? <Login/> : <SignUp/> }
         <h1>Landing</h1>
         <Button color="primary" variant="outlined" onClick={()=>setLogin(0)}>
