@@ -47,3 +47,7 @@ export const deleteAccess = function (id) {
 export const browsePlants = function (){
   return axios.get('/api/search')
 }
+
+export const browsePlant = function (common_name) {
+  return axios.get('/api/search/browse/' + common_name)
+}

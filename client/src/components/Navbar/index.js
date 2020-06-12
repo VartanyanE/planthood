@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { browsePlant } from "../../utils/API"
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
+import Box from '@material-ui/core/Box';
 import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
@@ -14,11 +16,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import EcoIcon from "@material-ui/icons/Eco";
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-const flexContainer = {
-  display: "flex",
-  flexDirection: "row",
-  padding: 0,
-};
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,8 +85,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() {
+
+function Navbar() {
   const classes = useStyles();
+
+  const [formObject, setFormObject] = useState({});
+  const [plants, setPlants] = useState([]);
+  useEffect(()=>{
+    browsePlant().then(({data})=>setPlants(data))
+ })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value });
+
+    const browsed = browsePlant(value);
+    console.log('browsed', browsed)
+    setPlants(browsed)
+  };
+
+  
 
   return (
     <div className={classes.root}>
@@ -101,47 +117,51 @@ export default function Navbar() {
           <Typography className={classes.title} variant="h6" noWrap>
             PLANTHOOD
           </Typography>
-          <Link to="/plantkins">
-          <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <EcoIcon />
-            </IconButton>
+
+          {/* Menu Item Wrapper Box */}
+          <Box display={{xs:"none",md:"block"}}>
+            <Link to="/plantkins">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <EcoIcon />
+              </IconButton>
             </Link>
             <Link to="/community">
-          <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <ForumIcon />
-            </IconButton>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <ForumIcon />
+              </IconButton>
             </Link>
             <Link to="/about">
-          <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <InfoOutlinedIcon />
-            </IconButton>
-          </Link>
-              <Link to="/account">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Link>
-          
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <InfoOutlinedIcon />
+              </IconButton>
+            </Link>
+
+            <Link to="/account">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Link>
+          </Box>
           
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -154,11 +174,17 @@ export default function Navbar() {
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
+              onChange={handleChange}
             />
           </div>
-          <MenuListComposition />
+          <Box display={{xs:"block",md:"none"}}>
+            <MenuListComposition />
+          </Box>
+          
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+export default Navbar;
