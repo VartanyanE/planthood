@@ -55,7 +55,7 @@ export default function MenuListComposition() {
 
   return (
     <div className={classes.root}>
-     
+
       <div>
         <Button
           ref={anchorRef}
@@ -74,21 +74,21 @@ export default function MenuListComposition() {
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                      <Link to="/plantkins">
-                    <MenuItem href="/plantkins" onClick={handleClose}>My Plantkins</MenuItem>
+                    <Link to="/plantkins">
+                      <MenuItem href="/plantkins" onClick={handleClose}>My Plantkins</MenuItem>
                     </Link>
                     <Link to="/community">
-                    <MenuItem href="/community" onClick={handleClose}>Community</MenuItem>
+                      <MenuItem href="/community" onClick={handleClose}>Community</MenuItem>
                     </Link>
                     <Link to="/browse">
-                    <MenuItem href="/browse" onClick={handleClose}>Browse</MenuItem>
+                      <MenuItem href="/browse" onClick={handleClose}>Browse</MenuItem>
                     </Link>
                     <Link to="/about">
-                    <MenuItem href="/about" onClick={handleClose}>About</MenuItem>
+                      <MenuItem href="/about" onClick={handleClose}>About</MenuItem>
                     </Link>
                     <Link>
-                    <MenuItem href="/logout" onClick={handleClose}>Logout</MenuItem>
-                  </Link>
+                      <MenuItem href="/logout" onClick={handleClose}>Logout</MenuItem>
+                    </Link>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

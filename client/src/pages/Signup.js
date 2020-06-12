@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { saveUser, loginUser } from "../utils/API";
 import { withRouter } from "react-router-dom";
 

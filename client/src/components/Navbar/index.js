@@ -5,20 +5,21 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import MenuIcon from "@material-ui/icons/Menu";
+//Removed to get rid of warnings
+// import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import MenuListComposition from "../Menu";
 import ForumIcon from "@material-ui/icons/Forum";
 import EcoIcon from "@material-ui/icons/Eco";
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 
-const flexContainer = {
-  display: "flex",
-  flexDirection: "row",
-  padding: 0,
-};
+// const flexContainer = {
+//   display: "flex",
+//   flexDirection: "row",
+//   padding: 0,
+// };
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -102,7 +103,7 @@ export default function Navbar() {
             PLANTHOOD
           </Typography>
           <Link to="/plantkins">
-          <IconButton
+            <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
@@ -110,9 +111,9 @@ export default function Navbar() {
             >
               <EcoIcon />
             </IconButton>
-            </Link>
-            <Link to="/community">
-          <IconButton
+          </Link>
+          <Link to="/community">
+            <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
@@ -120,9 +121,9 @@ export default function Navbar() {
             >
               <ForumIcon />
             </IconButton>
-            </Link>
-            <Link to="/about">
-          <IconButton
+          </Link>
+          <Link to="/about">
+            <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
@@ -131,18 +132,18 @@ export default function Navbar() {
               <InfoOutlinedIcon />
             </IconButton>
           </Link>
-              <Link to="/account">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Link>
-          
-          
+          <Link to="/account">
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          </Link>
+
+
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
