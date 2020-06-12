@@ -5,6 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
+import Box from '@material-ui/core/Box';
 import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
@@ -116,47 +117,51 @@ function Navbar() {
           <Typography className={classes.title} variant="h6" noWrap>
             PLANTHOOD
           </Typography>
-          <Link to="/plantkins">
-          <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <EcoIcon />
-            </IconButton>
+
+          {/* Menu Item Wrapper Box */}
+          <Box display={{xs:"none",md:"block"}}>
+            <Link to="/plantkins">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <EcoIcon />
+              </IconButton>
             </Link>
             <Link to="/community">
-          <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <ForumIcon />
-            </IconButton>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <ForumIcon />
+              </IconButton>
             </Link>
             <Link to="/about">
-          <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <InfoOutlinedIcon />
-            </IconButton>
-          </Link>
-              <Link to="/account">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-              </Link>
-          
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <InfoOutlinedIcon />
+              </IconButton>
+            </Link>
+
+            <Link to="/account">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Link>
+          </Box>
           
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -172,7 +177,10 @@ function Navbar() {
               onChange={handleChange}
             />
           </div>
-          <MenuListComposition />
+          <Box display={{xs:"block",md:"none"}}>
+            <MenuListComposition />
+          </Box>
+          
         </Toolbar>
       </AppBar>
     </div>
