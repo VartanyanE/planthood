@@ -10,5 +10,9 @@ router
     .route("/:id")
     .get(plantController.findById)
 
+router
+    .route("/browse/:common_name")
+    .get(plantController.findByCommonName)
+
 
 module.exports = router;
