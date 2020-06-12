@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { loginUser } from "../utils/API";
 import { withRouter } from "react-router-dom";
+import UserContext from "../utils/userContext";
 
 function Login(props) {
   const [formObject, setFormObject] = useState({});
+  const [user, setUser] = useContext(UserContext);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
