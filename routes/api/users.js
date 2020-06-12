@@ -14,12 +14,19 @@ router.post("/login", passport.authenticate("local.login"), (req, res) => {
   if (req.user) {
     res.json({
       success: true,
+      user: req.user,
     });
   } else {
     res.json({
       success: false,
     });
   }
+});
+
+router.post("/logout", function (req, res) {
+  res.json({
+    message: "hello",
+  });
 });
 // Matches with "/api/users/:id"
 router

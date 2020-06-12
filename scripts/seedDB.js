@@ -86,7 +86,7 @@ const userSeed = [
     date: new Date(Date.now()),
   },
   {
-    user_id: "vartanyan.emanuil@gmail.com",
+    user_id: "",
     user_name: "Emanuil",
     zone: "1",
     password: "abc",

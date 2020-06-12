@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { loginUser } from "../utils/API";
 import { withRouter } from "react-router-dom";
+import userContext from "../utils/userContext";
 
 function Login(props) {
   const [formObject, setFormObject] = useState({});
-
+  const { user, setUser } = useContext(userContext);
+  console.log(user);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
@@ -16,10 +18,14 @@ function Login(props) {
       user_id: formObject.email,
       password: formObject.password,
     }).then((res) => {
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      console.log(res.data);
+
+      // console.log(user);
+      // localStorage.setItem("user", JSON.stringify(res.data.user_id));
       const success = res.data.success;
-      console.log(props);
+
       if (success) {
+        setUser(res.data.user);
         props.history.push({
           pathname: "/plantkins",
         });
@@ -30,6 +36,7 @@ function Login(props) {
   return (
     <div>
       <h1>Login</h1>
+
       <form class="login">
         <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>
@@ -51,7 +58,12 @@ function Login(props) {
             placeholder="Password"
           />
         </div>
-        <button onClick={handleLogin} type="submit" class="btn btn-light">
+        <button
+          onClick={handleLogin}
+          type="submit"
+          setUser={user}
+          class="btn btn-light"
+        >
           Login
         </button>
       </form>
