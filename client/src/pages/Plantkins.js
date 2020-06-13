@@ -52,7 +52,6 @@ function Plants() {
   // Load all books and store them with setBooks
   useEffect(() => {
     const user = localStorage.getItem("user");
-    console.log(user);
     loadPlants(JSON.parse(user));
   }, []);
 

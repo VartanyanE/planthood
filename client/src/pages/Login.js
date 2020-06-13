@@ -6,7 +6,7 @@ import userContext from "../utils/userContext";
 function Login(props) {
   const [formObject, setFormObject] = useState({});
   const { user, setUser } = useContext(userContext);
-  console.log(user);
+  // console.log(user);
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
@@ -18,7 +18,7 @@ function Login(props) {
       user_id: formObject.email,
       password: formObject.password,
     }).then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
 
       // console.log(user);
       // localStorage.setItem("user", JSON.stringify(res.data.user_id));

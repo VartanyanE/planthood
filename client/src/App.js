@@ -22,24 +22,37 @@ function App() {
     <Router>
       <div>
         <plantContext.Provider value={{ plants, setPlants }}>
-          <Navbar />
-          <Container maxWidth="md">
-            <userContext.Provider value={{ user, setUser }}>
-              <Route exact path="/" component={Landing} />
+          <userContext.Provider value={{ user, setUser }}>
+            <Navbar />
+            <Container maxWidth="md">
+              <Route exact path="/" component={!user ? Landing : Plantkins} />
               <Route exact path="/landing" component={Landing} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/community" component={Community} />
-              <Route exact path="/account" component={Account} />
+              <Route exact path="/about" component={user ? About : Landing} />
+              <Route
+                exact
+                path="/community"
+                component={user ? Community : Landing}
+              />
+              <Route
+                exact
+                path="/account"
+                component={user ? Account : Landing}
+              />
               <Route exact path="/browse" component={Browse} />
-              <Route exact path="/plantkins" component={Plantkins} />
+              <Route
+                exact
+                path="/plantkins"
+                component={user ? Plantkins : Landing}
+              />
               <Route
                 exact
                 path="/login"
                 component={() => <Login setUser={setUser} />}
               />
               <Route exact path="/signup" component={Signup} />
-            </userContext.Provider>
-          </Container>
+            </Container>
+          </userContext.Provider>
+          ß
         </plantContext.Provider>
       </div>
     </Router>
