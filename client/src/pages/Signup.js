@@ -25,14 +25,14 @@ const Signup = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formObject);
+    // console.log(formObject);
     saveUser({
       user_id: formObject.email,
       user_name: formObject.user_name,
       password: formObject.password,
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         localStorage.setItem("user", JSON.stringify(res.data.user_id));
 
         loginUser({
