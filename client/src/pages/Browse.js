@@ -1,20 +1,21 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import SimpleTable from "../components/SearchResults";
-import {browsePlants} from "../utils/API";
+import { browsePlants } from "../utils/API";
+import plantContext from "../utils/plantContext";
 
 function Browse() {
-  const [plants, setPlants] = useState([]);
-  useEffect(()=>{
-     browsePlants().then(({data})=>setPlants(data))
-  },[])
+  // const [plants, setPlants] = useState([]);
+  const { plants, setPlants } = useContext(plantContext);
+  useEffect(() => {
+    browsePlants().then(({ data }) => setPlants(data));
+  }, []);
 
   return (
     <div>
       <h1>Browse</h1>
-      <SimpleTable plants={plants}/>
+      <SimpleTable />
     </div>
   );
-};
-
+}
 
 export default Browse;
