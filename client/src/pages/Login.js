@@ -18,14 +18,15 @@ function Login(props) {
       user_id: formObject.email,
       password: formObject.password,
     }).then((res) => {
-      // console.log(res.data);
+      console.log(res.data);
 
       // console.log(user);
-      // localStorage.setItem("user", JSON.stringify(res.data.user_id));
+
       const success = res.data.success;
 
       if (success) {
         setUser(res.data.user);
+        localStorage.setItem("user", JSON.stringify(res.data.user.user_id));
         props.history.push({
           pathname: "/plantkins",
         });

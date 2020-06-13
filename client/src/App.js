@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -13,11 +13,28 @@ import Signup from "./pages/Signup";
 import Container from "@material-ui/core/Container";
 import userContext from "./utils/userContext";
 import plantContext from "./utils/plantContext";
+import { getUser } from "../../client/src/utils/API";
 
 function App() {
   const [user, setUser] = useState(null);
   // const value = useMemo(() => ({ user, setUser }), [user, setUser]);
   const [plants, setPlants] = useState([]);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user === "") {
+      setUser(null);
+    } else {
+      if (user)
+        getUser(user)
+          .then((res) => setUser(res.data))
+          .catch((err) => {
+            if (err) {
+              console.log(err);
+            }
+          });
+    }
+  }, []);
+
   return (
     <Router>
       <div>
