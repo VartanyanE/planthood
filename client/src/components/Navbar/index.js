@@ -16,6 +16,7 @@ import ForumIcon from "@material-ui/icons/Forum";
 import EcoIcon from "@material-ui/icons/Eco";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import plantContext from "../../utils/plantContext";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -122,7 +123,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <EcoIcon />
+                <EcoIcon style={{fill: "white"}}/>
               </IconButton>
             </Link>
             <Link to="/community">
@@ -132,7 +133,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <ForumIcon />
+                <ForumIcon style={{fill: "white"}}/>
               </IconButton>
             </Link>
             <Link to="/about">
@@ -142,7 +143,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <InfoOutlinedIcon />
+                <InfoOutlinedIcon style={{fill: "white"}}/>
               </IconButton>
             </Link>
 
@@ -153,9 +154,20 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle style={{fill: "white"}}/>
               </IconButton>
             </Link>
+            <Link to="/browse">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <SearchIcon style={{fill: "white"}}/>
+              </IconButton>
+            </Link>
+           
           </Box>
 
           <div className={classes.search}>
@@ -175,6 +187,16 @@ function Navbar() {
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
+          <Link to="/browse">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <ExitToAppIcon style={{fill: "white"}}/>
+              </IconButton>
+            </Link>
         </Toolbar>
       </AppBar>
     </div>
