@@ -52,7 +52,7 @@ function Plants() {
   // Load all books and store them with setBooks
   useEffect(() => {
     const user = localStorage.getItem("user");
-    loadPlants("vartanyan.emanuil@gmail.com");
+    loadPlants(JSON.parse(user));
   }, []);
 
   function loadPlants(user_id) {
