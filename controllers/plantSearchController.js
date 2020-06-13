@@ -6,7 +6,7 @@ module.exports = {
         db.Plantsearch
             .find()
             .then(dbModel => res.json(dbModel))
-            .catch(err=> res.status(422).json(err))
+            .catch(err => res.status(422).json(err))
     },
     findById: function (req, res) {
         db.Plantsearch
@@ -16,8 +16,15 @@ module.exports = {
     },
     findByCommonName: function (req, res) {
         db.Plantsearch
-            .find({ common_name: req.params.common_name })
+            .find({
+                $or: [{ common_name: { $regex: req.params.common_name, $options: "i" } },
+                { scientific_name: { $regex: req.params.common_name, $options: "i" } },
+                { family_name: { $regex: req.params.common_name, $options: "i" } },
+                { USDA_zone: { $regex: req.params.common_name, $options: "i" } },
+                { foliage_color: { $regex: req.params.common_name, $options: "i" } }]
+            })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     }
 };
+
