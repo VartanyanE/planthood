@@ -1,20 +1,21 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+import './style.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
+    flexBasis: "33.33%",
     flexShrink: 0,
   },
   secondaryHeading: {
@@ -23,32 +24,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ControlledExpansionPanels({row}) {
+// const colWidth = {
+//   width: '10vh'
+// };
+
+export default function ControlledExpansionPanels({ row }) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   return (
     <div className={classes.root}>
-      <ExpansionPanel expanded={expanded} onChange={()=>setExpanded(!expanded)}>
+      <ExpansionPanel
+        expanded={expanded}
+        onChange={() => setExpanded(!expanded)}
+      >
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-        <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.common_name}
-              </TableCell>
-              <TableCell align="right">{row.family_name}</TableCell>
-              <TableCell align="right">{row.foliage_color}</TableCell>
-              <TableCell align="right">{row.lighting_needs}</TableCell>
-              <TableCell align="right">{row.watering_needs}</TableCell>
-            </TableRow>
+          <TableRow key={row.name}>
+            <TableCell align="right"><img src={row.image_url} style={{width: "12vh"}}/></TableCell>
+            <TableCell component="th" scope="row">
+              {row.common_name}
+            </TableCell>
+            <TableCell align="right">{row.family_name} </TableCell>
+            <TableCell align="right">{row.foliage_color}</TableCell>
+            <TableCell align="right">{row.lighting_needs}</TableCell>
+            <TableCell align="right">{row.watering_needs}</TableCell>
+          </TableRow>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
-            maximus est, id dignissim quam.
+            {console.log(row)}
+            <p><span style={{fontWeight: "bold"}}> Plant Care: </span>{row.plant_care}</p>
+            <p><span style={{fontWeight: "bold"}}>USDA Hardiness Zone: </span>{row.USDA_zone}</p>
+            <p><span style={{fontWeight: "bold"}}>Human Edible: </span> {row.human_edible}</p>
+            <p><span style={{fontWeight: "bold"}}>Pet Edible: </span>{row.pet_edible}</p>
+            <p><span style={{fontWeight: "bold"}}>Soil Needs: </span>{row.soil_needs}</p>
+            
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
