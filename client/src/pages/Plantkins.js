@@ -16,6 +16,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import userContext from "../utils/userContext";
+import Collapse from '@material-ui/core/Collapse';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -33,12 +35,11 @@ const useStyles = makeStyles((theme) => ({
     height: 450,
   },
   image: {
-    width: "250px",
-    height: "300px",
+    height: "500px",
   },
   card: {
-    maxWidth: 200,
-  },
+    margin: "2rem"
+  }
 }));
 
 // if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
@@ -61,21 +62,30 @@ function Plants() {
       .catch((err) => console.log(err));
   }
   const classes = useStyles();
+
+  //expand button code
+
+  const [expandedId, setExpandedId] = React.useState(-1);
+
+  const handleExpandClick = i => {
+    setExpandedId(expandedId === i ? -1 : i);
+  };
+
   return (
     <>
       <Sidebar />
-
       <Container className={classes.main}>
         <div className={classes.root}>
           <h1>Plantkins</h1>
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
-          {plants.map((plant) => (
+          {plants.map((plant, i) => (
+            
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   alt="Contemplative Reptile"
-                  height="200"
+                  height="300"
                   image={plant.image_url}
                   title="Contemplative Reptile"
                 />
@@ -89,10 +99,18 @@ function Plants() {
                 <Button size="small" color="primary">
                   Share
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" 
+                  onClick={() => handleExpandClick(i)}
+                  aria-expanded={expandedId === i}
+                  aria-label="show more">
                   Learn More
                 </Button>
               </CardActions>
+              <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <div>lorem ipsum bjkelpajdfkl;ajfdkls;jfpl;ashjkafs;hdkl;kas jfakld;s jfdsakl; fjaksld; fjkas;l hiuknmfacpio hamfluahsu  hajpklnmchsapilmkxg fh akljhjaghklmdsjk halkjsd. fjkpa;  fs; fk;</div>
+                </CardContent>
+              </Collapse>
             </Card>
             // <GridListTile key={plant._id} cols={1}>
             //   <p>{plant.common_name}</p>
