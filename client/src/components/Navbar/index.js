@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     paddingTop: "6px",
     height: "69px",
+    display:"block"
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -62,6 +63,10 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  menuBox: {
+    display: "flex",
+    justifyContent: "end",
   },
   inputRoot: {
     color: "inherit",

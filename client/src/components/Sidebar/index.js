@@ -4,6 +4,7 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
+import Box from "@material-ui/core/Box";
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -49,19 +50,21 @@ export default function ClippedDrawer() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <Toolbar className = {classes.spacer}/>
-        <div className={classes.drawerContainer}>
-            <h4>Sample Text</h4>
-          {/* TODO: PUT ALL THE STUFF HERE */}
-        </div>
-      </Drawer>
+      <Box display={{ xs: "none", lg: "fixed" }}>
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <Toolbar className = {classes.spacer}/>
+          <div className={classes.drawerContainer}>
+              <h4>Sample Text</h4>
+            {/* TODO: PUT ALL THE STUFF HERE */}
+          </div>
+        </Drawer>
+      </Box>
     </div>
   );
 }
