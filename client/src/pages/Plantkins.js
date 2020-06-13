@@ -53,7 +53,7 @@ function Plants() {
   useEffect(() => {
     const user = localStorage.getItem("user");
     console.log(user);
-    loadPlants("vartanyan.emanuil@gmail.com");
+    loadPlants(JSON.parse(user));
   }, []);
 
   function loadPlants(user_id) {
