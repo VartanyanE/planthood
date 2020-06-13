@@ -67,7 +67,7 @@ function Plants() {
 
       <Container className={classes.main}>
         <div className={classes.root}>
-          <h1>Plantkins</h1>
+          <h1>My  Plantkins</h1>
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {plants.map((plant) => (
             <Card className={classes.card}>

@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Accordion from "../Accordion";
 import plantContext from "../../utils/plantContext";
+import './style.css'
 
 const useStyles = makeStyles({
   table: {
@@ -23,15 +24,7 @@ export default function SimpleTable() {
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Plant Name</TableCell>
-            <TableCell align="right">Plant Family</TableCell>
-            <TableCell align="right">Color</TableCell>
-            <TableCell align="right">Light Conditions</TableCell>
-            <TableCell align="right">Thirst</TableCell>
-          </TableRow>
-        </TableHead>
+        <TableHead />
         <TableBody>
           {plants.map((row) => (
             <Accordion row={row} />

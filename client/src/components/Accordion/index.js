@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const colWidth = {
-//   width: '10vh'
-// };
 
 export default function ControlledExpansionPanels({ row }) {
   const classes = useStyles();
@@ -45,13 +42,13 @@ export default function ControlledExpansionPanels({ row }) {
         >
           <TableRow key={row.name}>
             <TableCell align="right"><img src={row.image_url} style={{width: "12vh"}}/></TableCell>
-            <TableCell component="th" scope="row">
+            <TableCell component="th" scope="row" style={{fontWeight: 'bold'}}>
               {row.common_name}
             </TableCell>
-            <TableCell align="right">{row.family_name} </TableCell>
-            <TableCell align="right">{row.foliage_color}</TableCell>
-            <TableCell align="right">{row.lighting_needs}</TableCell>
-            <TableCell align="right">{row.watering_needs}</TableCell>
+            {/* <TableCell align="right">{row.family_name} </TableCell> */}
+            {/* <TableCell align="right">{row.foliage_color}</TableCell> */}
+            <TableCell align="right">I Love {row.lighting_needs}</TableCell>
+            <TableCell align="right">Water Me {row.watering_needs}</TableCell>
           </TableRow>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
