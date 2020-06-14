@@ -40,7 +40,7 @@ export default function ControlledExpansionPanels({ row }) {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <CheckboxLabels />
+
           <TableRow key={row.name}>
             <TableCell align="right">
               <img src={row.image_url} style={{ width: "12vh" }} />
@@ -54,6 +54,7 @@ export default function ControlledExpansionPanels({ row }) {
             </TableCell>
             <TableCell align="right">I Love {row.lighting_needs}</TableCell>
             <TableCell align="right">Water Me {row.watering_needs}</TableCell>
+            <TableCell align="right"> <CheckboxLabels /></TableCell>
             {/* <TableCell align="right"> ADD BUTTON/CHECKBOX HERE </TableCell> */}
           </TableRow>
         </ExpansionPanelSummary>
