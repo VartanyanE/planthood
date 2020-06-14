@@ -10,13 +10,19 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  withRouter,
+} from "react-router-dom";
 import MenuListComposition from "../Menu";
 import ForumIcon from "@material-ui/icons/Forum";
 import EcoIcon from "@material-ui/icons/Eco";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import plantContext from "../../utils/plantContext";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import userContext from "../../utils/userContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     paddingTop: "6px",
     height: "69px",
-    display:"block"
+    display: "block",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -90,12 +96,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar() {
+function Navbar(props) {
   const classes = useStyles();
 
   const [formObject, setFormObject] = useState({});
   const { plants, setPlants } = useContext(plantContext);
   const [search, setSearch] = useState({});
+  const { user, setUser } = useContext(userContext);
   useEffect(() => {
     browsePlant(search).then(({ data }) => setPlants(data));
     return;
@@ -105,6 +112,16 @@ function Navbar() {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value });
     setSearch(value);
+    props.history.push({
+      pathname: "/browse",
+    });
+  };
+
+  const logOutButton = (event) => {
+    setUser(null);
+    props.history.push({
+      pathname: "/",
+    });
   };
 
   return (
@@ -128,7 +145,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <EcoIcon style={{fill: "white"}}/>
+                <EcoIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
             <Link to="/community">
@@ -138,7 +155,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <ForumIcon style={{fill: "white"}}/>
+                <ForumIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
             <Link to="/about">
@@ -148,7 +165,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <InfoOutlinedIcon style={{fill: "white"}}/>
+                <InfoOutlinedIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
 
@@ -159,7 +176,7 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <AccountCircle style={{fill: "white"}}/>
+                <AccountCircle style={{ fill: "white" }} />
               </IconButton>
             </Link>
             <Link to="/browse">
@@ -169,43 +186,45 @@ function Navbar() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <SearchIcon style={{fill: "white"}}/>
+                <SearchIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
-           
           </Box>
 
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-              onChange={handleChange}
-            />
+            <div className={classes.searchIcon}>{/* <SearchIcon /> */}</div>
+            {user ? (
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+                onChange={handleChange}
+              />
+            ) : (
+              ""
+            )}
           </div>
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
-          <Link to="/browse">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <ExitToAppIcon style={{fill: "white"}}/>
-              </IconButton>
-            </Link>
+          <Link to="/">
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={logOutButton}
+            >
+              <ExitToAppIcon style={{ fill: "white" }} />
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
   );
 }
 
-export default Navbar;
+export default withRouter(Navbar);
