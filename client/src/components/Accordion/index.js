@@ -45,10 +45,9 @@ export default function ControlledExpansionPanels({ row }) {
             <TableCell component="th" scope="row" style={{fontWeight: 'bold'}}>
               {row.common_name}
             </TableCell>
-            {/* <TableCell align="right">{row.family_name} </TableCell> */}
-            {/* <TableCell align="right">{row.foliage_color}</TableCell> */}
             <TableCell align="right">I Love {row.lighting_needs}</TableCell>
             <TableCell align="right">Water Me {row.watering_needs}</TableCell>
+            {/* <TableCell align="right"> ADD BUTTON/CHECKBOX HERE </TableCell> */}
           </TableRow>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
