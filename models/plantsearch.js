@@ -13,8 +13,8 @@ const plantsearchSchema = new Schema({
     lighting_needs: String,
     watering_needs: String,
     soil_needs: String,
-    human_edible: Boolean,
-    pet_edible: Boolean,
+    human_edible: String,
+    pet_edible: String,
     USDA_zone: String
 }, { collection: 'Plantsearch' });
 

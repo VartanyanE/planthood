@@ -69,7 +69,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
             </Container>
           </userContext.Provider>
-          ß
+
         </plantContext.Provider>
       </div>
     </Router>
