@@ -50,10 +50,10 @@ export default function ControlledExpansionPanels({ row }) {
               scope="row"
               style={{ fontWeight: "bold" }}
             >
-              {row.common_name}
+              {row.common_name.toUpperCase()}
             </TableCell>
-            <TableCell align="right">I Love {row.lighting_needs}</TableCell>
-            <TableCell align="right">Water Me {row.watering_needs}</TableCell>
+            <TableCell align="right">I LOVE {row.lighting_needs.toUpperCase()}</TableCell>
+            <TableCell align="right">WATER ME {row.watering_needs.toUpperCase()}</TableCell>
             <TableCell align="right"> <CheckboxLabels /></TableCell>
             {/* <TableCell align="right"> ADD BUTTON/CHECKBOX HERE </TableCell> */}
           </TableRow>
