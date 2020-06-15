@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
 
 function Account() {
-    return (
-        <div>
-            <h1>ACCOUNT</h1>
-        </div>
-    )
+  const userName = localStorage.getItem("userName");
+  const email = localStorage.getItem("user");
+
+  return (
+    <div>
+      <p style={{ marginTop: "100px" }}> Username : {JSON.parse(userName)}</p>
+      <p style={{ marginTop: "100px" }}> Email : {JSON.parse(email)}</p>
+    </div>
+  );
 }
 
 export default Account;
