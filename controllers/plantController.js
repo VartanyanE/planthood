@@ -4,15 +4,13 @@ const db = require("../models");
 module.exports = {
     findAll: function (req, res) {
         db.Plant
-            .find(req.query)
-            .sort({ date: -1 })
+            .find(req.query).sort({ common_name: "asc" })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     findAllByUserId: function (req, res) {
         db.Plant
-            .find({ user_id: req.params.user_id })
-            .sort({ date: -1 })
+            .find({ user_id: req.params.user_id }).sort({ common_name: "asc" })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
