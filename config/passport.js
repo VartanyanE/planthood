@@ -81,4 +81,3 @@ passport.use(
 
 // Exporting our configured passport
 module.exports = passport;
-
