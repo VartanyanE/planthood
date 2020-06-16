@@ -1,11 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-
+import userContext from "../../utils/userContext";
+import {addRemovePlant} from "../../utils/API"
 const GreenCheckbox = withStyles({
   root: {
     color: green[400],
@@ -16,20 +17,20 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="root" {...props} />);
 
-export default function CheckboxLabels() {
-  const [state, setState] = React.useState({
-    checkedH: false,
-  });
+export default function CheckboxLabels({id}) {
+  const {user, setUser} = useContext(userContext)
+  const [state, setState] = React.useState(false);
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const handleChange = () => {
+    addRemovePlant(id, user._id, (state ? "remove" : "add")).then(({data})=> setUser(data))
+    setState(!state);
   };
 
   return (
     <FormControlLabel
       control={
         <GreenCheckbox
-          checked={state.checkedH}
+          checked={state}
           onChange={handleChange}
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}

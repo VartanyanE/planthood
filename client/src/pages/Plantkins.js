@@ -46,21 +46,17 @@ const useStyles = makeStyles((theme) => ({
 
 function Plants() {
   // Setting our component's initial state
-  const [plants, setPlants] = useState([]);
+  // const [plants, setPlants] = useState([]);
   const { user, setUser } = useContext(userContext);
   // const [user, setUser] = useState();
   // setUser(localStorage.getItem("user"));
   // Load all books and store them with setBooks
-  useEffect(() => {
-    const user = localStorage.getItem("user");
-    loadPlants(JSON.parse(user));
-  }, []);
 
-  function loadPlants(user_id) {
-    getPlants(user_id)
-      .then((res) => setPlants(res.data))
-      .catch((err) => console.log(err));
-  }
+  // function loadPlants(user_id) {
+  //   getPlants(user_id)
+  //     .then((res) => setPlants(res.data))
+  //     .catch((err) => console.log(err));
+  // }
   const classes = useStyles();
 
   //expand button code
@@ -71,14 +67,16 @@ function Plants() {
     setExpandedId(expandedId === i ? -1 : i);
   };
 
+  console.log("user - \n" ,user)
+
   return (
     <>
       <Sidebar />
       <Container className={classes.main}>
         <div className={classes.root}>
-          <h1>My  Plantkins</h1>
+          <h1>My Plantkins</h1>
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
-          {plants.map((plant, i) => (
+          {user.plants ? user.plants.map((plant, i) => (
             
             <Card className={classes.card}>
               <CardActionArea>
@@ -116,7 +114,7 @@ function Plants() {
             //   <p>{plant.common_name}</p>
             //   <img src={plant.image_url} alt={plant.common_name} />
             // </GridListTile>
-          ))}
+          )): ""}
           {/* </GridList> */}
         </div>
       </Container>

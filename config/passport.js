@@ -55,7 +55,7 @@ passport.use(
       // When a user tries to sign in this code runs
       console.log("logging in...")
       console.log(email,password)
-     User.findOne({user_id: email}).then(dbUser => {
+     User.findOne({user_id: email}).populate("plants").then(dbUser => {
         // If there's no user with the given email
         console.log(dbUser)
         if (!dbUser) {
