@@ -20,7 +20,7 @@ const GreenCheckbox = withStyles({
 export default function CheckboxLabels({id}) {
   const {user, setUser} = useContext(userContext)
   const [state, setState] = React.useState(false);
-
+{console.log(user)}
   const handleChange = () => {
     addRemovePlant(id, user._id, (state ? "remove" : "add")).then(({data})=> setUser(data))
     setState(!state);

@@ -16,15 +16,15 @@ import plantContext from "./utils/plantContext";
 import { getUser } from "../../client/src/utils/API";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   // const value = useMemo(() => ({ user, setUser }), [user, setUser]);
   const [plants, setPlants] = useState([]);
   useEffect(() => {
     const user = localStorage.getItem("user");
-    if (user === "") {
-      setUser(null);
+    if (user) {
+      setUser({});
     } else {
-      if (user)
+      console.log(user)
         getUser(user)
           .then((res) => setUser(res.data))
           .catch((err) => {

@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
-import { getPlants } from "../utils/API";
+import { getPlants, getUser } from "../utils/API";
 import Sidebar from "../components/Sidebar";
 import Container from "@material-ui/core/Container";
 
@@ -47,18 +47,20 @@ const useStyles = makeStyles((theme) => ({
 function Plants() {
   // Setting our component's initial state
   // const [plants, setPlants] = useState([]);
-  const { user, setUser } = useContext(userContext);
-  // const [user, setUser] = useState();
-  // setUser(localStorage.getItem("user"));
-  // Load all books and store them with setBooks
+  // const { user, setUser } = useContext(userContext);
+  const [user, setUser] = useState({});
+  const [userId, setUserId] = useState();
+  setUserId(localStorage.getItem("user"));
 
-  // function loadPlants(user_id) {
-  //   getPlants(user_id)
-  //     .then((res) => setPlants(res.data))
-  //     .catch((err) => console.log(err));
-  // }
+  function getUser(user_id) {
+    getUser(user_id)
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }
   const classes = useStyles();
-
+  useEffect(() => {
+    getUser(userId)
+  }, []);
   //expand button code
 
   const [expandedId, setExpandedId] = React.useState(-1);

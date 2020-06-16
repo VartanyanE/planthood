@@ -5,7 +5,7 @@ import userContext from "../utils/userContext";
 
 function Login(props) {
   const [formObject, setFormObject] = useState({});
-  const { user, setUser } = useContext(userContext);
+  const [ user, setUser ] = useState({});
   // console.log(user);
   const handleChange = (event) => {
     const { name, value } = event.target;
