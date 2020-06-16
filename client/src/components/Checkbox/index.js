@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import { green } from '@material-ui/core/colors'
@@ -7,6 +8,7 @@ import Favorite from '@material-ui/icons/Favorite'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import userContext from '../../utils/userContext'
 import { addRemovePlant } from '../../utils/API'
+
 const GreenCheckbox = withStyles({
   root: {
     color: green[400],
@@ -15,6 +17,7 @@ const GreenCheckbox = withStyles({
     },
   },
   checked: {},
+
 })(props => <Checkbox color='root' {...props} />)
 
 export default function CheckboxLabels({ id }) {
@@ -33,7 +36,7 @@ export default function CheckboxLabels({ id }) {
     <FormControlLabel
       control={
         <GreenCheckbox
-          checked={state}
+          checked={state.checkedH}
           onChange={handleChange}
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}

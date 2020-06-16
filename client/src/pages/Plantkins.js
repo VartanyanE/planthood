@@ -55,6 +55,7 @@ function Plants() {
     console.log('hi')
     const userId = JSON.parse(localStorage.getItem('user'))
 
+
     getUser(userId)
       .then(res => {
         setUser(res.data[0])
@@ -76,7 +77,7 @@ function Plants() {
       <Sidebar />
       <Container className={classes.main}>
         <div className={classes.root}>
-          <h1>My Plantkins</h1>
+          <h1>My  Plantkins</h1>
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
@@ -126,6 +127,7 @@ function Plants() {
                 // </GridListTile>
               ))
             : ''}
+
           {/* </GridList> */}
         </div>
       </Container>
