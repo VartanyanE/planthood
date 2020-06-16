@@ -51,6 +51,7 @@ export default function ControlledExpansionPanels({ row }) {
             >
               {row.common_name.toUpperCase()}
             </TableCell>
+
             <TableCell align='right'>
               I LOVE {row.lighting_needs.toUpperCase()}
             </TableCell>
@@ -61,11 +62,13 @@ export default function ControlledExpansionPanels({ row }) {
               {' '}
               <CheckboxLabels id={row._id} />
             </TableCell>
+
             {/* <TableCell align="right"> ADD BUTTON/CHECKBOX HERE </TableCell> */}
           </TableRow>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
+            {console.log(row)}
             <p>
               <span style={{ fontWeight: 'bold' }}> Plant Care: </span>
               {row.plant_care}

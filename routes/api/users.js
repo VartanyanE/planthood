@@ -35,6 +35,7 @@ router
   .put(userController.update)
   .delete(userController.remove)
 
+
 router.route('/user/:user_id').get(userController.findAllByUserId)
 
 router.put('/fav/add/:uId/:pId', ({ params: { uId, pId } }, res) => {
@@ -48,6 +49,7 @@ router.put('/fav/add/:uId/:pId', ({ params: { uId, pId } }, res) => {
     })
     .catch(err => console.log(err))
 })
+
 
 // router.put("/fav/remove/:uId/:pId", ({params: {uId}, pId},res)=>{
 //   db.User.findByIdAndUpdate(uId, {$pull:{plants:pId}}).populate("plants").then(data=> console.log(data))
