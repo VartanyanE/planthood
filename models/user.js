@@ -9,10 +9,6 @@ const userSchema = new Schema(
     zone: String,
     password: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    plants: [{
-      type: Schema.Types.ObjectId,
-      ref: "Plantsearch"
-    }]
   },
   { collection: "users" }
 );
