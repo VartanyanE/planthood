@@ -55,7 +55,3 @@ export const browsePlants = function () {
 export const browsePlant = function (common_name) {
   return axios.get("/api/search/browse/" + common_name);
 };
-
-export const addRemovePlant = function(pId, uId, action){
-  return axios.put(`/api/users/fav/${action}/${uId}/${pId}`)
-}

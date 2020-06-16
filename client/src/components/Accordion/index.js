@@ -54,12 +54,13 @@ export default function ControlledExpansionPanels({ row }) {
             </TableCell>
             <TableCell align="right">I LOVE {row.lighting_needs.toUpperCase()}</TableCell>
             <TableCell align="right">WATER ME {row.watering_needs.toUpperCase()}</TableCell>
-            <TableCell align="right"> <CheckboxLabels id={row._id}/></TableCell>
+            <TableCell align="right"> <CheckboxLabels /></TableCell>
             {/* <TableCell align="right"> ADD BUTTON/CHECKBOX HERE </TableCell> */}
           </TableRow>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
+            {console.log(row)}
             <p>
               <span style={{ fontWeight: "bold" }}> Plant Care: </span>
               {row.plant_care}

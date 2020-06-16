@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 export default function SimpleTable() {
   const classes = useStyles();
   const { plants, setPlants } = useContext(plantContext);
+  console.log(plants[0]);
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
