@@ -25,7 +25,7 @@ function Login(props) {
       const success = res.data.success;
 
       if (success) {
-        // setUser(res.data.user);
+        setUser(res.data.user);
         localStorage.setItem("user", JSON.stringify(res.data.user.user_id));
         localStorage.setItem(
           "user_name",
