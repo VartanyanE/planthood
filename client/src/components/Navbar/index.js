@@ -10,6 +10,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import Tooltip from "@material-ui/core/Tooltip";
 import {
   BrowserRouter as Router,
   Route,
@@ -139,57 +140,68 @@ function Navbar(props) {
 
           {/* Menu Item Wrapper Box */}
           <Box display={{ xs: "none", md: "block" }}>
-            <Link to="/plantkins">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <EcoIcon style={{ fill: "white" }} />
-              </IconButton>
-            </Link>
-            <Link to="/community">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <ForumIcon style={{ fill: "white" }} />
-              </IconButton>
-            </Link>
-            <Link to="/about">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <InfoOutlinedIcon style={{ fill: "white" }} />
-              </IconButton>
-            </Link>
+            <Tooltip title="My Plantkins" aria-label="add">
+              <Link to="/plantkins">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <EcoIcon style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
+            <Tooltip title="Community" aria-label="Community">
+              <Link to="/community">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <ForumIcon style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
+            <Tooltip title="About" aria-label="About">
+              <Link to="/about">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <InfoOutlinedIcon style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
 
-            <Link to="/account">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <AccountCircle style={{ fill: "white" }} />
-              </IconButton>
-            </Link>
-            <Link to="/browse">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <SearchIcon style={{ fill: "white" }} />
-              </IconButton>
-            </Link>
+            <Tooltip title="My Account" aria-label="My Account">
+              <Link to="/account">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <AccountCircle style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
+
+            <Tooltip title="Browse Plants" aria-label="Browse Plants">
+              <Link to="/browse">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <SearchIcon style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
           </Box>
 
           <div className={classes.search}>
@@ -207,17 +219,19 @@ function Navbar(props) {
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
-          <Link to="/">
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-              onClick={logOutButton}
-            >
-              <ExitToAppIcon style={{ fill: "white" }} />
-            </IconButton>
-          </Link>
+          <Tooltip title="Log Out" aria-label="Log Out">
+            <Link to="/">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+                onClick={logOutButton}
+              >
+                <ExitToAppIcon style={{ fill: "white" }} />
+              </IconButton>
+            </Link>
+          </Tooltip>
         </Toolbar>
       </AppBar>
     </div>
