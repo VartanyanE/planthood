@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 });
 
 function Account() {
-  const userName = localStorage.getItem("userName");
+  const userName = localStorage.getItem("user_name");
   const email = localStorage.getItem("user");
   const classes = useStyles();
 
