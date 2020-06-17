@@ -1,3 +1,4 @@
+
 import React, { useContext, useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { green } from "@material-ui/core/colors";
@@ -7,6 +8,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
 import { addRemovePlant, getUser } from "../../utils/API";
+
 
 const GreenCheckbox = withStyles({
   root: {
@@ -20,6 +22,7 @@ const GreenCheckbox = withStyles({
 
 export default function CheckboxLabels({ id }) {
   // const { user, setUser } = useContext(userContext)
+
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
   useEffect(() => {
@@ -33,6 +36,7 @@ export default function CheckboxLabels({ id }) {
   }, []);
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) =>
+
       setUser(data)
     );
     setState(!state);

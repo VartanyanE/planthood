@@ -49,6 +49,7 @@ router.put("/fav/add/:uId/:pId", ({ params: { uId, pId } }, res) => {
     .catch((err) => console.log(err));
 });
 
+
 router.put("/fav/remove/:uId/:pId", ({ params: { uId, pId } }, res) => {
   db.User.findByIdAndUpdate(uId, { $pull: { plants: pId } })
     .populate("plants")
@@ -58,4 +59,5 @@ router.put("/fav/remove/:uId/:pId", ({ params: { uId, pId } }, res) => {
     })
     .catch((err) => console.log(err));
 });
+
 module.exports = router;
