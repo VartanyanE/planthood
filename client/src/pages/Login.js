@@ -5,7 +5,8 @@ import userContext from "../utils/userContext";
 
 function Login(props) {
   const [formObject, setFormObject] = useState({});
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState([]);
+  const { user, setUser } = useContext(userContext);
   // console.log(user);
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -25,7 +26,7 @@ function Login(props) {
       const success = res.data.success;
 
       if (success) {
-        // setUser(res.data.user);
+        setUser(res.data.user);
         localStorage.setItem("user", JSON.stringify(res.data.user.user_id));
         localStorage.setItem(
           "user_name",
