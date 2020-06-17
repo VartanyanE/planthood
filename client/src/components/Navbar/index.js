@@ -120,6 +120,8 @@ function Navbar(props) {
 
   const logOutButton = (event) => {
     setUser(null);
+    localStorage.setItem("user", "");
+    localStorage.setItem("user_name", "");
     props.history.push({
       pathname: "/",
     });
