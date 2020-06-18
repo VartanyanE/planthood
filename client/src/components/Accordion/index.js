@@ -74,6 +74,14 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
           <Typography>
             {/* {console.log(row)} */}
             <p>
+              <span style={{ fontWeight: 'bold' }}> Scientific Name: </span>
+              {row.scientific_name}
+            </p>
+            <p>
+              <span style={{ fontWeight: 'bold' }}> Foliage Color: </span>
+              {row.foliage_color}
+            </p>
+            <p>
               <span style={{ fontWeight: 'bold' }}> Plant Care: </span>
               {row.plant_care}
             </p>
