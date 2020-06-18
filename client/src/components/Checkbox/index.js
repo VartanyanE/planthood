@@ -1,27 +1,27 @@
-
 import React, { useContext, useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { green } from "@material-ui/core/colors";
+import { green, blue } from "@material-ui/core/colors";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
-import { addRemovePlant, getUser } from "../../utils/API";
+import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
 
-
+let heartColorChecked = green[600]
+let heartColorUnchecked = green[400]
 const GreenCheckbox = withStyles({
   root: {
-    color: green[400],
+    color: heartColorUnchecked,
     "&$checked": {
-      color: green[600],
+      color: heartColorChecked,
     },
   },
   checked: {},
-})((props) => <Checkbox color="root" {...props} />);
+})((props) => <Checkbox color="green" {...props} />);
 
-export default function CheckboxLabels({ id }) {
-  // const { user, setUser } = useContext(userContext)
+export default function CheckboxLabels({ id, isChecked }) {
+
 
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
@@ -29,24 +29,39 @@ export default function CheckboxLabels({ id }) {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
       .then((res) => {
-        console.log("plantkins page", res.data);
         setUser(res.data[0]);
+        handleCheckedLoad(id, res.data[0]._id)
       })
       .catch((err) => console.log(err));
   }, []);
   const handleChange = () => {
-    addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) =>
 
+    addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data)
+    }
     );
     setState(!state);
   };
+
+  const handleCheckedLoad = (pId, uId) => {
+
+    checkUserPlant(pId, uId).then((res) => {
+
+      if (res.data.plants.length > 0 !== null) {
+        console.log('setstate:', id, res.data.plants)
+        setState(true)
+      }
+
+    }).catch((err) => console.log(err));
+  }
+
+
 
   return (
     <FormControlLabel
       control={
         <GreenCheckbox
-          checked={state.checkedH}
+          checked={isChecked}
           onChange={handleChange}
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}

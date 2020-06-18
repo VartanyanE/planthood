@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel'
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import './style.css'
 import CheckboxLabels from '../Checkbox'
+import { getUser } from "../../utils/API";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,9 +26,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function ControlledExpansionPanels({ row }) {
+export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked }) {
   const classes = useStyles()
   const [expanded, setExpanded] = React.useState(false)
+  const [user, setUser] = useState([]);
+
+  const [state, setState] = React.useState(false);
 
   return (
     <div className={classes.root}>
@@ -60,7 +64,7 @@ export default function ControlledExpansionPanels({ row }) {
             </TableCell>
             <TableCell align='right'>
               {' '}
-              <CheckboxLabels id={row._id} />
+              <CheckboxLabels id={row._id} isChecked={hasBeenChecked} />
             </TableCell>
 
             {/* <TableCell align="right"> ADD BUTTON/CHECKBOX HERE </TableCell> */}
@@ -68,7 +72,7 @@ export default function ControlledExpansionPanels({ row }) {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <Typography>
-            {console.log(row)}
+            {/* {console.log(row)} */}
             <p>
               <span style={{ fontWeight: 'bold' }}> Plant Care: </span>
               {row.plant_care}
