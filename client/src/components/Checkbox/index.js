@@ -8,8 +8,8 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
 
-let heartColorChecked = green[600]
-let heartColorUnchecked = green[400]
+let heartColorChecked = green[600];
+let heartColorUnchecked = green[400];
 const GreenCheckbox = withStyles({
   root: {
     color: heartColorUnchecked,
@@ -21,8 +21,6 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="green" {...props} />);
 
 export default function CheckboxLabels({ id, isChecked }) {
-
-
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
   useEffect(() => {
@@ -30,32 +28,31 @@ export default function CheckboxLabels({ id, isChecked }) {
     getUser(userId)
       .then((res) => {
         setUser(res.data[0]);
-        handleCheckedLoad(id, res.data[0]._id)
+        handleCheckedLoad(id, res.data[0]._id);
       })
       .catch((err) => console.log(err));
   }, []);
   const handleChange = () => {
-
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
-      setUser(data)
-    }
-    );
+      setUser(data);
+    });
     setState(!state);
   };
 
   const handleCheckedLoad = (pId, uId) => {
+    checkUserPlant(pId, uId)
+      .then((res) => {
+        if (res.data.plants.length > 0 !== null) {
+          console.log("setstate:", id, res.data.plants);
+          setState(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
-    checkUserPlant(pId, uId).then((res) => {
-
-      if (res.data.plants.length > 0 !== null) {
-        console.log('setstate:', id, res.data.plants)
-        setState(true)
-      }
-
-    }).catch((err) => console.log(err));
-  }
-
-
+  const handleChecked = (event) => {
+    event.stopPropagation();
+  };
 
   return (
     <FormControlLabel
@@ -66,9 +63,11 @@ export default function CheckboxLabels({ id, isChecked }) {
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}
           name="checkedH"
+          onClick={handleChecked}
         />
       }
       label="Add to My Plantkins"
+      onClick={handleChecked}
     />
   );
 }
