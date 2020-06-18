@@ -31,5 +31,10 @@ module.exports = {
             .then(dbModel => dbModel.remove())
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
+    },
+    setSitter: function (req,res){
+        console.log("setting plantsitter", req.params)
+        db.User
+            .findOneAndUpdate({user_id:req.params.uid}, {$push: {plantsit:req.params.pid}}).then(data=>console.log(data)).catch(err=>console.log(err))
     }
 };

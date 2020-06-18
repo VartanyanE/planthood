@@ -1,14 +1,22 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import { Link } from 'react-router-dom';
+import { makeStyles, createMuiTheme } from "@material-ui/core/styles";
+import { Grid } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 
+const theme = createMuiTheme()
 
 const useStyles = makeStyles({
   root: {
     width: "100%",
     maxWidth: 5000,
     marginTop: "100px",
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
   },
 });
 
@@ -43,6 +51,7 @@ export default function Types() {
        Who We Are:
       </Typography>
       <Typography variant="button" display="block" gutterBottom>
+        <div className={classes.root}>
         <a target="_blank" href="https://github.com/skrantzz">Sydney Krantz</a><br/>
         <img style={imgStyle} src="https://avatars3.githubusercontent.com/u/51732808?s=400&u=12cfb14797c88903f86513d0b671ae1215851d3c&v=4"/>
         <br/>
@@ -66,6 +75,7 @@ export default function Types() {
         <img style={imgStyle} src="https://avatars1.githubusercontent.com/u/12042483?s=460&u=78db7f86d4babc5f63258afa091ca6588bcd36fa&v=4"/>
         <br/>
         <br/>
+        </div>
       </Typography>
     </div>
   );

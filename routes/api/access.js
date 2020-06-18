@@ -13,8 +13,9 @@ router
 
 
 router
-    .route("/sitter/:sitter_user_id")
+    .route("/:uid/:pid")
     .get(accessController.findAllBySitterId)
-    .delete(accessController.remove);
+    .delete(accessController.remove)
+    .put(accessController.setSitter)
 
 module.exports = router;
