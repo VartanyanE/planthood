@@ -43,7 +43,7 @@ const Signup = (props) => {
           if (success) {
             setUser(res.data.user);
             localStorage.setItem("user", JSON.stringify(res.data.user.user_id));
-            localStorage.setItem("user", JSON.stringify(res.data.user.user_id));
+            localStorage.setItem("user_name", JSON.stringify(res.data.user.user_name));
             props.history.push({
               pathname: "/plantkins",
             });
