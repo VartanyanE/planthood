@@ -38,5 +38,12 @@
 }
 
 body {
-  font-family: 'Yeseva One', cursive;
+  font-family: "Yeseva One", cursive;
+}
+
+#accountData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: inherit;
 }
