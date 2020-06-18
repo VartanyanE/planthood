@@ -205,19 +205,22 @@ function Navbar(props) {
               </Link>
             </Tooltip>
           </Box>
-
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>{/* <SearchIcon /> */}</div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-              onChange={handleChange}
-            />
-          </div>
+          {user ? (
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>{/* <SearchIcon /> */}</div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ "aria-label": "search" }}
+                onChange={handleChange}
+              />
+            </div>
+          ) : (
+            ""
+          )}
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
