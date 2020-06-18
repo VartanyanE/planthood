@@ -37,6 +37,7 @@ router
 
 router.route("/user/:user_id").get(userController.findAllByUserId);
 
+
 router.put("/fav/add/:uId/:pId", ({ params: { uId, pId } }, res) => {
   console.log(uId);
   console.log(pId);
@@ -59,5 +60,16 @@ router.put("/fav/remove/:uId/:pId", ({ params: { uId, pId } }, res) => {
     })
     .catch((err) => console.log(err));
 });
+
+router.get("/faved/:uId/:pId", ({ params: { uId, pId } }, res) => {
+  db.User.findOne({ _id: uId, plants: { _id: pId } })
+    .then((data) => {
+
+      res.json(data);
+
+    })
+    .catch((err) => console.log(err));
+});
+
 
 module.exports = router;
