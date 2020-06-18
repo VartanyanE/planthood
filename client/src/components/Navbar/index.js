@@ -92,6 +92,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  toolTip: {
+    fontSize: "2em",
+    margin: "2px",
+  },
   test: {
     display: "inline",
   },
@@ -142,7 +146,9 @@ function Navbar(props) {
 
           {/* Menu Item Wrapper Box */}
           <Box display={{ xs: "none", md: "block" }}>
-            <Tooltip title="My Plantkins" aria-label="add">
+            <Tooltip title={
+              <p className={classes.toolTip}>My Plantkins</p>
+            } aria-label="My Plantkins">
               <Link to="/plantkins">
                 <IconButton
                   aria-label="account of current user"
@@ -154,7 +160,9 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="Community" aria-label="Community">
+            <Tooltip title={
+              <p className={classes.toolTip}>Community</p>
+            } aria-label="Community">
               <Link to="/community">
                 <IconButton
                   aria-label="account of current user"
@@ -166,7 +174,9 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title="About" aria-label="About">
+            <Tooltip title={
+              <p className={classes.toolTip}>About</p>
+            } aria-label="About">
               <Link to="/about">
                 <IconButton
                   aria-label="account of current user"
@@ -179,7 +189,9 @@ function Navbar(props) {
               </Link>
             </Tooltip>
 
-            <Tooltip title="My Account" aria-label="My Account">
+            <Tooltip title={
+              <p className={classes.toolTip}>My Account</p>
+            } aria-label="My Account">
               <Link to="/account">
                 <IconButton
                   aria-label="account of current user"
@@ -192,7 +204,9 @@ function Navbar(props) {
               </Link>
             </Tooltip>
 
-            <Tooltip title="Browse Plants" aria-label="Browse Plants">
+            <Tooltip title={
+              <p className={classes.toolTip}>Browse Plants</p>
+            } aria-label="Browse Plants">
               <Link to="/browse">
                 <IconButton
                   aria-label="account of current user"
@@ -221,7 +235,9 @@ function Navbar(props) {
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
-          <Tooltip title="Log Out" aria-label="Log Out">
+          <Tooltip title={
+              <p className={classes.toolTip}>Log Out</p>
+            } aria-label="Log Out">
             <Link to="/">
               <IconButton
                 aria-label="account of current user"
