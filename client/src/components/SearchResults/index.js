@@ -11,6 +11,7 @@ import Accordion from "../Accordion";
 import plantContext from "../../utils/plantContext";
 import './style.css'
 import { getUser } from "../../utils/API";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   table: {
@@ -37,15 +38,17 @@ export default function SimpleTable() {
   }, [selectedPlants]);
 
   return (
-    <TableContainer component={Paper} >
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead />
-        <TableBody>
-          {plants.map((plant) => (
-            <Accordion row={plant} plantId={plant._id} hasBeenChecked={selectedPlants.includes(plant._id)} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer >
+    // <TableContainer component={Paper} >
+    //   <Table className={classes.table} aria-label="simple table">
+    //     <TableHead />
+    //     <TableBody>
+    <Box>
+      {plants.map((plant, i) => (
+        <Accordion row={plant} plantId={plant._id} rowId={i} hasBeenChecked={selectedPlants.includes(plant._id)} />
+      ))}
+    </Box>
+    //     </TableBody>
+    //   </Table>
+    // </TableContainer >
   );
 }
