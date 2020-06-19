@@ -80,7 +80,6 @@ const classes = useStyles();
   };
 
   useEffect(() => {
-    console.log("hi");
     const userId = JSON.parse(localStorage.getItem("user"));
 
     getUser(userId)
@@ -91,7 +90,7 @@ const classes = useStyles();
     
       getUsers().then(({data})=> setUserList(data.filter(a=> !(a.user_id === userId))))
     
-  }, []);
+  }, [user]);
   //expand button code
 
   const [expandedId, setExpandedId] = React.useState(-1);
@@ -99,8 +98,6 @@ const classes = useStyles();
   const handleExpandClick = (i) => {
     setExpandedId(expandedId === i ? -1 : i);
   };
-
-  console.log("user - \n", user);
 
   return (
     <>
