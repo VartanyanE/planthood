@@ -1,5 +1,6 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Gridlist from "@material-ui/core/GridList";
@@ -10,6 +11,7 @@ const useStyles = makeStyles({
     width: "100%",
     maxWidth: 5000,
     marginTop: "100px",
+
     display: "flex",
     flexDirection: "column",
     flexWrap: "wrap",
@@ -19,6 +21,7 @@ const useStyles = makeStyles({
     flexWrap: "nowrap",
     transform: "translateZ(0)",
     borderStyle: "none",
+
   },
 });
 
@@ -50,7 +53,9 @@ export default function Types() {
         - even those who don't have a green thumb!
       </Typography>
       <Typography variant="h4" gutterBottom>
+
         Meet the Team
+
       </Typography>
       <br></br>
       <Gridlist className={classes.gridList}>

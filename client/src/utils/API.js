@@ -28,8 +28,8 @@ export const getUsers = function () {
 export const loginUser = function (data) {
   return axios.post("/api/users/login", data);
 };
-export const getAccess = function (user_id) {
-  return axios.get("/api/access/" + user_id);
+export const grantAccess = function (uid,pid) {
+  return axios.put(`/api/access/${uid}/${pid}`);
 };
 
 export const logoutUser = function () {
