@@ -6,17 +6,19 @@ const userSchema = new Schema(
   {
     user_id: { type: String, required: true },
     user_name: { type: String, required: true },
-    zone: String,
     password: { type: String, required: true },
+    zipCode: String,
     date: { type: Date, default: Date.now },
-    plants: [{
-      type: Schema.Types.ObjectId,
-      ref: "Plantsearch"
-    }],
+    plants: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Plantsearch",
+      },
+    ],
     plantsit: {
       type: Array,
-      default: []
-    }
+      default: [],
+    },
   },
   { collection: "users" }
 );
@@ -29,10 +31,10 @@ userSchema.methods.validPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-userSchema.pre('save', async function(next){
+userSchema.pre("save", async function (next) {
   this.password = await this.encryptPassword(this.password);
   next();
-})
+});
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

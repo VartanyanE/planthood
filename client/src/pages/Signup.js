@@ -30,6 +30,7 @@ const Signup = (props) => {
       user_id: formObject.email,
       user_name: formObject.user_name,
       password: formObject.password,
+      zipCode: formObject.zipCode,
     })
       .then((res) => {
         // console.log(res);
@@ -43,7 +44,10 @@ const Signup = (props) => {
           if (success) {
             setUser(res.data.user);
             localStorage.setItem("user", JSON.stringify(res.data.user.user_id));
-            localStorage.setItem("user_name", JSON.stringify(res.data.user.user_name));
+            localStorage.setItem(
+              "user_name",
+              JSON.stringify(res.data.user.user_name)
+            );
             props.history.push({
               pathname: "/plantkins",
             });
@@ -88,6 +92,15 @@ const Signup = (props) => {
             placeholder="Password"
             onChange={handleInputChange}
             name="password"
+          />
+          <label htmlFor="zipCode">Zip Code</label>
+          <input
+            type="text"
+            className="form-control"
+            id="zipCode-input"
+            placeholder="Zip Code"
+            onChange={handleInputChange}
+            name="zipCode"
           />
         </div>
         <div

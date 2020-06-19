@@ -65,7 +65,8 @@ const plantSeed = [
     plant_care: "Water daily.",
     reminders: "Trim Lavender.",
     date: new Date(Date.now()),
-  }, {
+  },
+  {
     user_id: "gin@luthercorp.com",
     plant_id: "5",
     is_owned: 1,
@@ -83,24 +84,21 @@ const accessSeed = [
   {
     owner_user_id: "gin@luthercorp.com",
     sitter_user_id: "vartanyan.emanuil@gmail.com",
-    date: new Date(Date.now())
+    date: new Date(Date.now()),
   },
   {
     owner_user_id: "vartanyan.emanuil@gmail.com",
     sitter_user_id: "gin@luthercorp.com",
-    date: new Date(Date.now())
+    date: new Date(Date.now()),
   },
   {
     owner_user_id: "anna.olt16@gmail.com",
     sitter_user_id: "gin@luthercorp.com",
-    date: new Date(Date.now())
-  }
+    date: new Date(Date.now()),
+  },
 ];
 
 const userSeed = [
-
-
-
   {
     user_id: "stephtdedios2@gmail.com",
     user_name: "Stephanie",
@@ -323,7 +321,110 @@ const plantsearchSeed = [
     human_edible: "No",
     pet_edible: "No",
     USDA_zone: "9-11",
-  }
+  },
+  {
+    plant_id: 13,
+    common_name:
+      "Angel's Wings, Bunny Ears Cactus, Bunny Cactus or Polka-dot Cactus",
+    image_url:
+      "https://homemydesign.com/wp-content/uploads/2014/03/minimalist-cactus-indoor-planters.jpg",
+    family_name: "Cactaceae",
+    scientific_name: "Opuntia Microdasys",
+    foliage_color: "n/a",
+    plant_care:
+      "Water the plant when the top one inch of soil is dry. Allow the water to drain out of the pot and remove any excess from the saucer. Fertilize the plant every other water period during spring and summer with a diluted houseplant food or cactus formula.",
+    lighting_needs: "Sun to Partial Shade, Light Shade",
+    watering_needs: "Once Every 3 Weeks (more sparingly during the winter)",
+    soil_needs: "Potting, Sandy, Peat Moss",
+    human_edible: "No",
+    pet_edible: "No",
+    USDA_zone: "9-11",
+  },
+  {
+    plant_id: 14,
+    common_name: "Fire Croton, Garden Croton, or Variegated Croton",
+    image_url:
+      "https://www.naturehills.com/media/catalog/product/cache/35c1080e597d6a74b42d0d88ced836c1/g/a/garden-croton-_2_-600x600.jpg",
+    family_name: "Euphorbiaceae",
+    scientific_name: "Codiaeum variegatum",
+    foliage_color: "Green/Yellow or Red/Green",
+    plant_care:
+      "Crotons are sensitive to moisture and require weekly or daily watering, depending on the situation. The soil should never stay dry for an extended period of time, but you should let the soil dry before watering to prevent drowning the plant. If you see the leaves starting to droop, check the soil and water.",
+    lighting_needs: "Bright to low indirect light",
+    watering_needs: "Up to 3 times per Week ",
+    soil_needs: "Well-draining",
+    human_edible: "No",
+    pet_edible: "No",
+    USDA_zone: "9-11",
+  },
+  {
+    plant_id: 15,
+    common_name: "Dumb canes",
+    image_url:
+      "https://www.whiteflowerfarm.com/mas_assets/cache/image/4/a/7/7/19063.Jpg",
+    family_name: "Araceae",
+    scientific_name: "Dieffenbachia",
+    foliage_color: "Blue/Green, Chartreuse/Gold",
+    plant_care:
+      "Grows best with soil that's not overly moist. Hold off on watering the plant until the top 2 inches of soil are dry, then water thoroughly at the base of the plant. Droopy leaves are usually a sign that the plant needs to be watered.",
+    lighting_needs: "Sun to Partial Shade, Light Shade",
+    watering_needs: "Once a Week",
+    soil_needs: "Moist but well-drained",
+    human_edible: "No",
+    pet_edible: "No",
+    USDA_zone: "10-12",
+  },
+  {
+    plant_id: 16,
+    common_name: "Pink Quill, Wallisia cyanea",
+    image_url:
+      "https://www.plowhearth.com/medias/sys_master/images/images/hf3/h19/8873110044702/57710x.jpg",
+    family_name: "Bromeliaceae",
+    scientific_name: "Tillandsia cyanea",
+    foliage_color: "Voilet/Blue",
+    plant_care:
+      "Prefers to grow with its roots uncovered or slightly covered with a moss type substance. The only watering this variety needs is a weekly misting. It features hot pink bracts and small purple flowers.",
+    lighting_needs: "Bright to low indirect light",
+    watering_needs: "Mist Once/Twice a Week",
+    soil_needs: "Moist but well-drained",
+    human_edible: "No",
+    pet_edible: "Yes",
+    USDA_zone: "10-11",
+  },
+  {
+    plant_id: 17,
+    common_name: "Urn plant, Silver Vase Plant",
+    image_url:
+      "https://res.cloudinary.com/bloomnation/c_pad,d_vendor:global:catalog:product:image.png,f_auto,fl_preserve_transparency,q_auto/v1580771484/vendor/4689/catalog/product/2/0/20170607071752_file_593851603d279.jpg",
+    family_name: "Bromeliaceae",
+    scientific_name: "Aechmea fasciata",
+    foliage_color: "Bright Orange",
+    plant_care:
+      "Place your Aechmea bromeliad plant in indirect light or moderate shade, but not in direct sunlight. Temperature should be at least 55℉. (13℃.). Keep the cup in the central rosette about half full of water at all times; however, don't keep it completely full, as it may rot, especially during the winter months.",
+    lighting_needs: "Bright to low indirect light",
+    watering_needs: "Once a Week",
+    soil_needs: "Well-draining",
+    human_edible: "No",
+    pet_edible: "Yes",
+    USDA_zone: "10-11",
+  },
+  {
+    plant_id: 18,
+    common_name: "Chinese evergreens",
+    image_url:
+      "https://cdn.shopify.com/s/files/1/1226/9158/products/z_1355_1_5_900x.jpg",
+    family_name: "Araceae",
+    scientific_name: "Aglaonema",
+    foliage_color: "White/Dark Green, Pink",
+    plant_care:
+      "Thrive in medium to low light conditions or indirect sunlight. Wherever you place it in the home, you should make sure that the plant receives warm temps and somewhat humid conditions. However, this flexible plant will tolerate less than ideal conditions if necessary.",
+    lighting_needs: "Bright to low indirect light",
+    watering_needs: "Once/Twice per Week ",
+    soil_needs: "Well-draining",
+    human_edible: "No",
+    pet_edible: "No",
+    USDA_zone: "10-11",
+  },
 ];
 
 db.Plant.remove({})

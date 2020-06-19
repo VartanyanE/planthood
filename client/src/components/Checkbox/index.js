@@ -6,7 +6,14 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
-import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
+import { getZone } from "../../utils/API";
+
+import {
+  addRemovePlant,
+  getUser,
+  checkUserPlant,
+  userAvatar,
+} from "../../utils/API";
 
 let heartColorChecked = green[600];
 let heartColorUnchecked = green[400];

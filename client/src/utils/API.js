@@ -28,7 +28,7 @@ export const getUsers = function () {
 export const loginUser = function (data) {
   return axios.post("/api/users/login", data);
 };
-export const grantAccess = function (uid,pid) {
+export const grantAccess = function (uid, pid) {
   return axios.put(`/api/access/${uid}/${pid}`);
 };
 
@@ -62,4 +62,10 @@ export const addRemovePlant = function (pId, uId, action) {
 
 export const checkUserPlant = function (pId, uId) {
   return axios.get(`/api/users/faved/${uId}/${pId}`);
+};
+
+export const getZone = function (zipCode) {
+  return axios.get(
+    `https://c0bra.api.stdlib.com/zipcode-to-hardiness-zone/?zipcode=${zipCode}`
+  );
 };
