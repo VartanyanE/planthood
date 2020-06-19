@@ -7,6 +7,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
+import clickedContext from "../../utils/clickedContext";
 
 let heartColorChecked = green[600];
 let heartColorUnchecked = green[400];
@@ -23,6 +24,8 @@ const GreenCheckbox = withStyles({
 export default function CheckboxLabels({ id, isChecked }) {
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
+  const { clicked, setClicked } = useContext(clickedContext);
+
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
@@ -31,7 +34,8 @@ export default function CheckboxLabels({ id, isChecked }) {
         handleCheckedLoad(id, res.data[0]._id);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [clicked]);
+
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data);
@@ -42,9 +46,11 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleCheckedLoad = (pId, uId) => {
     checkUserPlant(pId, uId)
       .then((res) => {
-        if (res.data.plants.length > 0 !== null) {
-          console.log("setstate:", id, res.data.plants);
-          setState(true);
+        if (res.data !== null) {
+          if (res.data.plants.length > 0 !== null) {
+            console.log("setstate:", id, res.data.plants);
+            setState(true);
+          }
         }
       })
       .catch((err) => console.log(err));
@@ -52,6 +58,15 @@ export default function CheckboxLabels({ id, isChecked }) {
 
   const handleChecked = (event) => {
     event.stopPropagation();
+    isClicked();
+  };
+
+  const isClicked = () => {
+    if (clicked === false) {
+      setClicked(true);
+    } else if (clicked === true) {
+      setClicked(false);
+    }
   };
 
   return (

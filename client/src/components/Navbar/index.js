@@ -10,7 +10,6 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Tooltip from "@material-ui/core/Tooltip";
 import {
   BrowserRouter as Router,
   Route,
@@ -92,10 +91,6 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  toolTip: {
-    fontSize: "2em",
-    margin: "2px",
-  },
   test: {
     display: "inline",
   },
@@ -126,7 +121,6 @@ function Navbar(props) {
   const logOutButton = (event) => {
     setUser(null);
     localStorage.setItem("user", "");
-    localStorage.setItem("user_name", "");
     props.history.push({
       pathname: "/",
     });
@@ -146,113 +140,85 @@ function Navbar(props) {
 
           {/* Menu Item Wrapper Box */}
           <Box display={{ xs: "none", md: "block" }}>
-            <Tooltip title={
-              <p className={classes.toolTip}>My Plantkins</p>
-            } aria-label="My Plantkins">
-              <Link to="/plantkins">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <EcoIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>Community</p>
-            } aria-label="Community">
-              <Link to="/community">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <ForumIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>About</p>
-            } aria-label="About">
-              <Link to="/about">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <InfoOutlinedIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-
-            <Tooltip title={
-              <p className={classes.toolTip}>My Account</p>
-            } aria-label="My Account">
-              <Link to="/account">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <AccountCircle style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-
-            <Tooltip title={
-              <p className={classes.toolTip}>Browse Plants</p>
-            } aria-label="Browse Plants">
-              <Link to="/browse">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <SearchIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-          </Box>
-          {user ? (
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>{/* <SearchIcon /> */}</div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-                onChange={handleChange}
-              />
-            </div>
-          ) : (
-            ""
-          )}
-          <Box display={{ xs: "block", md: "none" }}>
-            <MenuListComposition />
-          </Box>
-          <Tooltip title={
-              <p className={classes.toolTip}>Log Out</p>
-            } aria-label="Log Out">
-            <Link to="/">
+            <Link to="/plantkins">
               <IconButton
                 aria-label="account of current user"
                 aria-controls="primary-search-account-menu"
                 aria-haspopup="true"
                 color="inherit"
-                onClick={logOutButton}
               >
-                <ExitToAppIcon style={{ fill: "white" }} />
+                <EcoIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
-          </Tooltip>
+            <Link to="/community">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <ForumIcon style={{ fill: "white" }} />
+              </IconButton>
+            </Link>
+            <Link to="/about">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <InfoOutlinedIcon style={{ fill: "white" }} />
+              </IconButton>
+            </Link>
+
+            <Link to="/account">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle style={{ fill: "white" }} />
+              </IconButton>
+            </Link>
+            <Link to="/browse">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <SearchIcon style={{ fill: "white" }} />
+              </IconButton>
+            </Link>
+          </Box>
+
+          <div className={classes.search}>
+            <div className={classes.searchIcon}>{/* <SearchIcon /> */}</div>
+            <InputBase
+              placeholder="Search…"
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ "aria-label": "search" }}
+              onChange={handleChange}
+            />
+          </div>
+          <Box display={{ xs: "block", md: "none" }}>
+            <MenuListComposition />
+          </Box>
+          <Link to="/">
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={logOutButton}
+            >
+              <ExitToAppIcon style={{ fill: "white" }} />
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
