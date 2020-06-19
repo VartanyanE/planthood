@@ -25,6 +25,7 @@ export default function CheckboxLabels({ id, isChecked }) {
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
   const { clicked, setClicked } = useContext(clickedContext);
+
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
@@ -33,7 +34,8 @@ export default function CheckboxLabels({ id, isChecked }) {
         handleCheckedLoad(id, res.data[0]._id);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [clicked]);
+
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data);
@@ -44,9 +46,11 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleCheckedLoad = (pId, uId) => {
     checkUserPlant(pId, uId)
       .then((res) => {
-        if (res.data.plants.length > 0 !== null) {
-          console.log("setstate:", id, res.data.plants);
-          setState(true);
+        if (res.data !== null) {
+          if (res.data.plants.length > 0 !== null) {
+            console.log("setstate:", id, res.data.plants);
+            setState(true);
+          }
         }
       })
       .catch((err) => console.log(err));
@@ -54,15 +58,14 @@ export default function CheckboxLabels({ id, isChecked }) {
 
   const handleChecked = (event) => {
     event.stopPropagation();
+    isClicked();
   };
 
   const isClicked = () => {
     if (clicked === false) {
       setClicked(true);
-    } else {
-      if (clicked === true) {
-        setClicked(false);
-      }
+    } else if (clicked === true) {
+      setClicked(false);
     }
   };
 
@@ -75,7 +78,7 @@ export default function CheckboxLabels({ id, isChecked }) {
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}
           name="checkedH"
-          onClick={(handleChecked, isClicked)}
+          onClick={handleChecked}
         />
       }
       label="Add to My Plantkins"

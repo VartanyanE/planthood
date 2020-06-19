@@ -33,7 +33,7 @@ export default function CheckboxLabels({ id, isChecked }) {
         handleCheckedLoad(id, res.data[0]._id);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [clicked]);
   const handleChange = () => {
     addRemovePlant(id, user._id, "remove").then(({ data }) => {
       setUser(data);
@@ -44,9 +44,11 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleCheckedLoad = (pId, uId) => {
     checkUserPlant(pId, uId)
       .then((res) => {
-        if (res.data.plants.length > 0 !== null) {
-          console.log("setstate:", id, res.data.plants);
-          setState(true);
+        if (res.data !== null) {
+          if (res.data.plants.length > 0 !== null) {
+            console.log("setstate:", id, res.data.plants);
+            setState(true);
+          }
         }
       })
       .catch((err) => console.log(err));
