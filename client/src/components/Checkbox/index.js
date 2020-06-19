@@ -7,6 +7,7 @@ import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
+import clickedContext from "../../utils/clickedContext";
 
 let heartColorChecked = green[600];
 let heartColorUnchecked = green[400];
@@ -23,6 +24,7 @@ const GreenCheckbox = withStyles({
 export default function CheckboxLabels({ id, isChecked }) {
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
+  const { clicked, setClicked } = useContext(clickedContext);
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
@@ -54,6 +56,16 @@ export default function CheckboxLabels({ id, isChecked }) {
     event.stopPropagation();
   };
 
+  const isClicked = () => {
+    if (clicked === false) {
+      setClicked(true);
+    } else {
+      if (clicked === true) {
+        setClicked(false);
+      }
+    }
+  };
+
   return (
     <FormControlLabel
       control={
@@ -63,7 +75,7 @@ export default function CheckboxLabels({ id, isChecked }) {
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}
           name="checkedH"
-          onClick={handleChecked}
+          onClick={(handleChecked, isClicked)}
         />
       }
       label="Add to My Plantkins"

@@ -9,8 +9,9 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Accordion from "../Accordion";
 import plantContext from "../../utils/plantContext";
-import './style.css'
+import "./style.css";
 import { getUser } from "../../utils/API";
+import clickedContext from "../../utils/clickedContext";
 
 const useStyles = makeStyles({
   table: {
@@ -23,29 +24,32 @@ export default function SimpleTable() {
   const { plants, setPlants } = useContext(plantContext);
   const [user, setUser] = useState({});
   const [selectedPlants, setSelectedPlants] = useState([]);
-
+  const { clicked, setClicked } = useContext(clickedContext);
 
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
       .then((res) => {
         setUser(res.data[0]);
-        setSelectedPlants(res.data[0].plants.map(plant => plant._id))
+        setSelectedPlants(res.data[0].plants.map((plant) => plant._id));
       })
       .catch((err) => console.log(err));
-
-  }, [selectedPlants]);
+  }, [clicked]);
 
   return (
-    <TableContainer component={Paper} >
+    <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead />
         <TableBody>
           {plants.map((plant) => (
-            <Accordion row={plant} plantId={plant._id} hasBeenChecked={selectedPlants.includes(plant._id)} />
+            <Accordion
+              row={plant}
+              plantId={plant._id}
+              hasBeenChecked={selectedPlants.includes(plant._id)}
+            />
           ))}
         </TableBody>
       </Table>
-    </TableContainer >
+    </TableContainer>
   );
 }

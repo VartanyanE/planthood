@@ -6,9 +6,9 @@ import tileData from "../components/TileData/TileData";
 import { getPlants, getUser, getUsers, grantAccess } from "../utils/API";
 import Sidebar from "../components/Sidebar";
 import Container from "@material-ui/core/Container";
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 
 //Card info
 import Card from "@material-ui/core/Card";
@@ -20,7 +20,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import userContext from "../utils/userContext";
 import Collapse from "@material-ui/core/Collapse";
-import CheckboxLabels from '../../src/components/CheckboxRemove'
+import CheckboxLabels from "../../src/components/CheckboxRemove";
+import clickedContext from "../utils/clickedContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,9 +32,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   main: {
     marginTop: "6rem",
@@ -51,13 +52,11 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
+    border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-  }
+  },
 }));
-
-
 
 // if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
 
@@ -66,12 +65,13 @@ function Plants() {
   // const [plants, setPlants] = useState([]);
   // const { user, setUser } = useContext(userContext);
   const [user, setUser] = useState({});
-  const [userList, setUserList] = useState([])
+  const [userList, setUserList] = useState([]);
   const [currentPlant, setCurrentPlant] = useState(null);
   const [open, setOpen] = useState(false);
-const classes = useStyles();
+  const { clicked, setClicked } = useContext(clickedContext);
+  const classes = useStyles();
   const handleOpen = (id) => {
-    setCurrentPlant(id)
+    setCurrentPlant(id);
     setOpen(true);
   };
 
@@ -87,10 +87,11 @@ const classes = useStyles();
         setUser(res.data[0]);
       })
       .catch((err) => console.log(err));
-    
-      getUsers().then(({data})=> setUserList(data.filter(a=> !(a.user_id === userId))))
-    
-  }, [user]);
+
+    getUsers().then(({ data }) =>
+      setUserList(data.filter((a) => !(a.user_id === userId)))
+    );
+  }, [clicked]);
   //expand button code
 
   const [expandedId, setExpandedId] = React.useState(-1);
@@ -99,100 +100,115 @@ const classes = useStyles();
     setExpandedId(expandedId === i ? -1 : i);
   };
 
+  console.log(clicked);
   return (
     <>
       <Sidebar />
       <Container className={classes.main}>
         <div className={classes.root}>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Select A Sitter</h2>
-      {userList.map(a=><Button onClick={()=> grantAccess(a.user_id, currentPlant)}>{a.user_id} - Has {a.plants.length} Plantkins</Button>)}
-          </div>
-        </Fade>
-      </Modal>
-    
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <h2 id="transition-modal-title">Select A Sitter</h2>
+                {userList.map((a) => (
+                  <Button onClick={() => grantAccess(a.user_id, currentPlant)}>
+                    {a.user_id} - Has {a.plants.length} Plantkins
+                  </Button>
+                ))}
+              </div>
+            </Fade>
+          </Modal>
+
           <h1>My Plantkins</h1>
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Plant Info"
-                    height="300"
-                    image={plant.image_url}
-                    title="Plant Info"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-
-                  <Button size="small" color="primary">
-                    Share
+                <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Plant Info"
+                      height="300"
+                      image={plant.image_url}
+                      title="Plant Info"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {plant.common_name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button size="small" color="primary">
+                      Share
                     </Button>
-                  <Button
-                    size="small"
-                    color="primary"
-                    onClick={() => handleExpandClick(i)}
-                    aria-expanded={expandedId === i}
-                    aria-label="show more"
-                  >
-                    Learn More
+                    <Button
+                      size="small"
+                      color="primary"
+                      aria-expanded={expandedId === i}
+                      aria-label="show more"
+                    >
+                      Learn More
                     </Button>
-                  <CheckboxLabels id={plant._id} isChecked={true} />
-                  {plant.plant_sitter ? <Button>`Currently Under Care of ${plant.plant_sitter}`</Button> : <Button onClick={()=>handleOpen(plant._id)}>Assign Plant Sitter</Button>}
-                </CardActions>
-                <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
-                  <CardContent>
-                    <div>
-                      <strong>Scientific Name:</strong> {plant.family_name}
-                      <br />
-                      <strong>Plant Care:</strong> {plant.plant_care}
-                      <br />
-                      <strong>Foliage Color:</strong> {plant.foliage_color}
-                      <br />
-                      <strong>Lighting Needs:</strong> {plant.lighting_needs}
-                      <br />
-                      <strong>Watering Needs:</strong> {plant.watering_needs}
-                      <br />
-                      <strong>Soil Needs:</strong> {plant.soil_needs}
-                      <br />
-                      <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
-                      <br />
-                      <strong>Human Edible:</strong> {plant.human_edible}
-                      <br />
-                      <strong>Pet Edible:</strong> {plant.pet_edible}
-                    </div>
-                  </CardContent>
-                </Collapse>
-              </Card>
-              // <GridListTile key={plant._id} cols={1}>
-              //   <p>{plant.common_name}</p>
-              //   <img src={plant.image_url} alt={plant.common_name} />
-              // </GridListTile>
-            ))
+                    <CheckboxLabels
+                      id={plant._id}
+                      isChecked={true}
+                      // onClick={isClicked}
+                    />
+                    {plant.plant_sitter ? (
+                      <Button>
+                        `Currently Under Care of ${plant.plant_sitter}`
+                      </Button>
+                    ) : (
+                      <Button onClick={() => handleOpen(plant._id)}>
+                        Assign Plant Sitter
+                      </Button>
+                    )}
+                  </CardActions>
+                  <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                    <CardContent>
+                      <div>
+                        <strong>Scientific Name:</strong> {plant.family_name}
+                        <br />
+                        <strong>Plant Care:</strong> {plant.plant_care}
+                        <br />
+                        <strong>Foliage Color:</strong> {plant.foliage_color}
+                        <br />
+                        <strong>Lighting Needs:</strong> {plant.lighting_needs}
+                        <br />
+                        <strong>Watering Needs:</strong> {plant.watering_needs}
+                        <br />
+                        <strong>Soil Needs:</strong> {plant.soil_needs}
+                        <br />
+                        <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
+                        <br />
+                        <strong>Human Edible:</strong> {plant.human_edible}
+                        <br />
+                        <strong>Pet Edible:</strong> {plant.pet_edible}
+                      </div>
+                    </CardContent>
+                  </Collapse>
+                </Card>
+                // <GridListTile key={plant._id} cols={1}>
+                //   <p>{plant.common_name}</p>
+                //   <img src={plant.image_url} alt={plant.common_name} />
+                // </GridListTile>
+              ))
             : ""}
 
           {/* </GridList> */}
-          </div>
+        </div>
       </Container>
     </>
   );
