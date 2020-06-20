@@ -102,7 +102,7 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
           >
             Learn More
             </Button>
-          <CheckboxLabels id={row._id} isChecked={true} />
+          <CheckboxLabels id={row._id} isChecked={hasBeenChecked} />
         </CardActions>
         <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
           <CardContent>
