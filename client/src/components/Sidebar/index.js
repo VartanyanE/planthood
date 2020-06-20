@@ -1,56 +1,40 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import Box from "@material-ui/core/Box";
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
 
-const drawerWidth = 240;
+import Toolbar from "@material-ui/core/Toolbar";
+import Box from "@material-ui/core/Box";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
-  spacer: {
-    minHeight: 88
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
   drawerPaper: {
-    width: drawerWidth,
     position: "absolute",
-    zIndex: 1000
+    flexShrink: 0,
+    zIndex: 1000,
   },
   drawerContainer: {
-    overflow: 'auto',
+    width: "18vw",
+    height: "80vh",
+    overflow: "auto",
+    padding: theme.spacing(3),
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    textAlign: "center",
   },
 }));
 
-export default function ClippedDrawer() {
+export default function Sidebar() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <Box display={{ xs: "none", lg: "fixed" }}>
+      <Box display={{ lg: "fixed" }}>
         <Drawer
           className={classes.drawer}
           variant="permanent"
@@ -58,9 +42,11 @@ export default function ClippedDrawer() {
             paper: classes.drawerPaper,
           }}
         >
-          <Toolbar className = {classes.spacer}/>
+          <Toolbar className={classes.spacer} />
           <div className={classes.drawerContainer}>
-              <h4>Sample Text</h4>
+            <h2>Nanny Plantkins</h2>
+            <p>plant Id</p>
+            <p>plant pic</p>
             {/* TODO: PUT ALL THE STUFF HERE */}
           </div>
         </Drawer>
