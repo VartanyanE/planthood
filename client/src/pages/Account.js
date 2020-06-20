@@ -11,10 +11,11 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { getUser, getZone } from "../utils/API";
 import Switch from "@material-ui/core/Switch";
+import { Avatar } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
+    width: "90%",
     marginTop: "100px",
     alignItems: "center",
     padding: "1em",
@@ -27,12 +28,25 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   img: {
-    height: "40%",
-    width: "20%",
+    height: "30%",
+    width: "30%",
     float: "left",
-    paddingLeft: "1em",
     paddingRight: "1em",
     paddingBottom: "1em",
+  },
+  avatar: {
+    variant: "circle",
+    display: "inline",
+    float: "left",
+    marginTop: ".5em",
+  },
+
+  text: {
+    display: "flex",
+    flexDirection: "colum",
+    justifyContent: "flexStart",
+    alignContent: "space-around",
+    paddingLeft: "1em",
   },
 }));
 function Account() {
@@ -76,29 +90,31 @@ function Account() {
     <div>
       <Card className={classes.root}>
         <Typography variant="h3" gutterBottom>
+          <Avatar
+            className={classes.avatar}
+            src={
+              "https://avatars.dicebear.com/api/initials/" + userName + ".svg"
+            }
+          />
           Welcome to your hood, {JSON.parse(userName)} !
         </Typography>
-        <img
-          className={classes.img}
-          src={"https://avatars.dicebear.com/api/initials/" + userName + ".svg"}
-        />
-        <Typography variant="h4" gutterBottom>
+        <img className={classes.img} src={"picfour.jpg"} />
+        <Typography className={classes.text} variant="h4" gutterBottom>
           My Email : {JSON.parse(email)}{" "}
           <Button variant="outlined" color="primary">
             Change
           </Button>
         </Typography>
-        <Typography variant="h4" gutterBottom>
-          My Plantkins{" "}
+        <Typography className={classes.text} variant="h4" gutterBottom>
+          My Plantkins are{" "}
           <Button href="/plantkins" variant="outlined" color="primary">
-            Go
+            Here
           </Button>
         </Typography>
 
-        <FormControl className={classes.formControl}>
-          <Typography variant="h4" gutterBottom>
-            My Zone: {userZone}
-            {/* <Select
+        <Typography className={classes.text} variant="h4" gutterBottom>
+          My Zone: {userZone}
+          {/* <Select
               native
               value={setState.age}
               onChange={handleChange}
@@ -112,21 +128,22 @@ function Account() {
               <option value={20}>Farms????</option>
               <option value={30}>East Coast</option>
             </Select> */}
+        </Typography>
+        <FormGroup row>
+          <Typography className={classes.text} variant="h4">
+            Recieve Reminders
           </Typography>
-          <FormGroup row>
-            <Typography variant="h4">Recieve Reminders</Typography>
-            <FormControlLabel
-              control={
-                <Switch
-                  checked={state.checkedB}
-                  onChange={handleSwitch}
-                  name="checkedB"
-                  color="primary"
-                />
-              }
-            />
-          </FormGroup>
-        </FormControl>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={state.checkedB}
+                onChange={handleSwitch}
+                name="checkedB"
+                color="primary"
+              />
+            }
+          />
+        </FormGroup>
       </Card>
     </div>
   );
