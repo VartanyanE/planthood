@@ -20,16 +20,22 @@ const useStyles = makeStyles({
   },
   card: {
     display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    
 
   },
   content: {
     display: "flex",
     flexDirection: "column",
     margin: 0,
+    flexFflow: "column-wrap",
     borderStyle: "outset",
     textWrap: "wrap",
     justifyContent: "baseline",
     alignItems: "flex-start",
+    margin: "10px"
   },
 
   title: {
@@ -49,8 +55,10 @@ const imgStyle = {
   color: "primary",
 };
 
+
 export default function Types() {
   const classes = useStyles();
+
 
   return (
     
@@ -87,12 +95,13 @@ export default function Types() {
             src="https://avatars2.githubusercontent.com/u/58372483?s=460&u=6616430578acc1b13dd94d4f08a53767aa11a309&v=44"
           />
           <Typography variant="body2" component="p">
-            Plant Thirst Expert
+            Front End Guru
           </Typography>
           <CardActions className={classes.button}>
             <Button href="https://github.com/AnnaOlt">Visit Github</Button>
           </CardActions>
         </CardContent>
+
         <CardContent className={classes.content}>
           <Typography variant="h5" component="h2">
             Sydney
@@ -102,7 +111,7 @@ export default function Types() {
             src="https://avatars3.githubusercontent.com/u/51732808?s=400&u=12cfb14797c88903f86513d0b671ae1215851d3c&v=4"
           />
           <Typography variant="body2" component="p">
-            Lighting Connoisseur
+            Front End Connoisseur
           </Typography>
           <CardActions className={classes.button}>
             <Button href="https://github.com/skrantzz">Visit Github</Button>
@@ -138,6 +147,8 @@ export default function Types() {
             <Button href="https://github.com/mlfiii">Visit Github</Button>
           </CardActions>
         </CardContent>
+        
+
         <CardContent className={classes.content}>
           <Typography variant="h5" component="h2">
             Michael
@@ -162,7 +173,7 @@ export default function Types() {
             src="https://avatars1.githubusercontent.com/u/57610719?s=460&v=4"
           />
           <Typography variant="body2" component="p">
-            Plant Encyclopedia
+            API Master
           </Typography>
           <CardActions className={classes.button}>
             <Button href="https://github.com/stephdedios">Visit Github</Button>
