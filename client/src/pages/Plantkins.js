@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: "2rem",
+    width: '100%'
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
@@ -225,39 +226,33 @@ function Plants() {
               // </GridListTile>
             ))
             : ""}
-
-          <h1>Plantsitting</h1>
-          {user.plantsit
+           {user.plantsit
             ? user.plantsit.map((plant, i) => (
               <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Plant Info"
-                    height="300"
-                    image={plant.image_url}
-                    title="Plant Info"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <CheckboxLabelsPlantsit
-                    id={plant._id}
-                    isChecked={true}
-                  // onClick={isClicked}
-                  />
-                  <Button
-                    size="small"
-                    color="primary"
-                    aria-expanded={expandedId === i}
-                    aria-label="show more"
-                    onClick={() => handleExpandClick(i)}
-                  >
-                    Learn More
+              <h1>Plantsitting</h1>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Plant Info"
+                      height="300"
+                      image={plant.image_url}
+                      title="Plant Info"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {plant.common_name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      color="primary"
+                      aria-expanded={expandedId === i}
+                      aria-label="show more"
+                    >
+                      Learn More
+
                     </Button>
                 </CardActions>
                 <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
