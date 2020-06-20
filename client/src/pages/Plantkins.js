@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  list: {
+    display: "flex",
+    flexDirection: "column",
+  },
 }));
 
 // if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
@@ -119,12 +123,16 @@ function Plants() {
           >
             <Fade in={open}>
               <div className={classes.paper}>
-                <h2 id="transition-modal-title">Select A Sitter</h2>
-                {userList.map((a) => (
-                  <Button onClick={() => grantAccess(a.user_id, currentPlant)}>
-                    {a.user_id} - Has {a.plants.length} Plantkins
-                  </Button>
-                ))}
+                <div className={classes.list}>
+                  <h2 id="transition-modal-title">Select A Sitter</h2>
+                  {userList.map((a) => (
+                    <Button
+                      onClick={() => grantAccess(a.user_id, currentPlant)}
+                    >
+                      {a.user_id} - Has {a.plants.length} Plantkins
+                    </Button>
+                  ))}
+                </div>
               </div>
             </Fade>
           </Modal>
@@ -133,77 +141,77 @@ function Plants() {
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
-              <Card className={classes.card}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt="Plant Info"
-                    height="300"
-                    image={plant.image_url}
-                    title="Plant Info"
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    Share
+                <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Plant Info"
+                      height="300"
+                      image={plant.image_url}
+                      title="Plant Info"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {plant.common_name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      color="primary"
+                      aria-expanded={expandedId === i}
+                      aria-label="show more"
+                    >
+                      Learn More
                     </Button>
-                  <Button
-                    size="small"
-                    color="primary"
-                    aria-expanded={expandedId === i}
-                    aria-label="show more"
-                  >
-                    Learn More
-                    </Button>
-                  <CheckboxLabels
-                    id={plant._id}
-                    isChecked={true}
-                  // onClick={isClicked}
-                  />
-                  {plant.plant_sitter ? (
-                    <Button>
-                      `Currently Under Care of ${plant.plant_sitter}`
+                    <CheckboxLabels
+                      id={plant._id}
+                      isChecked={true}
+                      // onClick={isClicked}
+                    />
+                    {plant.plant_sitter ? (
+                      <Button>
+                        `Currently Under Care of ${plant.plant_sitter}`
                       </Button>
-                  ) : (
-                      <Button onClick={() => handleOpen(plant._id)}>
+                    ) : (
+                      <Button
+                        color="primary"
+                        onClick={() => handleOpen(plant._id)}
+                      >
                         Assign Plant Sitter
                       </Button>
                     )}
-                </CardActions>
-                <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
-                  <CardContent>
-                    <div>
-                      <strong>Scientific Name:</strong> {plant.family_name}
-                      <br />
-                      <strong>Plant Care:</strong> {plant.plant_care}
-                      <br />
-                      <strong>Foliage Color:</strong> {plant.foliage_color}
-                      <br />
-                      <strong>Lighting Needs:</strong> {plant.lighting_needs}
-                      <br />
-                      <strong>Watering Needs:</strong> {plant.watering_needs}
-                      <br />
-                      <strong>Soil Needs:</strong> {plant.soil_needs}
-                      <br />
-                      <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
-                      <br />
-                      <strong>Human Edible:</strong> {plant.human_edible}
-                      <br />
-                      <strong>Pet Edible:</strong> {plant.pet_edible}
-                    </div>
-                  </CardContent>
-                </Collapse>
-              </Card>
-              // <GridListTile key={plant._id} cols={1}>
-              //   <p>{plant.common_name}</p>
-              //   <img src={plant.image_url} alt={plant.common_name} />
-              // </GridListTile>
-            ))
+                  </CardActions>
+                  <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                    <CardContent>
+                      <div>
+                        <strong>Scientific Name:</strong> {plant.family_name}
+                        <br />
+                        <strong>Plant Care:</strong> {plant.plant_care}
+                        <br />
+                        <strong>Foliage Color:</strong> {plant.foliage_color}
+                        <br />
+                        <strong>Lighting Needs:</strong> {plant.lighting_needs}
+                        <br />
+                        <strong>Watering Needs:</strong> {plant.watering_needs}
+                        <br />
+                        <strong>Soil Needs:</strong> {plant.soil_needs}
+                        <br />
+                        <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
+                        <br />
+                        <strong>Human Edible:</strong> {plant.human_edible}
+                        <br />
+                        <strong>Pet Edible:</strong> {plant.pet_edible}
+                      </div>
+                    </CardContent>
+                  </Collapse>
+                </Card>
+                // <GridListTile key={plant._id} cols={1}>
+                //   <p>{plant.common_name}</p>
+                //   <img src={plant.image_url} alt={plant.common_name} />
+                // </GridListTile>
+              ))
             : ""}
 
           {/* </GridList> */}
