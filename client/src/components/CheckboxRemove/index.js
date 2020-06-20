@@ -1,11 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 import { green, blue } from "@material-ui/core/colors";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
+import Tooltip from "@material-ui/core/Tooltip";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
 import clickedContext from "../../utils/clickedContext";
 
@@ -20,6 +22,16 @@ const GreenCheckbox = withStyles({
   },
   checked: {},
 })((props) => <Checkbox color="green" {...props} />);
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+  },
+  toolTip: {
+    fontSize: "2em",
+    margin: "2px",
+  },
+}))
 
 export default function CheckboxLabels({ id, isChecked }) {
   const [user, setUser] = useState([]);
