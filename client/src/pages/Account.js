@@ -78,7 +78,10 @@ function Account() {
         <Typography variant="h3" gutterBottom>
           Welcome to your hood, {JSON.parse(userName)} !
         </Typography>
-        <img className={classes.img} src="picfour.jpg" />
+        <img
+          className={classes.img}
+          src={"https://avatars.dicebear.com/api/initials/" + userName + ".svg"}
+        />
         <Typography variant="h4" gutterBottom>
           My Email : {JSON.parse(email)}{" "}
           <Button variant="outlined" color="primary">
