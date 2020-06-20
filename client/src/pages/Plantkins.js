@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
@@ -109,7 +110,7 @@ function Plants() {
   return (
     <>
       <Container className={classes.main}>
-        <div className={classes.root}>
+        <Grid container className={classes.root} spacing={1}>
   
           <Modal
             aria-labelledby="transition-modal-title"
@@ -139,10 +140,11 @@ function Plants() {
             </Fade>
           </Modal>
 
-          <h1>My Plantkins</h1>
-          {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
+          <Grid item xs={12}> <h1>My Plantkins</h1> </Grid>
+          
           {user.plants
             ? user.plants.map((plant, i) => (
+              <Grid item xs={12} md={6}>
                 <Card className={classes.card}>
                   <CardActionArea>
                     <CardMedia
@@ -209,6 +211,7 @@ function Plants() {
                     </CardContent>
                   </Collapse>
                 </Card>
+              </Grid>
                 // <GridListTile key={plant._id} cols={1}>
                 //   <p>{plant.common_name}</p>
                 //   <img src={plant.image_url} alt={plant.common_name} />
@@ -216,9 +219,10 @@ function Plants() {
               ))
             : ""}
 
-<h1>Plantsitting</h1>
+          <Grid item xs={12}> <h1>Plantsitting</h1> </Grid>
            {user.plantsit
             ? user.plantsit.map((plant, i) => (
+            <Grid item xs={12} md={6}>
               <Card className={classes.card}>
                   <CardActionArea>
                     <CardMedia
@@ -270,6 +274,7 @@ function Plants() {
                     </CardContent>
                   </Collapse>
                 </Card>
+              </Grid>
                 // <GridListTile key={plant._id} cols={1}>
                 //   <p>{plant.common_name}</p>
                 //   <img src={plant.image_url} alt={plant.common_name} />
@@ -277,8 +282,7 @@ function Plants() {
               ))
 
             : ""}
-          
-        </div>
+          </Grid>
       </Container>
     </>
   );

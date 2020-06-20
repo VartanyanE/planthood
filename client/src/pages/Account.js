@@ -4,7 +4,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import React, { useEffect, useState } from "react";
 import Typography from "@material-ui/core/Typography";
-
+import Grid from '@material-ui/core/Grid';
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   img: {
-    height: "30%",
-    width: "30%",
+    height: "100%",
+    width: "100%",
     float: "left",
     paddingRight: "1em",
     paddingBottom: "1em",
@@ -89,61 +89,61 @@ function Account() {
   return (
     <div>
       <Card className={classes.root}>
-        <Typography variant="h3" gutterBottom>
-          <Avatar
-            className={classes.avatar}
-            src={
-              "https://avatars.dicebear.com/api/initials/" + userName + ".svg"
-            }
-          />
-          Welcome to your hood, {JSON.parse(userName)} !
-        </Typography>
-        <img className={classes.img} src={"picfour.jpg"} />
-        <Typography className={classes.text} variant="h4" gutterBottom>
-          My Email : {JSON.parse(email)}{" "}
-          <Button variant="outlined" color="primary">
-            Change
-          </Button>
-        </Typography>
-        <Typography className={classes.text} variant="h4" gutterBottom>
-          My Plantkins are{" "}
-          <Button href="/plantkins" variant="outlined" color="primary">
-            Here
-          </Button>
-        </Typography>
-
-        <Typography className={classes.text} variant="h4" gutterBottom>
-          My Zone: {userZone}
-          {/* <Select
-              native
-              value={setState.age}
-              onChange={handleChange}
-              inputProps={{
-                name: "Zone",
-                id: "usda-zones",
-              }}
-            >
-              <option aria-label="None" value="" />
-              <option value={10}>West Coast</option>
-              <option value={20}>Farms????</option>
-              <option value={30}>East Coast</option>
-            </Select> */}
-        </Typography>
-        <FormGroup row>
-          <Typography className={classes.text} variant="h4">
-            Recieve Reminders
-          </Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={state.checkedB}
-                onChange={handleSwitch}
-                name="checkedB"
-                color="primary"
+        <Grid container className={classes.root} spacing={1}>
+          <Grid item xs={12}>
+            <Typography variant="h3" gutterBottom>
+              <Avatar
+                className={classes.avatar}
+                src={
+                  "https://avatars.dicebear.com/api/initials/" + userName + ".svg"
+                }
               />
-            }
-          />
-        </FormGroup>
+              Welcome to your hood, {JSON.parse(userName)} !
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12} sm={4}>
+            <img className={classes.img} src={"picfour.jpg"} />
+          </Grid>
+
+          <Grid item xs={12} sm={8}>
+            <Typography className={classes.text} variant="h4" gutterBottom>
+              My Email : {JSON.parse(email)}{" "}
+              <Button variant="outlined" color="primary">
+                Change
+              </Button>
+            </Typography>
+            <Typography className={classes.text} variant="h4" gutterBottom>
+              My Plantkins are{" "}
+              <Button href="/plantkins" variant="outlined" color="primary">
+                Here
+              </Button>
+            </Typography>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography className={classes.text} variant="h4" gutterBottom>
+              My Zone: {userZone}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <FormGroup row>
+              <Typography className={classes.text} variant="h4">
+                Recieve Reminders
+              </Typography>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={state.checkedB}
+                    onChange={handleSwitch}
+                    name="checkedB"
+                    color="primary"
+                  />
+                }
+              />
+            </FormGroup>
+          </Grid>
+        </Grid>
       </Card>
     </div>
   );
