@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     margin: "2rem",
+    width: '100%'
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
@@ -216,10 +217,10 @@ function Plants() {
               ))
             : ""}
 
-<h1>Plantsitting</h1>
            {user.plantsit
             ? user.plantsit.map((plant, i) => (
               <Card className={classes.card}>
+              <h1>Plantsitting</h1>
                   <CardActionArea>
                     <CardMedia
                       component="img"
