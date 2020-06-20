@@ -103,7 +103,7 @@ function Account() {
           </Grid>
 
           <Grid item xs={12} sm={4}>
-            <img className={classes.img} src={"picfour.jpg"} />
+            
           </Grid>
 
           <Grid item xs={12} sm={8}>
