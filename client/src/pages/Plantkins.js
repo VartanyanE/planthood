@@ -166,10 +166,10 @@ function Plants() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name.substring(0,plant.common_name.indexOf(","))}
+                      {plant.common_name.includes(",") ? plant.common_name.substring(0,plant.common_name.indexOf(",")) : plant.common_name}
                     </Typography>
                     <Typography>
-                      Other names: {plant.common_name.substring(plant.common_name.indexOf(",") + 1)}
+                      {plant.common_name.includes(",") ? "Other names:" + plant.common_name.substring(plant.common_name.indexOf(",") + 1) : "No other known names"}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -248,10 +248,10 @@ function Plants() {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {plant.common_name.substring(0,plant.common_name.indexOf(","))}
+                        {plant.common_name.includes(",") ? plant.common_name.substring(0,plant.common_name.indexOf(",")) : plant.common_name}
                       </Typography>
                       <Typography>
-                        Other names: {plant.common_name.substring(plant.common_name.indexOf(",") + 1)}
+                        {plant.common_name.includes(",") ? "Other names:" + plant.common_name.substring(plant.common_name.indexOf(",") + 1) : "No other known names"}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
