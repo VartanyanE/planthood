@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import About from "./pages/About";
-import Community from "./pages/Community";
 import Account from "./pages/Account";
 import Browse from "./pages/Browse";
 import Plantkins from "./pages/Plantkins";
@@ -45,11 +44,6 @@ function App() {
                 <Route exact path="/" component={!user ? Landing : Plantkins} />
                 <Route exact path="/landing" component={Landing} />
                 <Route exact path="/about" component={user ? About : Landing} />
-                <Route
-                  exact
-                  path="/community"
-                  component={user ? Community : Landing}
-                />
                 <Route
                   exact
                   path="/account"
