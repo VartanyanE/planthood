@@ -10,6 +10,7 @@ module.exports = {
   findAllByUserId: function (req, res) {
     db.User.find({ user_id: req.params.user_id })
       .populate('plants')
+      .populate('plantsit')
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
@@ -17,6 +18,7 @@ module.exports = {
   findById: function (req, res) {
     db.User.findById(req.params.id)
       .populate('plants')
+      .populate('plantsit')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   },

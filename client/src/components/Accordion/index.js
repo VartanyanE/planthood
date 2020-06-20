@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     height: 450,
   },
   image: {
-    height: "500px",
+    height: "300px",
   },
   card: {
     margin: "2rem",
@@ -89,10 +89,6 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
           </CardContent>
         </CardActionArea>
         <CardActions>
-
-          <Button size="small" color="primary">
-            Share
-            </Button>
           <Button
             size="small"
             color="primary"

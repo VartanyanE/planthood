@@ -9,16 +9,15 @@ const userSchema = new Schema(
     zipcode: String,
     password: { type: String, required: true },
     date: { type: Date, default: Date.now },
-    plants: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "Plantsearch",
-      },
-    ],
-    plantsit: {
-      type: Array,
-      default: [],
-    },
+    plants: [{
+      type: Schema.Types.ObjectId,
+      ref: "Plantsearch"
+    }],
+    plantsit: [{
+      type: Schema.Types.ObjectId,
+      ref: "Plantsearch"
+    }]
+
   },
   { collection: "users" }
 );

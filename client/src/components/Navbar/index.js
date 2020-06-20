@@ -144,7 +144,6 @@ function Navbar(props) {
           </Typography>
 
           {/* Menu Item Wrapper Box */}
-
           <Box display={{ xs: "none", md: "block" }}>
             <Tooltip
               title={<p className={classes.toolTip}>My Plantkins</p>}
@@ -158,36 +157,6 @@ function Navbar(props) {
                   color="inherit"
                 >
                   <EcoIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip
-              title={<p className={classes.toolTip}>Community</p>}
-              aria-label="Community"
-            >
-              <Link to="/community">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <ForumIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip
-              title={<p className={classes.toolTip}>About</p>}
-              aria-label="About"
-            >
-              <Link to="/about">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <InfoOutlinedIcon style={{ fill: "white" }} />
                 </IconButton>
               </Link>
             </Tooltip>
@@ -221,6 +190,21 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
+            <Tooltip
+              title={<p className={classes.toolTip}>About</p>}
+              aria-label="About"
+            >
+              <Link to="/about">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <InfoOutlinedIcon style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
           </Box>
 
           <div className={classes.search}>
@@ -235,11 +219,9 @@ function Navbar(props) {
               onChange={handleChange}
             />
           </div>
-
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
-
           <Tooltip
             title={<p className={classes.toolTip}>Log Out</p>}
             aria-label="Log Out"
@@ -270,8 +252,6 @@ function Navbar(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             PLANTHOOD
           </Typography>
-
-          {/* Menu Item Wrapper Box */}
         </Toolbar>
       </AppBar>
     </div>
