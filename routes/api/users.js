@@ -72,4 +72,16 @@ router.get("/faved/:uId/:pId", ({ params: { uId, pId } }, res) => {
 });
 
 
+router.put("/plantsit/remove/:uId/:pId", ({ params: { uId, pId } }, res) => {
+
+  console.log('router:')
+  db.User.findByIdAndUpdate(uId, { $pull: { plantsit: pId } })
+    .then((data) => {
+      console.log(data);
+      return res.json(data);
+    })
+    .catch((err) => console.log(err));
+});
+
+
 module.exports = router;

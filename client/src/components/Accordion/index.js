@@ -89,10 +89,6 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
           </CardContent>
         </CardActionArea>
         <CardActions>
-
-          <Button size="small" color="primary">
-            Share
-            </Button>
           <Button
             size="small"
             color="primary"

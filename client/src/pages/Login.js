@@ -2,11 +2,29 @@ import React, { useState, useContext } from "react";
 import { loginUser } from "../utils/API";
 import { withRouter } from "react-router-dom";
 import userContext from "../utils/userContext";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import { Button, Container, ThemeProvider } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    // padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+    boxShadow: "none",
+    backgroundColor: "",
+  },
+}));
 
 function Login(props) {
   const [formObject, setFormObject] = useState({});
   // const [user, setUser] = useState([]);
   const { user, setUser } = useContext(userContext);
+  const classes = useStyles();
   // console.log(user);
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,39 +58,57 @@ function Login(props) {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-
-      <form class="login">
-        <div className="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input
-            onChange={handleChange}
-            type="email"
-            class="form-control"
-            name="email"
-            placeholder="Email"
-          />
-        </div>
-        <div className="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input
-            onChange={handleChange}
-            type="password"
-            class="form-control"
-            name="password"
-            placeholder="Password"
-          />
-        </div>
-        <button
-          onClick={handleLogin}
-          type="submit"
-          setUser={user}
-          class="btn btn-light"
-        >
-          Login
-        </button>
-      </form>
+    <div className={classes.root}>
+      <Grid container spacing={0}>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}></Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>
+            <h1>Login</h1>
+          </Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}></Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <form class="login">
+              <div className="form-group">
+                <label for="exampleInputEmail1"></label>
+                <input
+                  onChange={handleChange}
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Email Address"
+                  style={{ marginBottom: "8px" }}
+                />
+              </div>
+              <div className="form-group">
+                <label for="exampleInputPassword1"></label>
+                <input
+                  onChange={handleChange}
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Password"
+                  style={{ marginBottom: "8px" }}
+                />
+              </div>
+              <Button
+                type="submit"
+                color="primary"
+                variant="outlined"
+                onClick={handleLogin}
+                setUser={user}
+              >
+                Login
+              </Button>
+            </form>
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 }
