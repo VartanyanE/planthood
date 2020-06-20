@@ -249,14 +249,14 @@ function Plants() {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      aria-expanded={expandedId === i}
-                      aria-label="show more"
-                    >
-                      Learn More
-
+                  <Button
+                    size="small"
+                    color="primary"
+                    aria-expanded={expandedId === i}
+                    aria-label="show more"
+                    onClick={() => handleExpandClick(i)}
+                  >
+                    Learn More
                     </Button>
                 </CardActions>
                 <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
