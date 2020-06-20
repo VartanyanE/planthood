@@ -102,7 +102,7 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
         </CardActions>
         <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
           <CardContent>
-            <div>
+            <Typography>
               <strong>Scientific Name:</strong> {row.family_name}
               <br />
               <strong>Plant Care:</strong> {row.plant_care}
@@ -120,7 +120,7 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
               <strong>Human Edible:</strong> {row.human_edible}
               <br />
               <strong>Pet Edible:</strong> {row.pet_edible}
-            </div>
+            </Typography>
           </CardContent>
         </Collapse>
       </Card>
