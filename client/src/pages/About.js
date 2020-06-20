@@ -7,6 +7,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   root: {
@@ -15,12 +16,11 @@ const useStyles = makeStyles({
     marginTop: "100px",
     display: "flex",
     flexDirection: "column",
-    flexWrap: "wrap",
     justifyContent: "space-around",
   },
   card: {
     display: "flex",
-    flexDirection: "row",
+
   },
   content: {
     display: "flex",
@@ -53,7 +53,8 @@ export default function Types() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    
+    <Box className={classes.root} component="span">
       <Typography variant="h1" component="h2" gutterBottom>
         For the Love of Plants
       </Typography>
@@ -63,15 +64,19 @@ export default function Types() {
       <Typography variant="body1" gutterBottom>
         Thanks for joining <strong>PLANTHOOD!</strong> We're so happy to have
         you in our virtual greenhouse. Start adding plants to your plantkins to
-        get started! Every time we went on vacation, our plants would suffer. No
+        get started! 
+        <br/>
+        <br/>
+        Every time we went on vacation, our plants would suffer. No
         matter who we trusted with our plants, they didn't have the knowledge to
         keep em healthy and thriving. We created PLANTHOOD with everyone in mind
-        - even those who don't have a green thumb!
+        - no matter how green your thumb is!
       </Typography>
       <Typography variant="h4" gutterBottom>
         Meet the Team
       </Typography>
       <br></br>
+      
       <Card className={classes.card}>
         <CardContent className={classes.content}>
           <Typography variant="h5" component="h2">
@@ -97,7 +102,7 @@ export default function Types() {
             src="https://avatars3.githubusercontent.com/u/51732808?s=400&u=12cfb14797c88903f86513d0b671ae1215851d3c&v=4"
           />
           <Typography variant="body2" component="p">
-            Lighting Conesour
+            Lighting Connoisseur
           </Typography>
           <CardActions className={classes.button}>
             <Button href="https://github.com/skrantzz">Visit Github</Button>
@@ -164,6 +169,6 @@ export default function Types() {
           </CardActions>
         </CardContent>
       </Card>
-    </div>
+    </Box>
   );
 }

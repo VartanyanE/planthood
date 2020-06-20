@@ -145,6 +145,7 @@ function Navbar(props) {
 
           {/* Menu Item Wrapper Box */}
           <Box display={{ xs: "none", md: "block" }}>
+
             <Tooltip title={
                 <p className={classes.toolTip}>My Plantkins</p>
               } aria-label="My Plantkins">
@@ -215,6 +216,7 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
+
           </Box>
 
           <div className={classes.search}>

@@ -105,14 +105,14 @@ function MenuListComposition(props) {
                         My Plantkins
                       </MenuItem>
                     </Link>
-                    <Link to="/community">
-                      <MenuItem href="/community" onClick={handleClose}>
-                        Community
-                      </MenuItem>
-                    </Link>
                     <Link to="/browse">
                       <MenuItem href="/browse" onClick={handleClose}>
                         Browse
+                      </MenuItem>
+                    </Link>
+                    <Link to="/account">
+                      <MenuItem href="/account" onClick={handleClose}>
+                        Account
                       </MenuItem>
                     </Link>
                     <Link to="/about">
