@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
   },
+  header: {
+    textAlign: "center"
+  },
   modal: {
     display: "flex",
     alignItems: "center",
@@ -149,7 +152,7 @@ function Plants() {
               </div>
             </Fade>
           </Modal>
-          {user.plants ? <Grid item xs={12}><h1>My Plantkins</h1></Grid> : ""}
+          {user.plants ? <Grid item xs={12}><h1 className={classes.header}>My Plantkins</h1></Grid> : ""}
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
@@ -228,7 +231,7 @@ function Plants() {
               // </GridListTile>
             ))
             : ""}
-          <Grid item xs={12}><h1>Plantsitting</h1></Grid>
+          <Grid item xs={12}><h1 className={classes.header}>Plantsitting</h1></Grid>
            {user.plantsit
             ? user.plantsit.map((plant, i) => (
               <Grid item xs={12} md={6}>
