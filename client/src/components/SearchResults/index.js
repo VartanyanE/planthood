@@ -46,7 +46,7 @@ export default function SimpleTable() {
     //     <TableBody>
     <Grid container className={classes.root} spacing={1}>
       {plants.map((plant, i) => (
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Accordion row={plant} plantId={plant._id} rowId={i} hasBeenChecked={selectedPlants.includes(plant._id)} />
         </Grid>
       ))}
