@@ -5,9 +5,11 @@ import Select from "@material-ui/core/Select";
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 
-import Avatar from "@material-ui/core/Avatar";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +42,7 @@ function Account() {
   const [state, setState] = React.useState({
     age: "",
     name: "hai",
+    checkedB: true,
   });
 
   const handleChange = (event) => {
@@ -48,6 +51,10 @@ function Account() {
       ...state,
       [name]: event.target.value,
     });
+  };
+
+  const handleSwitch = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   return (
@@ -69,12 +76,13 @@ function Account() {
             Go
           </Button>
         </Typography>
+
         <FormControl className={classes.formControl}>
           <Typography variant="h4" gutterBottom>
             My Zone:{" "}
             <Select
               native
-              value={state.age}
+              value={setState.age}
               onChange={handleChange}
               inputProps={{
                 name: "Zone",
@@ -87,6 +95,19 @@ function Account() {
               <option value={30}>East Coast</option>
             </Select>
           </Typography>
+          <FormGroup row>
+            <Typography variant="h4">Recieve Reminders</Typography>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={state.checkedB}
+                  onChange={handleSwitch}
+                  name="checkedB"
+                  color="primary"
+                />
+              }
+            />
+          </FormGroup>
         </FormControl>
       </Card>
     </div>
