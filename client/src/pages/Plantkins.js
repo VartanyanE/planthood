@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Grid from '@material-ui/core/Grid';
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
@@ -114,7 +115,7 @@ function Plants() {
   return (
     <>
       <Container className={classes.main}>
-        <div className={classes.root}>
+        <Grid container className={classes.root} spacing={4}>
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -148,11 +149,11 @@ function Plants() {
               </div>
             </Fade>
           </Modal>
-
-          {user.plants ? <h1>My Plantkins</h1> : ""}
+          {user.plants ? <Grid item xs={12}><h1>My Plantkins</h1></Grid> : ""}
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
+              <Grid item xs={12} md={6}>
               <Card className={classes.card}>
                 <CardActionArea>
                   <CardMedia
@@ -220,16 +221,19 @@ function Plants() {
                   </CardContent>
                 </Collapse>
               </Card>
+              </Grid>
               // <GridListTile key={plant._id} cols={1}>
               //   <p>{plant.common_name}</p>
               //   <img src={plant.image_url} alt={plant.common_name} />
               // </GridListTile>
             ))
             : ""}
+          <Grid item xs={12}><h1>Plantsitting</h1></Grid>
            {user.plantsit
             ? user.plantsit.map((plant, i) => (
+              <Grid item xs={12} md={6}>
               <Card className={classes.card}>
-              <h1>Plantsitting</h1>
+              
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -245,14 +249,14 @@ function Plants() {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      aria-expanded={expandedId === i}
-                      aria-label="show more"
-                    >
-                      Learn More
-
+                  <Button
+                    size="small"
+                    color="primary"
+                    aria-expanded={expandedId === i}
+                    aria-label="show more"
+                    onClick={() => handleExpandClick(i)}
+                  >
+                    Learn More
                     </Button>
                 </CardActions>
                 <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
@@ -279,13 +283,14 @@ function Plants() {
                   </CardContent>
                 </Collapse>
               </Card>
+              </Grid>
               // <GridListTile key={plant._id} cols={1}>
               //   <p>{plant.common_name}</p>
               //   <img src={plant.image_url} alt={plant.common_name} />
               // </GridListTile>
             ))
             : ""}
-        </div>
+        </Grid>
       </Container>
     </>
   );
