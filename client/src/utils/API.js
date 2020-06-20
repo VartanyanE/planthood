@@ -48,6 +48,13 @@ export const deleteAccess = function (id) {
   return axios.delete("/api/access/" + id);
 };
 
+export const deletePlantsit = function (uId, pId) {
+  console.log('api')
+  return axios.put(`/api/users/plantsit/remove/${uId}/${pId}`);
+};
+
+
+
 export const browsePlants = function () {
   return axios.get("/api/search");
 };
