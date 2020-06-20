@@ -114,7 +114,6 @@ function Plants() {
   const handleExpandClick = (i) => {
     setExpandedId(expandedId === i ? -1 : i);
   };
-
   return (
     <>
       <Container className={classes.main}>
@@ -255,14 +254,14 @@ function Plants() {
                   <Button
                     size="small"
                     color="primary"
-                    aria-expanded={expandedId === i}
+                    aria-expanded={expandedId === i + user.plants.length}
                     aria-label="show more"
-                    onClick={() => handleExpandClick(i)}
+                    onClick={() => handleExpandClick(i + user.plants.length)}
                   >
                     Learn More
                     </Button>
                 </CardActions>
-                <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                <Collapse in={expandedId === i + user.plants.length} timeout="auto" unmountOnExit>
                   <CardContent>
                     <div>
                       <strong>Scientific Name:</strong> {plant.family_name}
