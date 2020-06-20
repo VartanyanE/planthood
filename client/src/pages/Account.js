@@ -102,11 +102,7 @@ function Account() {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} sm={4}>
-            
-          </Grid>
-
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12}>
             <Typography className={classes.text} variant="h4" gutterBottom>
               My Email : {JSON.parse(email)}{" "}
               <Button variant="outlined" color="primary">
