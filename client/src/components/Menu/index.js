@@ -40,8 +40,7 @@ function MenuListComposition(props) {
   };
   const handleCloseAndLogOut = () => {
     setUser(null);
-    localStorage.setItem("user", "");
-    localStorage.setItem("user_name", "");
+    localStorage.clear();
     // local storage remove
     props.history.push({
       pathname: "/",
