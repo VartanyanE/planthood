@@ -3,9 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
-import { getPlants, getUser } from "../utils/API";
+import { getPlants, getUser, getUsers, grantAccess } from "../utils/API";
 import Sidebar from "../components/Sidebar";
 import Container from "@material-ui/core/Container";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 
 //Card info
 import Card from "@material-ui/core/Card";
@@ -17,7 +20,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import userContext from "../utils/userContext";
 import Collapse from "@material-ui/core/Collapse";
-import CheckboxLabels from '../../src/components/CheckboxRemove'
+import CheckboxLabels from "../../src/components/CheckboxRemove";
+import clickedContext from "../utils/clickedContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-around",
     overflow: "hidden",
     backgroundColor: theme.palette.background.paper,
+  },
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   main: {
     marginTop: "6rem",
@@ -41,6 +50,12 @@ const useStyles = makeStyles((theme) => ({
   card: {
     margin: "2rem",
   },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
 // if there's something added to plantkins page, that needs to be changed.... name, image... add, delete, favorite
@@ -50,10 +65,21 @@ function Plants() {
   // const [plants, setPlants] = useState([]);
   // const { user, setUser } = useContext(userContext);
   const [user, setUser] = useState({});
+  const [userList, setUserList] = useState([]);
+  const [currentPlant, setCurrentPlant] = useState(null);
+  const [open, setOpen] = useState(false);
+  const { clicked, setClicked } = useContext(clickedContext);
   const classes = useStyles();
+  const handleOpen = (id) => {
+    setCurrentPlant(id);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
-    console.log("hi");
     const userId = JSON.parse(localStorage.getItem("user"));
 
     getUser(userId)
@@ -61,7 +87,11 @@ function Plants() {
         setUser(res.data[0]);
       })
       .catch((err) => console.log(err));
-  }, [user]);
+
+    getUsers().then(({ data }) =>
+      setUserList(data.filter((a) => !(a.user_id === userId)))
+    );
+  }, [clicked]);
   //expand button code
 
   const [expandedId, setExpandedId] = React.useState(-1);
@@ -70,13 +100,35 @@ function Plants() {
     setExpandedId(expandedId === i ? -1 : i);
   };
 
-  console.log("user - \n", user);
-
   return (
     <>
       <Sidebar />
       <Container className={classes.main}>
         <div className={classes.root}>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <h2 id="transition-modal-title">Select A Sitter</h2>
+                {userList.map((a) => (
+                  <Button onClick={() => grantAccess(a.user_id, currentPlant)}>
+                    {a.user_id} - Has {a.plants.length} Plantkins
+                  </Button>
+                ))}
+              </div>
+            </Fade>
+          </Modal>
+
           <h1>My Plantkins</h1>
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
@@ -97,20 +149,31 @@ function Plants() {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-
                   <Button size="small" color="primary">
                     Share
                     </Button>
                   <Button
                     size="small"
                     color="primary"
-                    onClick={() => handleExpandClick(i)}
                     aria-expanded={expandedId === i}
                     aria-label="show more"
                   >
                     Learn More
                     </Button>
-                  <CheckboxLabels id={plant._id} isChecked={true} />
+                  <CheckboxLabels
+                    id={plant._id}
+                    isChecked={true}
+                  // onClick={isClicked}
+                  />
+                  {plant.plant_sitter ? (
+                    <Button>
+                      `Currently Under Care of ${plant.plant_sitter}`
+                      </Button>
+                  ) : (
+                      <Button onClick={() => handleOpen(plant._id)}>
+                        Assign Plant Sitter
+                      </Button>
+                    )}
                 </CardActions>
                 <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                   <CardContent>

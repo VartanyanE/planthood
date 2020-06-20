@@ -1,9 +1,12 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link } from "react-router-dom";
-import Gridlist from "@material-ui/core/GridList";
-import { GridListTile } from "@material-ui/core";
+// import { Link } from "react-router-dom";
+// import Gridlist from "@material-ui/core/GridList";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   root: {
@@ -15,10 +18,26 @@ const useStyles = makeStyles({
     flexWrap: "wrap",
     justifyContent: "space-around",
   },
-  gridList: {
-    flexWrap: "nowrap",
-    transform: "translateZ(0)",
-    borderStyle: "none",
+  card: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    margin: 0,
+    borderStyle: "outset",
+    textWrap: "wrap",
+    justifyContent: "baseline",
+    alignItems: "flex-start",
+  },
+
+  title: {
+    fontSize: 14,
+    alignItems: "center",
+  },
+  pos: {
+    marginBottom: 12,
   },
 });
 
@@ -53,59 +72,98 @@ export default function Types() {
         Meet the Team
       </Typography>
       <br></br>
-      <Gridlist className={classes.gridList}>
-        <img
-          style={imgStyle}
-          src="https://avatars3.githubusercontent.com/u/51732808?s=400&u=12cfb14797c88903f86513d0b671ae1215851d3c&v=4"
-        />
-
-        <a target="_blank" href="https://github.com/skrantzz">
-          Sydney Krantz
-        </a>
-
-        <img
-          style={imgStyle}
-          src="https://avatars1.githubusercontent.com/u/15513093?s=400&u=db39433ce07a73ad3e0b60da08b6d9c657bac5ba&v=4"
-        />
-        <a target="_blank" href="https://github.com/VartanyanE">
-          Emanuil Vartanyan
-        </a>
-
-        <img
-          style={imgStyle}
-          src="https://avatars3.githubusercontent.com/u/57580332?s=460&u=42b061be70f9ac15d45d301f92261e05db2cd667&v=4"
-        />
-        <br />
-        <a target="_blank" href="https://github.com/mlfiii">
-          Martin Funches
-        </a>
-
-        <img
-          style={imgStyle}
-          src="https://avatars2.githubusercontent.com/u/58372483?s=460&u=6616430578acc1b13dd94d4f08a53767aa11a309&v=44"
-        />
-
-        <a target="_blank" href="https://github.com/AnnaOlt">
-          Anna Olt
-        </a>
-
-        <img
-          style={imgStyle}
-          src="https://avatars1.githubusercontent.com/u/57610719?s=460&v=4"
-        />
-
-        <a target="_blank" href="https://github.com/stephdedios">
-          Stephanie De Dios
-        </a>
-
-        <img
-          style={imgStyle}
-          src="https://avatars1.githubusercontent.com/u/12042483?s=460&u=78db7f86d4babc5f63258afa091ca6588bcd36fa&v=4"
-        />
-        <a target="_blank" href="https://github.com/thetntm">
-          Michael Becker
-        </a>
-      </Gridlist>
+      <Card className={classes.card}>
+        <CardContent className={classes.content}>
+          <Typography variant="h5" component="h2">
+            Anna
+          </Typography>
+          <img
+            style={imgStyle}
+            src="https://avatars2.githubusercontent.com/u/58372483?s=460&u=6616430578acc1b13dd94d4f08a53767aa11a309&v=44"
+          />
+          <Typography variant="body2" component="p">
+            Plant Thirst Expert
+          </Typography>
+          <CardActions className={classes.button}>
+            <Button href="https://github.com/AnnaOlt">Visit Github</Button>
+          </CardActions>
+        </CardContent>
+        <CardContent className={classes.content}>
+          <Typography variant="h5" component="h2">
+            Sydney
+          </Typography>
+          <img
+            style={imgStyle}
+            src="https://avatars3.githubusercontent.com/u/51732808?s=400&u=12cfb14797c88903f86513d0b671ae1215851d3c&v=4"
+          />
+          <Typography variant="body2" component="p">
+            Lighting Conesour
+          </Typography>
+          <CardActions className={classes.button}>
+            <Button href="https://github.com/skrantzz">Visit Github</Button>
+          </CardActions>
+        </CardContent>
+        <CardContent className={classes.content}>
+          <Typography variant="h5" component="h2">
+            Emanuil
+          </Typography>
+          <img
+            style={imgStyle}
+            src="https://avatars1.githubusercontent.com/u/15513093?s=400&u=db39433ce07a73ad3e0b60da08b6d9c657bac5ba&v=4"
+          />
+          <Typography variant="body2" component="p">
+            Git Master
+          </Typography>
+          <CardActions className={classes.button}>
+            <Button href="https://github.com/VartanyanE">Visit Github </Button>
+          </CardActions>
+        </CardContent>
+        <CardContent className={classes.content}>
+          <Typography variant="h5" component="h2">
+            Martin
+          </Typography>
+          <img
+            style={imgStyle}
+            src="https://avatars3.githubusercontent.com/u/57580332?s=460&u=42b061be70f9ac15d45d301f92261e05db2cd667&v=4"
+          />
+          <Typography variant="body2" component="p">
+            Mongo Man
+          </Typography>
+          <CardActions className={classes.button}>
+            <Button href="https://github.com/mlfiii">Visit Github</Button>
+          </CardActions>
+        </CardContent>
+        <CardContent className={classes.content}>
+          <Typography variant="h5" component="h2">
+            Michael
+          </Typography>
+          <img
+            style={imgStyle}
+            src="https://avatars1.githubusercontent.com/u/12042483?s=460&u=78db7f86d4babc5f63258afa091ca6588bcd36fa&v=4"
+          />
+          <Typography variant="body2" component="p">
+            Style Fixer
+          </Typography>
+          <CardActions className={classes.button}>
+            <Button href="https://github.com/thetntm">Visit Github</Button>
+          </CardActions>
+        </CardContent>
+        <CardContent className={classes.content}>
+          <Typography variant="h5" component="h2">
+            Stephanie
+          </Typography>
+          <img
+            style={imgStyle}
+            src="https://avatars1.githubusercontent.com/u/57610719?s=460&v=4"
+          />
+          <Typography variant="body2" component="p">
+            Plant Encyclopedia
+          </Typography>
+          <CardActions className={classes.button}>
+            <Button href="https://github.com/stephdedios">Visit Github</Button>
+          </CardActions>
+        </CardContent>
+      </Card>
     </div>
   );
 }

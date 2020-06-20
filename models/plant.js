@@ -10,7 +10,8 @@ const plantSchema = new Schema({
     common_name: { type: String, required: true },
     plant_care: { type: String, required: true },
     reminders: String,
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
+    plant_sitter: {type: String}
 }, { collection: 'plants' });
 
 const Plant = mongoose.model("Plant", plantSchema);

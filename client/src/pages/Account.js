@@ -6,13 +6,15 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 
 import Avatar from "@material-ui/core/Avatar";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "80%",
+    width: "100%",
     marginTop: "100px",
-
     alignItems: "center",
+    padding: "1em",
   },
   formControl: {
     margin: theme.spacing(1),
@@ -20,6 +22,14 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  img: {
+    height: "40%",
+    width: "20%",
+    float: "left",
+    paddingLeft: "1em",
+    paddingRight: "1em",
+    paddingBottom: "1em",
   },
 }));
 function Account() {
@@ -42,15 +52,24 @@ function Account() {
 
   return (
     <div>
-      <div id="accountData" className={classes.root}>
+      <Card className={classes.root}>
+        <Typography variant="h3" gutterBottom>
+          Welcome to your hood, {JSON.parse(userName)} !
+        </Typography>
+        <img className={classes.img} src="picfour.jpg" />
+        <Typography variant="h4" gutterBottom>
+          My Email : {JSON.parse(email)}{" "}
+          <Button variant="outlined" color="primary">
+            Change
+          </Button>
+        </Typography>
+        <Typography variant="h4" gutterBottom>
+          My Plantkins{" "}
+          <Button href="/plantkins" variant="outlined" color="primary">
+            Go
+          </Button>
+        </Typography>
         <FormControl className={classes.formControl}>
-          <Typography variant="h3" gutterBottom>
-            Welcome to your hood, {JSON.parse(userName)} !
-          </Typography>
-          <Avatar variant="circle" alt="Remy Sharp" src="picone.jpg" />
-          <Typography variant="h4" gutterBottom>
-            My Email : {JSON.parse(email)}
-          </Typography>
           <Typography variant="h4" gutterBottom>
             My Zone:{" "}
             <Select
@@ -69,7 +88,7 @@ function Account() {
             </Select>
           </Typography>
         </FormControl>
-      </div>
+      </Card>
     </div>
   );
 }

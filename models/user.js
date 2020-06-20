@@ -12,7 +12,11 @@ const userSchema = new Schema(
     plants: [{
       type: Schema.Types.ObjectId,
       ref: "Plantsearch"
-    }]
+    }],
+    plantsit: {
+      type: Array,
+      default: []
+    }
   },
   { collection: "users" }
 );
