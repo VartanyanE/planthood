@@ -135,6 +135,14 @@ function Plants() {
                       {a.user_id} - Has {a.plants.length} Plantkins
                     </Button>
                   ))}
+                  <h2>Remove A Sitter</h2>
+                  {userList.map((a) => (
+                    <Button
+                      onClick={() => deletePlantsit(a._id, currentPlant)}
+                    >
+                      {a.user_id} - Has {a.plants.length} Plantkins
+                    </Button>
+                  ))}
                 </div>
               </div>
             </Fade>
@@ -182,7 +190,7 @@ function Plants() {
                         color="primary"
                         onClick={() => handleOpen(plant._id)}
                       >
-                        Assign Plant Sitter
+                        Assign/Remove Plant Sitter
                       </Button>
                     )}
                 </CardActions>
