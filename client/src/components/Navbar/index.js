@@ -150,16 +150,7 @@ function Navbar(props) {
                 <EcoIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
-            <Link to="/about">
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <InfoOutlinedIcon style={{ fill: "white" }} />
-              </IconButton>
-            </Link>
+           
 
             <Link to="/account">
               <IconButton
@@ -179,6 +170,16 @@ function Navbar(props) {
                 color="inherit"
               >
                 <SearchIcon style={{ fill: "white" }} />
+              </IconButton>
+            </Link>
+              <Link to="/about">
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <InfoOutlinedIcon style={{ fill: "white" }} />
               </IconButton>
             </Link>
           </Box>

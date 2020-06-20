@@ -149,9 +149,7 @@ function Plants() {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button size="small" color="primary">
-                    Share
-                    </Button>
+                  
                   <Button
                     size="small"
                     color="primary"
@@ -199,14 +197,10 @@ function Plants() {
                   </CardContent>
                 </Collapse>
               </Card>
-              // <GridListTile key={plant._id} cols={1}>
-              //   <p>{plant.common_name}</p>
-              //   <img src={plant.image_url} alt={plant.common_name} />
-              // </GridListTile>
+            
             ))
             : ""}
 
-          {/* </GridList> */}
         </div>
       </Container>
     </>

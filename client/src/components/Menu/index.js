@@ -110,6 +110,11 @@ function MenuListComposition(props) {
                         Browse
                       </MenuItem>
                     </Link>
+                    <Link to="/account">
+                      <MenuItem href="/account" onClick={handleClose}>
+                        Account
+                      </MenuItem>
+                    </Link>
                     <Link to="/about">
                       <MenuItem href="/about" onClick={handleClose}>
                         About
