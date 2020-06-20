@@ -161,34 +161,6 @@ function Navbar(props) {
               </Link>
             </Tooltip>
             <Tooltip title={
-              <p className={classes.toolTip}>Community</p>
-            } aria-label="Community">
-              <Link to="/community">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <ForumIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>About</p>
-            } aria-label="About">
-              <Link to="/about">
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="inherit"
-                >
-                  <InfoOutlinedIcon style={{ fill: "white" }} />
-                </IconButton>
-              </Link>
-            </Tooltip>
-            <Tooltip title={
               <p className={classes.toolTip}>My Account</p>
             } aria-label="My Account">
               <Link to="/account">
@@ -216,6 +188,21 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
+            <Tooltip title={
+              <p className={classes.toolTip}>About</p>
+            } aria-label="About">
+              <Link to="/about">
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
+                  <InfoOutlinedIcon style={{ fill: "white" }} />
+                </IconButton>
+              </Link>
+            </Tooltip>
+  
 
           </Box>
 

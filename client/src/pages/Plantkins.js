@@ -4,7 +4,6 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import tileData from "../components/TileData/TileData";
 import { getPlants, getUser, getUsers, grantAccess } from "../utils/API";
-import Sidebar from "../components/Sidebar";
 import Container from "@material-ui/core/Container";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -111,7 +110,7 @@ function Plants() {
     <>
       <Container className={classes.main}>
         <div className={classes.root}>
-          <Sidebar />
+  
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
