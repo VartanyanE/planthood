@@ -109,9 +109,9 @@ function Plants() {
   console.log('hi', user)
   return (
     <>
-      <Sidebar />
       <Container className={classes.main}>
         <div className={classes.root}>
+          <Sidebar />
           <Modal
             aria-labelledby="transition-modal-title"
             aria-describedby="transition-modal-description"
@@ -144,7 +144,6 @@ function Plants() {
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
-
                 <Card className={classes.card}>
                   <CardActionArea>
                     <CardMedia
@@ -186,7 +185,6 @@ function Plants() {
                         Assign Plant Sitter
                       </Button>
                     )}
-
                   </CardActions>
                   <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                     <CardContent>
@@ -217,9 +215,8 @@ function Plants() {
                 //   <img src={plant.image_url} alt={plant.common_name} />
                 // </GridListTile>
               ))
-
             : ""}
-        
+
 <h1>Plantsitting</h1>
            {user.plantsit
             ? user.plantsit.map((plant, i) => (

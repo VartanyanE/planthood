@@ -9,6 +9,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Accordion from "../Accordion";
 import plantContext from "../../utils/plantContext";
+import Grid from '@material-ui/core/Grid';
 import "./style.css";
 import { getUser } from "../../utils/API";
 import { Box } from "@material-ui/core";
@@ -43,11 +44,14 @@ export default function SimpleTable() {
     //   <Table className={classes.table} aria-label="simple table">
     //     <TableHead />
     //     <TableBody>
-    <Box>
+    <Grid container className={classes.root} spacing={1}>
       {plants.map((plant, i) => (
-        <Accordion row={plant} plantId={plant._id} rowId={i} hasBeenChecked={selectedPlants.includes(plant._id)} />
+        <Grid item xs={12} md={6}>
+          <Accordion row={plant} plantId={plant._id} rowId={i} hasBeenChecked={selectedPlants.includes(plant._id)} />
+        </Grid>
       ))}
-    </Box>
+    </Grid>
+      
     //     </TableBody>
     //   </Table>
     // </TableContainer >
