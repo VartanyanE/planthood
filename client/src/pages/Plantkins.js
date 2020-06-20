@@ -166,7 +166,10 @@ function Plants() {
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name}
+                      {plant.common_name.substring(0,plant.common_name.indexOf(","))}
+                    </Typography>
+                    <Typography>
+                      Other names: {plant.common_name.substring(plant.common_name.indexOf(",") + 1)}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -245,7 +248,10 @@ function Plants() {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {plant.common_name}
+                        {plant.common_name.substring(0,plant.common_name.indexOf(","))}
+                      </Typography>
+                      <Typography>
+                        Other names: {plant.common_name.substring(plant.common_name.indexOf(",") + 1)}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
