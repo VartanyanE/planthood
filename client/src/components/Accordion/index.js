@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     height: 450,
   },
   image: {
-    height: "500px",
+    height: "300px",
   },
   card: {
     margin: "2rem",
