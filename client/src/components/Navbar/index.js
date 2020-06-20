@@ -125,13 +125,13 @@ function Navbar(props) {
 
   const logOutButton = (event) => {
     setUser(null);
-    localStorage.setItem("user", "");
+    localStorage.clear();
     props.history.push({
       pathname: "/",
     });
   };
 
-  return (
+  return user ? (
     <div className={classes.root}>
       <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
@@ -144,11 +144,12 @@ function Navbar(props) {
           </Typography>
 
           {/* Menu Item Wrapper Box */}
-          <Box display={{ xs: "none", md: "block" }}>
 
-            <Tooltip title={
-                <p className={classes.toolTip}>My Plantkins</p>
-              } aria-label="My Plantkins">
+          <Box display={{ xs: "none", md: "block" }}>
+            <Tooltip
+              title={<p className={classes.toolTip}>My Plantkins</p>}
+              aria-label="My Plantkins"
+            >
               <Link to="/plantkins">
                 <IconButton
                   aria-label="account of current user"
@@ -160,9 +161,10 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>Community</p>
-            } aria-label="Community">
+            <Tooltip
+              title={<p className={classes.toolTip}>Community</p>}
+              aria-label="Community"
+            >
               <Link to="/community">
                 <IconButton
                   aria-label="account of current user"
@@ -174,9 +176,10 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>About</p>
-            } aria-label="About">
+            <Tooltip
+              title={<p className={classes.toolTip}>About</p>}
+              aria-label="About"
+            >
               <Link to="/about">
                 <IconButton
                   aria-label="account of current user"
@@ -188,9 +191,10 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>My Account</p>
-            } aria-label="My Account">
+            <Tooltip
+              title={<p className={classes.toolTip}>My Account</p>}
+              aria-label="My Account"
+            >
               <Link to="/account">
                 <IconButton
                   aria-label="account of current user"
@@ -202,9 +206,10 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-            <Tooltip title={
-              <p className={classes.toolTip}>Browse Plants</p>
-            } aria-label="Browse Plants">
+            <Tooltip
+              title={<p className={classes.toolTip}>Browse Plants</p>}
+              aria-label="Browse Plants"
+            >
               <Link to="/browse">
                 <IconButton
                   aria-label="account of current user"
@@ -216,7 +221,6 @@ function Navbar(props) {
                 </IconButton>
               </Link>
             </Tooltip>
-
           </Box>
 
           <div className={classes.search}>
@@ -231,12 +235,15 @@ function Navbar(props) {
               onChange={handleChange}
             />
           </div>
+
           <Box display={{ xs: "block", md: "none" }}>
             <MenuListComposition />
           </Box>
-          <Tooltip title={
-              <p className={classes.toolTip}>Log Out</p>
-            } aria-label="Log Out">
+
+          <Tooltip
+            title={<p className={classes.toolTip}>Log Out</p>}
+            aria-label="Log Out"
+          >
             <Link to="/">
               <IconButton
                 aria-label="account of current user"
@@ -249,6 +256,22 @@ function Navbar(props) {
               </IconButton>
             </Link>
           </Tooltip>
+        </Toolbar>
+      </AppBar>
+    </div>
+  ) : (
+    <div className={classes.root}>
+      <AppBar position="absolute" className={classes.appBar}>
+        <Toolbar>
+          <Link to="/">
+            {" "}
+            <img src="nav-logo.png" alt="logo" className={classes.logo} />
+          </Link>
+          <Typography className={classes.title} variant="h6" noWrap>
+            PLANTHOOD
+          </Typography>
+
+          {/* Menu Item Wrapper Box */}
         </Toolbar>
       </AppBar>
     </div>

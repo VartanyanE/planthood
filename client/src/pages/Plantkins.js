@@ -141,7 +141,6 @@ function Plants() {
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
-
                 <Card className={classes.card}>
                   <CardActionArea>
                     <CardMedia
@@ -163,6 +162,7 @@ function Plants() {
                       color="primary"
                       aria-expanded={expandedId === i}
                       aria-label="show more"
+                      onClick={() => handleExpandClick(i)}
                     >
                       Learn More
                     </Button>
@@ -183,7 +183,6 @@ function Plants() {
                         Assign Plant Sitter
                       </Button>
                     )}
-
                   </CardActions>
                   <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                     <CardContent>
@@ -214,9 +213,7 @@ function Plants() {
                 //   <img src={plant.image_url} alt={plant.common_name} />
                 // </GridListTile>
               ))
-
             : ""}
-
         </div>
       </Container>
     </>

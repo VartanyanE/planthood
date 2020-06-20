@@ -20,14 +20,15 @@ function Landing() {
         }}
       />
       {login ? <Login /> : <SignUp />}
-      <h1>Landing</h1>
-
-      <Button color="primary" variant="outlined" onClick={() => setLogin(0)}>
-        Sign Up
-      </Button>
-      <Button color="primary" variant="outlined" onClick={() => setLogin(1)}>
-        Log In
-      </Button>
+      {login ? (
+        <Button color="primary" onClick={() => setLogin(0)}>
+          Or Sign Up
+        </Button>
+      ) : (
+        <Button color="primary" onClick={() => setLogin(1)}>
+          Or LogIn
+        </Button>
+      )}
     </div>
   ) : (
     <div style={{ marginTop: "100px" }}>
