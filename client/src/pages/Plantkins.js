@@ -93,8 +93,10 @@ function Plants() {
       .catch((err) => console.log(err));
 
     getUsers().then(({ data }) =>
-      setUserList(data.filter((a) => !(a.user_id === userId)))
+    setUserList(data.filter((a) => !(a.user_id === userId)))
     );
+    
+
   }, [clicked]);
   //expand button code
 
@@ -103,7 +105,8 @@ function Plants() {
   const handleExpandClick = (i) => {
     setExpandedId(expandedId === i ? -1 : i);
   };
-
+  
+  console.log('hi', user)
   return (
     <>
       <Container className={classes.main}>
@@ -213,6 +216,69 @@ function Plants() {
                 // </GridListTile>
               ))
             : ""}
+
+<h1>Plantsitting</h1>
+           {user.plantsit
+            ? user.plantsit.map((plant, i) => (
+              <Card className={classes.card}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      alt="Plant Info"
+                      height="300"
+                      image={plant.image_url}
+                      title="Plant Info"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {plant.common_name}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button
+                      size="small"
+                      color="primary"
+                      aria-expanded={expandedId === i}
+                      aria-label="show more"
+                    >
+                      Learn More
+                    </Button>
+                   
+
+                  </CardActions>
+                  <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                    <CardContent>
+                      <div>
+                        <strong>Scientific Name:</strong> {plant.family_name}
+                        <br />
+                        <strong>Plant Care:</strong> {plant.plant_care}
+                        <br />
+                        <strong>Foliage Color:</strong> {plant.foliage_color}
+                        <br />
+                        <strong>Lighting Needs:</strong> {plant.lighting_needs}
+                        <br />
+                        <strong>Watering Needs:</strong> {plant.watering_needs}
+                        <br />
+                        <strong>Soil Needs:</strong> {plant.soil_needs}
+                        <br />
+                        <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
+                        <br />
+                        <strong>Human Edible:</strong> {plant.human_edible}
+                        <br />
+                        <strong>Pet Edible:</strong> {plant.pet_edible}
+                      </div>
+                    </CardContent>
+                  </Collapse>
+                </Card>
+                // <GridListTile key={plant._id} cols={1}>
+                //   <p>{plant.common_name}</p>
+                //   <img src={plant.image_url} alt={plant.common_name} />
+                // </GridListTile>
+              ))
+
+            : ""}
+          
         </div>
       </Container>
     </>
