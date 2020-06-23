@@ -202,7 +202,7 @@ function Plants() {
                 </CardActions>
                 <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <div>
+                    <Typography>
                       <strong>Scientific Name:</strong> {plant.family_name}
                       <br />
                       <strong>Plant Care:</strong> {plant.plant_care}
@@ -220,7 +220,7 @@ function Plants() {
                       <strong>Human Edible:</strong> {plant.human_edible}
                       <br />
                       <strong>Pet Edible:</strong> {plant.pet_edible}
-                    </div>
+                    </Typography>
                   </CardContent>
                 </Collapse>
               </Card>
@@ -264,7 +264,7 @@ function Plants() {
                 </CardActions>
                 <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                   <CardContent>
-                    <div>
+                    <Typography>
                       <strong>Scientific Name:</strong> {plant.family_name}
                       <br />
                       <strong>Plant Care:</strong> {plant.plant_care}
@@ -282,7 +282,7 @@ function Plants() {
                       <strong>Human Edible:</strong> {plant.human_edible}
                       <br />
                       <strong>Pet Edible:</strong> {plant.pet_edible}
-                    </div>
+                    </Typography>
                   </CardContent>
                 </Collapse>
               </Card>
