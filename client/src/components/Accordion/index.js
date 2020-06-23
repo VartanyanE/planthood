@@ -84,7 +84,10 @@ export default function ControlledExpansionPanels({ row, plantId, hasBeenChecked
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {row.common_name}
+              {row.common_name.includes(",") ? row.common_name.substring(0,row.common_name.indexOf(",")) : row.common_name}
+            </Typography>
+            <Typography>
+              {row.common_name.includes(",") ? "Other names:" + row.common_name.substring(row.common_name.indexOf(",") + 1) : "No other known names"}
             </Typography>
           </CardContent>
         </CardActionArea>

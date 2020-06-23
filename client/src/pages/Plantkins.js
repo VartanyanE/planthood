@@ -55,10 +55,9 @@ const useStyles = makeStyles((theme) => ({
     height: 450,
   },
   image: {
-    height: "500px",
+    height: "300px",
   },
   card: {
-    margin: "2rem",
     width: '100%'
   },
   paper: {
@@ -114,44 +113,43 @@ function Plants() {
   const handleExpandClick = (i) => {
     setExpandedId(expandedId === i ? -1 : i);
   };
-
   return (
     <>
       <Container className={classes.main}>
-        <Grid container className={classes.root} spacing={4}>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className={classes.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open}>
-              <div className={classes.paper}>
-                <div className={classes.list}>
-                  <h2 id="transition-modal-title">Select A Sitter</h2>
-                  {userList.map((a) => (
-                    <Button
-                      onClick={() => grantAccess(a.user_id, currentPlant)}
-                    >
-                      {a.user_id} - Has {a.plants.length} Plantkins
-                    </Button>
-                  ))}
-                  <h2>Remove A Sitter</h2>
-                  {userList.map((a) => (
-                    <Button onClick={() => deletePlantsit(a._id, currentPlant)}>
-                      {a.user_id} - Has {a.plants.length} Plantkins
-                    </Button>
-                  ))}
-                </div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <div className={classes.list}>
+                <h2 id="transition-modal-title">Select A Sitter</h2>
+                {userList.map((a) => (
+                  <Button
+                    onClick={() => grantAccess(a.user_id, currentPlant)}
+                  >
+                    {a.user_id} - Has {a.plants.length} Plantkins
+                  </Button>
+                ))}
+                <h2>Remove A Sitter</h2>
+                {userList.map((a) => (
+                  <Button onClick={() => deletePlantsit(a._id, currentPlant)}>
+                    {a.user_id} - Has {a.plants.length} Plantkins
+                  </Button>
+                ))}
               </div>
-            </Fade>
-          </Modal>
+            </div>
+          </Fade>
+        </Modal>
+          <Grid container className={classes.root} spacing={4}>
           {user.plants ? <Grid item xs={12}><h1 className={classes.header}>My Plantkins</h1></Grid> : ""}
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
@@ -162,13 +160,16 @@ function Plants() {
                   <CardMedia
                     component="img"
                     alt="Plant Info"
-                    height="300"
+                    height="500"
                     image={plant.image_url}
                     title="Plant Info"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {plant.common_name}
+                      {plant.common_name.includes(",") ? plant.common_name.substring(0,plant.common_name.indexOf(",")) : plant.common_name}
+                    </Typography>
+                    <Typography>
+                      {plant.common_name.includes(",") ? "Other names:" + plant.common_name.substring(plant.common_name.indexOf(",") + 1) : "No other known names"}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -190,7 +191,7 @@ function Plants() {
                   {plant.plant_sitter ? (
                     <Button>
                       `Currently Under Care of ${plant.plant_sitter}`
-                      </Button>
+                    </Button>
                   ) : (
                       <Button
                         color="primary"
@@ -241,13 +242,16 @@ function Plants() {
                     <CardMedia
                       component="img"
                       alt="Plant Info"
-                      height="300"
+                      height="500"
                       image={plant.image_url}
                       title="Plant Info"
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {plant.common_name}
+                        {plant.common_name.includes(",") ? plant.common_name.substring(0,plant.common_name.indexOf(",")) : plant.common_name}
+                      </Typography>
+                      <Typography>
+                        {plant.common_name.includes(",") ? "Other names:" + plant.common_name.substring(plant.common_name.indexOf(",") + 1) : "No other known names"}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -255,14 +259,14 @@ function Plants() {
                   <Button
                     size="small"
                     color="primary"
-                    aria-expanded={expandedId === i}
+                    aria-expanded={expandedId === i + user.plants.length}
                     aria-label="show more"
-                    onClick={() => handleExpandClick(i)}
+                    onClick={() => handleExpandClick(i + user.plants.length)}
                   >
                     Learn More
                     </Button>
                 </CardActions>
-                <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                <Collapse in={expandedId === i + user.plants.length} timeout="auto" unmountOnExit>
                   <CardContent>
                     <Typography>
                       <strong>Scientific Name:</strong> {plant.family_name}
