@@ -1,9 +1,9 @@
 import React, { Component, useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from '@material-ui/core/Grid';
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import tileData from "../components/TileData/TileData";
+// import GridList from "@material-ui/core/GridList";
+// import GridListTile from "@material-ui/core/GridListTile";
+// import tileData from "../components/TileData/TileData";
 import {
   getPlants,
   getUser,
@@ -106,8 +106,8 @@ function Plants() {
       setUserList(data.filter((a) => !(a.user_id === userId)))
     );
   }, [clicked]);
-  //expand button code
 
+  //expand button code
   const [expandedId, setExpandedId] = React.useState(-1);
 
   const handleExpandClick = (i) => {
@@ -186,7 +186,6 @@ function Plants() {
                     <CheckboxLabels
                       id={plant._id}
                       isChecked={true}
-                    // onClick={isClicked}
                     />
                     {plant.plant_sitter ? (
                       <Button>
@@ -226,10 +225,6 @@ function Plants() {
                   </Collapse>
                 </Card>
               </Grid>
-              // <GridListTile key={plant._id} cols={1}>
-              //   <p>{plant.common_name}</p>
-              //   <img src={plant.image_url} alt={plant.common_name} />
-              // </GridListTile>
             ))
             : ""}
           <Grid item xs={12}><h1 className={classes.header}>Plantsitting</h1></Grid>
@@ -259,7 +254,6 @@ function Plants() {
                     <CheckboxLabelsRemovePlantsit
                       id={plant._id}
                       isChecked={true}
-                    // onClick={isClicked}
                     />
                     <Button
                       size="small"
@@ -296,10 +290,6 @@ function Plants() {
                   </Collapse>
                 </Card>
               </Grid>
-              // <GridListTile key={plant._id} cols={1}>
-              //   <p>{plant.common_name}</p>
-              //   <img src={plant.image_url} alt={plant.common_name} />
-              // </GridListTile>
             ))
             : ""}
         </Grid>
