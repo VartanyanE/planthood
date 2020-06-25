@@ -6,6 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Button, Container, ThemeProvider } from "@material-ui/core";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure();
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
   const [formObject, setFormObject] = useState({});
   // const [user, setUser] = useState([]);
+
   const { user, setUser } = useContext(userContext);
+
   const classes = useStyles();
   // console.log(user);
   const handleChange = (event) => {
@@ -54,7 +60,9 @@ function Login(props) {
           pathname: "/plantkins",
         });
       }
-    });
+    })  
+    .catch((err) => toast.warning("Email or Password is wrong, yo!"));
+
   };
 
   return (

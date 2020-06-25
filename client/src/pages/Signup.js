@@ -6,6 +6,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Button, Container, ThemeProvider } from "@material-ui/core";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -71,7 +76,7 @@ const Signup = (props) => {
           }
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast("Oops, something went wrong!"));
   };
 
   return (
