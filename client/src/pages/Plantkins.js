@@ -29,6 +29,11 @@ import Collapse from "@material-ui/core/Collapse";
 import CheckboxLabels from "../../src/components/CheckboxRemove";
 import CheckboxLabelsRemovePlantsit from "../../src/components/CheckboxRemovePlantsit";
 import clickedContext from "../utils/clickedContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -134,14 +139,22 @@ function Plants() {
                 <h2 id="transition-modal-title">Select A Sitter</h2>
                 {userList.map((a) => (
                   <Button
-                    onClick={() => grantAccess(a.user_id, currentPlant)}
+                    onClick={() => {
+                      grantAccess(a.user_id, currentPlant)
+                      toast("Plantsitter added!")
+                    }
+                    }
                   >
                     {a.user_id} - Has {a.plants.length} Plantkins
                   </Button>
                 ))}
                 <h2>Remove A Sitter</h2>
                 {userList.map((a) => (
-                  <Button onClick={() => deletePlantsit(a._id, currentPlant)}>
+                  <Button onClick={() => {
+                    deletePlantsit(a._id, currentPlant)
+                    toast("Plantsitter removed!")
+                  }
+                  }>
                     {a.user_id} - Has {a.plants.length} Plantkins
                   </Button>
                 ))}
