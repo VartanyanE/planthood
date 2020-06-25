@@ -10,6 +10,10 @@ import userContext from "../../utils/userContext";
 import Tooltip from "@material-ui/core/Tooltip";
 import { deletePlantsit, getUser, checkUserPlant } from "../../utils/API";
 import clickedContext from "../../utils/clickedContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 let heartColorChecked = green[600];
 let heartColorUnchecked = green[400];
@@ -50,6 +54,7 @@ export default function CheckboxLabels({ id, isChecked }) {
     console.log('handlechange', user._id, id)
     deletePlantsit(user._id, id).then(({ data }) => {
       setUser(data);
+      toast("Plantsit assignment removed!")
     });
     setState(!state);
   };
