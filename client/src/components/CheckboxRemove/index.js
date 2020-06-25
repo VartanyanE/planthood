@@ -10,6 +10,11 @@ import userContext from "../../utils/userContext";
 import Tooltip from "@material-ui/core/Tooltip";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
 import clickedContext from "../../utils/clickedContext";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure();
+
 
 let heartColorChecked = green[600];
 let heartColorUnchecked = green[400];
@@ -49,6 +54,7 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChange = () => {
     addRemovePlant(id, user._id, "remove").then(({ data }) => {
       setUser(data);
+      toast("Plantkin removed!")
     });
     setState(!state);
   };

@@ -8,6 +8,10 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import userContext from "../../utils/userContext";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
 import clickedContext from "../../utils/clickedContext";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
+
+toast.configure();
 
 let heartColorChecked = green[600];
 let heartColorUnchecked = green[400];
@@ -24,6 +28,7 @@ const GreenCheckbox = withStyles({
 export default function CheckboxLabels({ id, isChecked }) {
   const [user, setUser] = useState([]);
   const [state, setState] = React.useState(false);
+  // const [notification, setNotification] = useState(false);
   const { clicked, setClicked } = useContext(clickedContext);
 
   useEffect(() => {
@@ -39,10 +44,11 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data);
+      toast("Plantkin added!")
     });
     setState(!state);
+    
   };
-
   const handleCheckedLoad = (pId, uId) => {
     checkUserPlant(pId, uId)
       .then((res) => {
@@ -59,6 +65,7 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChecked = (event) => {
     event.stopPropagation();
     isClicked();
+    
   };
 
   const isClicked = () => {
@@ -66,6 +73,7 @@ export default function CheckboxLabels({ id, isChecked }) {
       setClicked(true);
     } else if (clicked === true) {
       setClicked(false);
+  
     }
   };
 
