@@ -44,9 +44,11 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data);
-      toast("Plantkin added!", { delay: 1000 });
+      state ? toast("Plantkin removed!", {delay:1000) : toast("Plantkin added!", {delay:1000)
     });
     setState(!state);
+
+
   };
   const handleCheckedLoad = (pId, uId) => {
     checkUserPlant(pId, uId)
@@ -64,6 +66,7 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChecked = (event) => {
     event.stopPropagation();
     isClicked();
+
   };
 
   const isClicked = () => {
@@ -71,6 +74,7 @@ export default function CheckboxLabels({ id, isChecked }) {
       setClicked(true);
     } else if (clicked === true) {
       setClicked(false);
+
     }
   };
 
