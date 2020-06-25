@@ -54,7 +54,7 @@ export default function CheckboxLabels({ id, isChecked }) {
     console.log('handlechange', user._id, id)
     deletePlantsit(user._id, id).then(({ data }) => {
       setUser(data);
-      toast("Plantsit assignment removed!", { delay: 1000 })
+      toast("Plantsit assignment removed!")
     });
     setState(!state);
   };
