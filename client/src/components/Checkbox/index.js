@@ -44,7 +44,7 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data);
-      state ? toast("Plantkin removed!", {delay:1000} : toast("Plantkin added!", {delay:1000}
+      state ? toast("Plantkin removed!", {delay:1000}) : toast("Plantkin added!", {delay:1000})
     });
     setState(!state);
 
