@@ -9,7 +9,7 @@ import userContext from "../../utils/userContext";
 import { addRemovePlant, getUser, checkUserPlant } from "../../utils/API";
 import clickedContext from "../../utils/clickedContext";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
@@ -44,9 +44,10 @@ export default function CheckboxLabels({ id, isChecked }) {
   const handleChange = () => {
     addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
       setUser(data);
-      state ? toast("Plantkin removed!") : toast("Plantkin added!")
+      state ? toast("Plantkin removed!", {delay:1000) : toast("Plantkin added!", {delay:1000)
     });
     setState(!state);
+
 
   };
   const handleCheckedLoad = (pId, uId) => {
