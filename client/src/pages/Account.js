@@ -125,7 +125,7 @@ function Account() {
           <Grid item xs={12}>
             <FormGroup row>
               <Typography className={classes.text} variant="h4">
-                Recieve Reminders
+                Receive Reminders
               </Typography>
               <FormControlLabel
                 control={
