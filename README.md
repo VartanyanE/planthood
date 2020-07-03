@@ -7,7 +7,7 @@
 <table>
 <tr>
 <td>
-  A React App that allows you to search plants from a database and add them to your page.  Gives user the ability to grant access to a plant sitter.
+  A React plant management app that allows users to search for plants, add them to their virtual greenhouse, and gain knowledge about how to care for each plant. User also has ability to give access to a Plantsitter.
 </td>
 </tr>
 </table>
