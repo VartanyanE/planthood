@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Button, Container, ThemeProvider } from "@material-ui/core";
 import Login from "../Login";
 import SignUp from "../Signup";
 import userContext from "../../utils/userContext";
 import { loginUser } from "../../utils/API";
 import "./style.css";
+
 function Landing(props) {
   const [login, setLogin] = useState(0);
   const { user, setUser } = useContext(userContext);
@@ -21,6 +22,41 @@ function Landing(props) {
           marginTop: "100px",
         }}
       />
+      <div id="content">
+        <Button
+          color="primary"
+          variant="outlined"
+          onClick={() =>
+            loginUser({
+              user_id: "test@test.com",
+              password: "123456",
+            }).then((res) => {
+              console.log(res.data);
+
+              // console.log(user);
+
+              const success = res.data.success;
+
+              if (success) {
+                setUser(res.data.user);
+                localStorage.setItem(
+                  "user",
+                  JSON.stringify(res.data.user.user_id)
+                );
+                localStorage.setItem(
+                  "user_name",
+                  JSON.stringify(res.data.user.user_name)
+                );
+                props.history.push({
+                  pathname: "/plantkins",
+                });
+              }
+            })
+          }
+        >
+          Guest Access
+        </Button>
+      </div>
       <Login />
 
       <Button
@@ -34,7 +70,7 @@ function Landing(props) {
         Sign Up
       </Button>
       <br />
-      <div id="content">
+      {/* <div id="content">
         <Button
           color="primary"
           onClick={() =>
@@ -67,7 +103,7 @@ function Landing(props) {
         >
           Guest Access
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

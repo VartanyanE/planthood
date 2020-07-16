@@ -1,15 +1,24 @@
 #content {
   position: relative;
-  animation-name: content;
+  animation: content 1s infinite;
   animation-duration: 2s;
   animation-fill-mode: forwards;
 }
 
 @keyframes content {
   0% {
-    left: -1000px;
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(0deg);
+  }
+  85% {
+    transform: rotate(5deg);
+  }
+  95% {
+    transform: rotate(-5deg);
   }
   100% {
-    left: 0;
+    transform: rotate(0deg);
   }
 }
