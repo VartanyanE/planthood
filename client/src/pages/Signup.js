@@ -7,7 +7,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { Button, Container, ThemeProvider } from "@material-ui/core";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
@@ -80,89 +80,100 @@ const Signup = (props) => {
   };
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={0}>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}></Paper>
+    <div style={{ textAlign: "center" }}>
+      <img
+        src={"landinglogo-withds.png"}
+        style={{
+          alignContent: "center",
+
+          width: "60%",
+          marginTop: "100px",
+        }}
+      />
+      <div className={classes.root}>
+        <Grid container spacing={0}>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}></Paper>
+          </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <h1>Sign Up</h1>
+            </Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Paper className={classes.paper}></Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="user_name"> </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name-input"
+                    placeholder="Name"
+                    onChange={handleInputChange}
+                    name="user_name"
+                    style={{ marginBottom: "8px" }}
+                  />
+                  <br></br>
+                  <label htmlFor="email"> </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email-input"
+                    placeholder="Email Address"
+                    onChange={handleInputChange}
+                    name="email"
+                    style={{ marginBottom: "8px" }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password" className="text-light"></label>
+                  <input
+                    type="zipcode"
+                    className="form-control"
+                    id="zipcode-input"
+                    placeholder="Zipcode"
+                    onChange={handleInputChange}
+                    name="zipcode"
+                    style={{ marginBottom: "8px" }}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password" className="text-light"></label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password-input"
+                    placeholder="Password"
+                    onChange={handleInputChange}
+                    name="password"
+                    style={{ marginBottom: "8px" }}
+                  />
+                </div>
+                <div
+                  style={{ display: "none" }}
+                  id="alert"
+                  className="alert alert-danger"
+                  role="alert"
+                >
+                  <span
+                    className="glyphicon glyphicon-exclamation-sign"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="sr-only">Error:</span>{" "}
+                  <span className="msg"></span>
+                </div>
+                <Button type="submit" color="primary" variant="outlined">
+                  Sign Up
+                </Button>
+              </form>
+            </Paper>
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Paper className={classes.paper}>
-            <h1>Sign Up</h1>
-          </Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}></Paper>
-        </Grid>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="user_name"> </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name-input"
-                  placeholder="Name"
-                  onChange={handleInputChange}
-                  name="user_name"
-                  style={{ marginBottom: "8px" }}
-                />
-                <br></br>
-                <label htmlFor="email"> </label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email-input"
-                  placeholder="Email Address"
-                  onChange={handleInputChange}
-                  name="email"
-                  style={{ marginBottom: "8px" }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password" className="text-light"></label>
-                <input
-                  type="zipcode"
-                  className="form-control"
-                  id="zipcode-input"
-                  placeholder="Zipcode"
-                  onChange={handleInputChange}
-                  name="zipcode"
-                  style={{ marginBottom: "8px" }}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password" className="text-light"></label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password-input"
-                  placeholder="Password"
-                  onChange={handleInputChange}
-                  name="password"
-                  style={{ marginBottom: "8px" }}
-                />
-              </div>
-              <div
-                style={{ display: "none" }}
-                id="alert"
-                className="alert alert-danger"
-                role="alert"
-              >
-                <span
-                  className="glyphicon glyphicon-exclamation-sign"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Error:</span>{" "}
-                <span className="msg"></span>
-              </div>
-              <Button type="submit" color="primary" variant="outlined">
-                Sign Up
-              </Button>
-            </form>
-          </Paper>
-        </Grid>
-      </Grid>
+      </div>
     </div>
   );
 };
