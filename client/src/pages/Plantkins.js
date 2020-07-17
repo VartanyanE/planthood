@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 // import GridList from "@material-ui/core/GridList";
 // import GridListTile from "@material-ui/core/GridListTile";
 // import tileData from "../components/TileData/TileData";
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   header: {
-    textAlign: "center"
+    textAlign: "center",
   },
   modal: {
     display: "flex",
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     height: "300px",
   },
   card: {
-    width: '100%'
+    width: "100%",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
@@ -94,12 +94,25 @@ function Plants() {
     setOpen(true);
   };
 
+  const successToast = () => {
+    toast.success("Sydney! Can you add instructions here? ", {
+      position: "top-center",
+      autoClose: 8000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
 
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem("user"));
+    successToast();
 
     getUser(userId)
       .then((res) => {
@@ -163,7 +176,13 @@ function Plants() {
           </Fade>
         </Modal>
         <Grid container className={classes.root} spacing={4}>
-          {user.plants ? <Grid item xs={12}><h1 className={classes.header}>My Plantkins</h1></Grid> : ""}
+          {user.plants ? (
+            <Grid item xs={12}>
+              <h1 className={classes.header}>My Plantkins</h1>
+            </Grid>
+          ) : (
+              ""
+            )}
           {/* <GridList cellHeight={200} className={classes.gridList} cols={4}> */}
           {user.plants
             ? user.plants.map((plant, i) => (
@@ -179,10 +198,20 @@ function Plants() {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {plant.common_name.includes(",") ? plant.common_name.substring(0, plant.common_name.indexOf(",")) : plant.common_name}
+                        {plant.common_name.includes(",")
+                          ? plant.common_name.substring(
+                            0,
+                            plant.common_name.indexOf(",")
+                          )
+                          : plant.common_name}
                       </Typography>
                       <Typography>
-                        {plant.common_name.includes(",") ? "Other names:" + plant.common_name.substring(plant.common_name.indexOf(",") + 1) : "No other known names"}
+                        {plant.common_name.includes(",")
+                          ? "Other names:" +
+                          plant.common_name.substring(
+                            plant.common_name.indexOf(",") + 1
+                          )
+                          : "No other known names"}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -195,25 +224,26 @@ function Plants() {
                       onClick={() => handleExpandClick(i)}
                     >
                       Learn More
-                    </Button>
-                    <CheckboxLabels
-                      id={plant._id}
-                      isChecked={true}
-                    />
+                      </Button>
+                    <CheckboxLabels id={plant._id} isChecked={true} />
                     {plant.plant_sitter ? (
                       <Button>
                         `Currently Under Care of ${plant.plant_sitter}`
-                    </Button>
+                        </Button>
                     ) : (
                         <Button
                           color="primary"
                           onClick={() => handleOpen(plant._id)}
                         >
                           Assign/Remove Plant Sitter
-                      </Button>
+                        </Button>
                       )}
                   </CardActions>
-                  <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
+                  <Collapse
+                    in={expandedId === i}
+                    timeout="auto"
+                    unmountOnExit
+                  >
                     <CardContent>
                       <Typography>
                         <strong>Scientific Name:</strong> {plant.family_name}
@@ -222,13 +252,16 @@ function Plants() {
                         <br />
                         <strong>Foliage Color:</strong> {plant.foliage_color}
                         <br />
-                        <strong>Lighting Needs:</strong> {plant.lighting_needs}
+                        <strong>Lighting Needs:</strong>{" "}
+                        {plant.lighting_needs}
                         <br />
-                        <strong>Watering Needs:</strong> {plant.watering_needs}
+                        <strong>Watering Needs:</strong>{" "}
+                        {plant.watering_needs}
                         <br />
                         <strong>Soil Needs:</strong> {plant.soil_needs}
                         <br />
-                        <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
+                        <strong>USDA Hardiness Zone:</strong>{" "}
+                        {plant.USDA_zone}
                         <br />
                         <strong>Human Edible:</strong> {plant.human_edible}
                         <br />
@@ -240,12 +273,13 @@ function Plants() {
               </Grid>
             ))
             : ""}
-          <Grid item xs={12}><h1 className={classes.header}>Plantsitting</h1></Grid>
+          <Grid item xs={12}>
+            <h1 className={classes.header}>Plantsitting</h1>
+          </Grid>
           {user.plantsit
             ? user.plantsit.map((plant, i) => (
               <Grid item xs={12} md={6}>
                 <Card className={classes.card}>
-
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -256,10 +290,20 @@ function Plants() {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {plant.common_name.includes(",") ? plant.common_name.substring(0, plant.common_name.indexOf(",")) : plant.common_name}
+                        {plant.common_name.includes(",")
+                          ? plant.common_name.substring(
+                            0,
+                            plant.common_name.indexOf(",")
+                          )
+                          : plant.common_name}
                       </Typography>
                       <Typography>
-                        {plant.common_name.includes(",") ? "Other names:" + plant.common_name.substring(plant.common_name.indexOf(",") + 1) : "No other known names"}
+                        {plant.common_name.includes(",")
+                          ? "Other names:" +
+                          plant.common_name.substring(
+                            plant.common_name.indexOf(",") + 1
+                          )
+                          : "No other known names"}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -273,12 +317,18 @@ function Plants() {
                       color="primary"
                       aria-expanded={expandedId === i + user.plants.length}
                       aria-label="show more"
-                      onClick={() => handleExpandClick(i + user.plants.length)}
+                      onClick={() =>
+                        handleExpandClick(i + user.plants.length)
+                      }
                     >
                       Learn More
-                    </Button>
+                      </Button>
                   </CardActions>
-                  <Collapse in={expandedId === i + user.plants.length} timeout="auto" unmountOnExit>
+                  <Collapse
+                    in={expandedId === i + user.plants.length}
+                    timeout="auto"
+                    unmountOnExit
+                  >
                     <CardContent>
                       <Typography>
                         <strong>Scientific Name:</strong> {plant.family_name}
@@ -287,13 +337,16 @@ function Plants() {
                         <br />
                         <strong>Foliage Color:</strong> {plant.foliage_color}
                         <br />
-                        <strong>Lighting Needs:</strong> {plant.lighting_needs}
+                        <strong>Lighting Needs:</strong>{" "}
+                        {plant.lighting_needs}
                         <br />
-                        <strong>Watering Needs:</strong> {plant.watering_needs}
+                        <strong>Watering Needs:</strong>{" "}
+                        {plant.watering_needs}
                         <br />
                         <strong>Soil Needs:</strong> {plant.soil_needs}
                         <br />
-                        <strong>USDA Hardiness Zone:</strong> {plant.USDA_zone}
+                        <strong>USDA Hardiness Zone:</strong>{" "}
+                        {plant.USDA_zone}
                         <br />
                         <strong>Human Edible:</strong> {plant.human_edible}
                         <br />
