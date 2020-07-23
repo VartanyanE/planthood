@@ -70,6 +70,7 @@ function Landing(props) {
         Sign Up
       </Button>
       <br />
+      
       {/* <div id="content">
         <Button
           color="primary"

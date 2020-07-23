@@ -204,6 +204,16 @@ const Signup = (props) => {
                 <Button type="submit" color="primary" variant="outlined">
                   Sign Up
                 </Button>
+                <br/>
+                <Button color="primary"
+                  onClick=
+                  {() =>
+                    props.history.push({
+                      pathname: "/",
+                    })
+                  }>
+                  Login
+                </Button>
                 <br />
                 {/* <div id="content">
                   <Button

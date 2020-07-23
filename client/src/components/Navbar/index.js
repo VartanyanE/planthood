@@ -135,7 +135,7 @@ function Navbar(props) {
     <div className={classes.root}>
       <AppBar position="absolute" className={classes.appBar}>
         <Toolbar>
-          <Link to="/">
+          <Link to="/plantkins">
             {" "}
             <img src="nav-logo.png" alt="logo" className={classes.logo} />
           </Link>
