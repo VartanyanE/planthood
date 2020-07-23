@@ -9,6 +9,7 @@ const userSchema = new Schema(
     zipcode: String,
     password: { type: String, required: true },
     date: { type: Date, default: Date.now },
+    plantsitting: [{ type: Boolean, default: false }],
     plants: [{
       type: Schema.Types.ObjectId,
       ref: "Plantsearch"
