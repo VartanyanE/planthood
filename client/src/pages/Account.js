@@ -68,14 +68,12 @@ function Account() {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
       .then((res) => {
-        // console.log('getuser:', res.data)
+
         setUserOid(res.data[0]._id);
-        console.log(res.data[0].plantsitting[0])
         setState({
           ...state,
           checkedC: res.data[0].plantsitting[0],
         });
-        // console.log('userOid', res.data[0]._id)
         getZone(res.data[0].zipcode).then((res) => {
 
           // console.log(res.data.zipcode, "zone confirm");

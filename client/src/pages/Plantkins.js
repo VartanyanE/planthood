@@ -10,6 +10,7 @@ import {
   getUsers,
   grantAccess,
   deletePlantsit,
+  getUserPlantsitters,
 } from "../utils/API";
 import Container from "@material-ui/core/Container";
 import Modal from "@material-ui/core/Modal";
@@ -120,8 +121,11 @@ function Plants() {
       })
       .catch((err) => console.log(err));
 
-    getUsers().then(({ data }) =>
+    getUserPlantsitters().then(({ data }) => {
+      console.log('userlist:', data)
       setUserList(data.filter((a) => !(a.user_id === userId)))
+
+    }
     );
   }, [clicked]);
 

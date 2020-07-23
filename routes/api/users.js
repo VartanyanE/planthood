@@ -9,6 +9,7 @@ var passport = require("../../config/passport");
 // Otherwise the user will be sent an error
 // Matches with "/api/user"
 router.route("/").get(userController.findAllUsers).post(userController.create);
+router.route("/plantsitters").get(userController.findAllPlantsitters)
 
 router.post("/login", passport.authenticate("local.login"), (req, res) => {
   if (req.user) {
