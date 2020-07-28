@@ -5,6 +5,33 @@ import SignUp from "../Signup";
 import userContext from "../../utils/userContext";
 import { loginUser } from "../../utils/API";
 import "./style.css";
+import { useTransition, animated, useSpring } from "react-spring";
+
+const ToggleMenu = () => {
+  useEffect(() => {
+    setToggle(!isToggled);
+  }, []);
+
+  const [isToggled, setToggle] = useState(false);
+  const fade = useSpring({
+    transform: isToggled
+      ? `translate3d(0,0,0) scale(1)`
+      : `translate3d(0,-300%,0) scale(-0.5) `,
+  });
+
+  return (
+    <animated.div style={fade}>
+     <img
+        src={"landinglogo-withds.png"}
+        style={{
+          alignContent: "center",
+
+          width: "60%",
+          marginTop: "100px",
+        }} />
+    </animated.div>
+  );
+};
 
 function Landing(props) {
   const [login, setLogin] = useState(0);
@@ -13,15 +40,7 @@ function Landing(props) {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <img
-        src={"landinglogo-withds.png"}
-        style={{
-          alignContent: "center",
-
-          width: "60%",
-          marginTop: "100px",
-        }}
-      />
+     <ToggleMenu />
       <div id="content">
         <Button
           color="primary"
