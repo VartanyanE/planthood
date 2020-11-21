@@ -32,7 +32,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_CONNECTION || "mongodb://localhost/planthood"
+  process.env.MONGO_CONNECTION || "mongodb://localhost/planthood"
 );
 
 // Start the API server
