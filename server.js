@@ -31,7 +31,9 @@ app.use(routes);
 // require("./routes/api/index.js")(app);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/planthood");
+mongoose.connect(
+  process.env.MONGODB_CONNECTION || "mongodb://localhost/planthood"
+);
 
 // Start the API server
 app.listen(PORT, function () {
