@@ -7,10 +7,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   },
+  findAllPlantsitters: function (req, res) {
+    db.User.find({ plantsitting: true })
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
   findAllByUserId: function (req, res) {
     db.User.find({ user_id: req.params.user_id })
       .populate('plants')
       .populate('plantsit')
+      .populate('plantsitter')
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
@@ -19,6 +26,7 @@ module.exports = {
     db.User.findById(req.params.id)
       .populate('plants')
       .populate('plantsit')
+      .populate('plantsitter')
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err))
   },

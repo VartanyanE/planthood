@@ -9,9 +9,10 @@ import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { getUser, getZone } from "../utils/API";
+import { getUser, getZone, addRemovePlantsitting } from "../utils/API";
 import Switch from "@material-ui/core/Switch";
 import { Avatar } from "@material-ui/core";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,17 +55,27 @@ function Account() {
   const email = localStorage.getItem("user");
   const classes = useStyles();
 
+
   const [state, setState] = React.useState({
     age: "",
     name: "hai",
     checkedB: true,
+    checkedC: false,
   });
   const [userZone, setUserZone] = useState();
+  const [userOid, setUserOid] = useState();
   useEffect(() => {
     const userId = JSON.parse(localStorage.getItem("user"));
     getUser(userId)
       .then((res) => {
+
+        setUserOid(res.data[0]._id);
+        setState({
+          ...state,
+          checkedC: res.data[0].plantsitting[0],
+        });
         getZone(res.data[0].zipcode).then((res) => {
+
           // console.log(res.data.zipcode, "zone confirm");
           setUserZone(res.data.zonetitle);
 
@@ -85,6 +96,35 @@ function Account() {
   const handleSwitch = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+
+  const handleSwitchPlantsitter = (event) => {
+    const userId = JSON.parse(localStorage.getItem(""));
+    setState({ ...state, [event.target.name]: event.target.checked });
+    console.log('plantsitteruser:', userOid)
+    addRemovePlantsitting(userOid, event.target.checked).then(({ data }) => {
+
+
+
+
+
+      // state ? toast("Plantkin removed!", {delay:1000}) : toast("Plantkin added!", {delay:1000})
+    });
+
+  };
+
+  // {
+  //   addRemovePlant(id, user._id, state ? "remove" : "add").then(({ data }) => {
+  //     setUser(data);
+
+  //     state ? toast("Plantkin removed!", { delay: 1000 }) : toast("Plantkin added!", { delay: 1000 })
+  //   });
+  //   setState(!state);
+
+
+  // };
+
+
+
 
   return (
     <div>
@@ -133,6 +173,24 @@ function Account() {
                     checked={state.checkedB}
                     onChange={handleSwitch}
                     name="checkedB"
+                    color="primary"
+                  />
+                }
+              />
+            </FormGroup>
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormGroup row>
+              <Typography className={classes.text} variant="h4">
+                Turn on Plantsitter Available
+              </Typography>
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={state.checkedC}
+                    onChange={handleSwitchPlantsitter}
+                    name="checkedC"
                     color="primary"
                   />
                 }

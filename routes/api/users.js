@@ -9,6 +9,7 @@ var passport = require("../../config/passport");
 // Otherwise the user will be sent an error
 // Matches with "/api/user"
 router.route("/").get(userController.findAllUsers).post(userController.create);
+router.route("/plantsitters").get(userController.findAllPlantsitters)
 
 router.post("/login", passport.authenticate("local.login"), (req, res) => {
   if (req.user) {
@@ -61,6 +62,16 @@ router.put("/fav/remove/:uId/:pId", ({ params: { uId, pId } }, res) => {
     .catch((err) => console.log(err));
 });
 
+router.put("/plantsitting/:uId/:isSitting", ({ params: { uId, isSitting } }, res) => {
+  console.log('put:', uId, isSitting)
+  db.User.findByIdAndUpdate(uId, { plantsitting: isSitting })
+    .then((data) => {
+      console.log("plantsittingdata:", data);
+      return res.json(data);
+    })
+    .catch((err) => console.log(err));
+});
+
 router.get("/faved/:uId/:pId", ({ params: { uId, pId } }, res) => {
   db.User.findOne({ _id: uId, plants: { _id: pId } })
     .then((data) => {
@@ -82,6 +93,8 @@ router.put("/plantsit/remove/:uId/:pId", ({ params: { uId, pId } }, res) => {
     })
     .catch((err) => console.log(err));
 });
+
+
 
 
 module.exports = router;

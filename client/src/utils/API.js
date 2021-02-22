@@ -25,6 +25,14 @@ export const saveUser = function (data) {
 export const getUsers = function () {
   return axios.get("/api/users");
 };
+
+export const getUserPlantsitters = function () {
+  return axios.get("/api/users/plantsitters");
+};
+
+
+
+
 export const loginUser = function (data) {
   return axios.post("/api/users/login", data);
 };
@@ -65,6 +73,11 @@ export const browsePlant = function (common_name) {
 
 export const addRemovePlant = function (pId, uId, action) {
   return axios.put(`/api/users/fav/${action}/${uId}/${pId}`);
+};
+
+export const addRemovePlantsitting = function (uId, isSitting) {
+  console.log('gothere')
+  return axios.put(`/api/users/plantsitting/${uId}/${isSitting}`);
 };
 
 export const checkUserPlant = function (pId, uId) {

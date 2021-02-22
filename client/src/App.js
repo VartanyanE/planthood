@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
+import Landing from "./pages/Landing/index";
 import About from "./pages/About";
 import Account from "./pages/Account";
 import Browse from "./pages/Browse";
@@ -41,7 +41,7 @@ function App() {
             <clickedContext.Provider value={{ clicked, setClicked }}>
               <Navbar />
               <Container maxWidth="md">
-                <Route exact path="/" component={!user ? Landing : Plantkins} />
+                <Route exact path="/" component={Landing} />
                 <Route exact path="/landing" component={Landing} />
                 <Route exact path="/about" component={user ? About : Landing} />
                 <Route
